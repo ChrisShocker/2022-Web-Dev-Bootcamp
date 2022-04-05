@@ -7,6 +7,10 @@ h1 {
     font-size: 60px;
 }
 
-img{
+img.bacon{
+    background-color: green;
+}
+
+img.broccoli{
     background-color: red;
 }
