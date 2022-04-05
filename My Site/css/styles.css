@@ -9,11 +9,22 @@ h1{
 p{
     margin: 0;
 }
-.intro{
+.top-container{
     background-color: #D8E3E7;
-    height: auto;
     text-align: center;
-
 }
 
+.middle-container{
+    background-color: red;
+    margin: 2px;
+    height: 200px;
+    width: 200px;
+}
+
+.bottom-container{
+    background-color: blue;
+    margin: 2px;
+    height: 200px;
+    width: 200px;
+}
 
