@@ -13,17 +13,19 @@ p{
 .top-container{
     background-color: #D8E3E7;
     text-align: center;
+    position: relative;
+    padding: 5%;
 }
 
 .top-cloud{
-    position: static;
+    position: absolute;
     display: inline-block;
-    margin-top: 5%;
-    margin-left: 45%;
+    top: 8%;
+    left: 60%;
 }
 
 .bottom-cloud{
-    position: static;
+    position: absolute;
     display: inline-block;
     margin-right: 45%;
 }
