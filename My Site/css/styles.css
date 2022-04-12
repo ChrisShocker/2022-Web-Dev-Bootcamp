@@ -1,18 +1,20 @@
 body{
     margin: 0;
+    text-align: center;
 }
 
 h1{
     margin: 4px auto;
+    font-family: 'Handlee', cursive;
 }
 
-p{
+h3{
     margin: 10px auto;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .top-container{
     background-color: #D8E3E7;
-    text-align: center;
     position: relative;
     padding: 5%;
 }
