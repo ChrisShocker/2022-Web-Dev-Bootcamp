@@ -12,6 +12,7 @@ p{
 .top-container{
     background-color: #D8E3E7;
     text-align: center;
+    display:inline-block;
 }
 
 .middle-container{
