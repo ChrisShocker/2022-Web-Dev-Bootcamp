@@ -12,7 +12,6 @@ p{
 .top-container{
     background-color: #D8E3E7;
     text-align: center;
-    display:inline-block;
 }
 
 .middle-container{
@@ -20,6 +19,8 @@ p{
     margin: 2px;
     height: 200px;
     width: 200px;
+    position: relative;
+    display: inline-block;
 }
 
 .bottom-container{
@@ -27,5 +28,15 @@ p{
     margin: 2px;
     height: 200px;
     width: 200px;
+    position: relative;
+    display: inline-block;
 }
 
+.bottomer-container{
+    background-color: yellow;
+    margin: 2px;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    display: inline-block;
+}
