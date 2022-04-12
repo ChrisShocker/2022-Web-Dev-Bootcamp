@@ -19,8 +19,7 @@ p{
     margin: 2px;
     height: 200px;
     width: 200px;
-    position: relative;
-    display: inline-block;
+    position: absolute;
 }
 
 .bottom-container{
@@ -28,8 +27,9 @@ p{
     margin: 2px;
     height: 200px;
     width: 200px;
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    left: 200px;
+    top: 616px;
 }
 
 .bottomer-container{
@@ -37,6 +37,7 @@ p{
     margin: 2px;
     height: 200px;
     width: 200px;
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    left: 400px;
+    top: 816px;
 }
