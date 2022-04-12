@@ -3,41 +3,34 @@ body{
 }
 
 h1{
-    margin: 0;
+    margin: 4px auto;
 }
 
 p{
-    margin: 0;
+    margin: 10px auto;
 }
+
 .top-container{
     background-color: #D8E3E7;
     text-align: center;
 }
 
+.top-cloud{
+    position: static;
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: 45%;
+}
+
+.bottom-cloud{
+    position: static;
+    display: inline-block;
+    margin-right: 45%;
+}
+
 .middle-container{
-    background-color: red;
-    margin: 2px;
-    height: 200px;
-    width: 200px;
-    position: absolute;
 }
 
 .bottom-container{
-    background-color: blue;
-    margin: 2px;
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    left: 200px;
-    top: 616px;
 }
 
-.bottomer-container{
-    background-color: yellow;
-    margin: 2px;
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    left: 400px;
-    top: 816px;
-}
