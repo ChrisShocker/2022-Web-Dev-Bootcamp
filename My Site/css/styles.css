@@ -1,6 +1,7 @@
 body{
     margin: 0;
     text-align: center;
+    background-color: #D8E3E7;
 }
 
 h1{
@@ -14,7 +15,6 @@ h3{
 }
 
 .top-container{
-    background-color: #D8E3E7;
     position: relative;
     padding: 5%;
 }
