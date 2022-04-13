@@ -6,7 +6,7 @@ body{
 }
 
 h1{
-    color: #66BFBF;
+    color: #30AADD;
     font-family: 'Handlee', cursive;
     font-size: 4.2rem;
     margin: 6px auto;
@@ -14,12 +14,13 @@ h1{
 }
 
 h2{
-    color: #66BFBF;
+    color: #42C2FF;
     font-weight: normal;
+    font-size: 2.4rem;
 }
 
 h3{
-    color: #11999E;
+    color: #247881;
     font-family: 'Ubuntu', sans-serif;
     font-size: 2rem;
     margin: 10px auto;
@@ -30,15 +31,15 @@ p{
 }
 
 .top-container{
-    padding: 5%;
+    margin: 5%;
     position: relative;
 }
 
 .top-cloud{
     display: inline-block;
     position: absolute;
-    top: 8%;
-    left: 60%;
+    top: 5%;
+    left: 62%;
 }
 
 .bottom-cloud{
@@ -47,9 +48,36 @@ p{
     margin-right: 45%;
 }
 
+.mountain{
+}
+
 .middle-container{
 }
 
+.softDev-image{
+    width: 30%;
+    float: left;
+    margin-right: 30px;
+}
+.webDev-image{
+    width: 30%;
+    float: right;
+    margin-left: 30px;
+}
+
+.skills{
+margin-top: 180px;
+
+}
+.skill-row{
+    margin: 50px auto 150px auto;
+    line-height: 2;
+    text-align: left;
+    width: 50%;
+}
+
+
 .bottom-container{
+    margin: 5%;
 }
 
