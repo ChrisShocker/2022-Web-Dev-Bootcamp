@@ -1,17 +1,24 @@
 body{
     margin: 0;
     text-align: center;
-    background-color: #D8E3E7;
+    background-color: #EFFFFD;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 h1{
-    margin: 4px auto;
+    margin: 6px auto;
     font-family: 'Handlee', cursive;
+    font-size: 4.2rem;
 }
 
 h3{
     margin: 10px auto;
     font-family: 'Ubuntu', sans-serif;
+    font-size: 2rem;
+}
+
+p{
+    font-size: 1.4rem;
 }
 
 .top-container{
