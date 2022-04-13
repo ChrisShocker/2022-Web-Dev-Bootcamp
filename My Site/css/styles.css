@@ -1,20 +1,28 @@
 body{
-    margin: 0;
-    text-align: center;
     background-color: #EFFFFD;
     font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    text-align: center;
 }
 
 h1{
-    margin: 6px auto;
+    color: #66BFBF;
     font-family: 'Handlee', cursive;
     font-size: 4.2rem;
+    margin: 6px auto;
+    line-height: 2;
+}
+
+h2{
+    color: #66BFBF;
+    font-weight: normal;
 }
 
 h3{
-    margin: 10px auto;
+    color: #11999E;
     font-family: 'Ubuntu', sans-serif;
     font-size: 2rem;
+    margin: 10px auto;
 }
 
 p{
@@ -22,13 +30,13 @@ p{
 }
 
 .top-container{
-    position: relative;
     padding: 5%;
+    position: relative;
 }
 
 .top-cloud{
-    position: absolute;
     display: inline-block;
+    position: absolute;
     top: 8%;
     left: 60%;
 }
