@@ -23,11 +23,12 @@ h3{
     color: #247881;
     font-family: 'Ubuntu', sans-serif;
     font-size: 2rem;
-    margin: 10px auto;
+    margin: 50px auto 0px;
 }
 
 p{
     font-size: 1.4rem;
+    margin: 0px;
 }
 
 .top-container{
@@ -37,9 +38,8 @@ p{
 
 .top-cloud{
     display: inline-block;
-    position: absolute;
-    top: 5%;
-    left: 62%;
+    position: relative;
+    left: 30%;
 }
 
 .bottom-cloud{
@@ -56,8 +56,8 @@ p{
 
 .softDev-image{
     width: 30%;
-    float: left;
-    margin-right: 30px;
+    float: right;
+    margin-left: 30px;
 }
 .webDev-image{
     width: 30%;
@@ -70,10 +70,10 @@ margin-top: 180px;
 
 }
 .skill-row{
-    margin: 50px auto 150px auto;
+    margin: 50px auto 100px auto;
     line-height: 2;
     text-align: left;
-    width: 50%;
+    width: 60%;
 }
 
 
