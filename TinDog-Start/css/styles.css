@@ -8,6 +8,6 @@ h1 {
     background-color: #ff4c68;
 }
 
-#title-container {
-    padding-top: 6rem;
+.container-fluid {
+    padding: 7% 15%;
 }
