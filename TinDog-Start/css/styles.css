@@ -2,12 +2,29 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 3rem;
     line-height: 1.5;
+    color:rgb(255, 255, 255);
 }
 
 #title {
     background-color: #ff4c68;
 }
 
+.btn{
+    margin-top: 5%;
+}
+
 .container-fluid {
     padding: 7% 15%;
+}
+
+.phone-image{
+    width:300px;
+    height:550px;
+    transform: rotate(30deg);
+    object-fit: cover;
+    object-position: 50% 0%;
+}
+
+.navbar{
+    padding-left: 1%;
 }
