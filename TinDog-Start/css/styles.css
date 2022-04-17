@@ -19,7 +19,9 @@ h3{
 }
 
 em{
-    font-size: 1.4rem;
+    font-size: 2rem;
+    padding:5%;
+    text-align: center;
 }
 
 .btn{
@@ -85,9 +87,13 @@ em{
 }
 
 .testimonial-image{
-    margin-top: 5%;
+    margin: 5% 0 5%;
     width: 30%;
     border-radius: 100%;
+}
+
+.testimonial-text{
+    font-size: 2rem;
 }
 
 #press{
