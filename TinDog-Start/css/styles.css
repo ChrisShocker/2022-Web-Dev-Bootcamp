@@ -80,7 +80,6 @@ em{
 
 /*Testimonial Section*/
 #testimonials{
-    padding: 5% 15% 5%;
     background-color: #ef8172;
     color: #ffff;
     text-align: center;
@@ -105,4 +104,10 @@ em{
 .press-logo{
     width: 20%;
     margin-right: 4%;
+    padding-bottom: 5%;
+}
+
+.carousel-item{
+
+    padding: 5% 15% 5%;
 }
