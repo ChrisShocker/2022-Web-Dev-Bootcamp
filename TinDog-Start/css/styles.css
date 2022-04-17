@@ -90,5 +90,13 @@ em{
     border-radius: 100%;
 }
 
+#press{
+    background-color:#ef8172;
+    padding: 2% 5% 2%;
+    text-align: center;
+}
 
-
+.press-logo{
+    width: 20%;
+    margin-right: 4%;
+}
