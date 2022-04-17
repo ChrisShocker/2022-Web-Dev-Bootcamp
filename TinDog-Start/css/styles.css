@@ -111,3 +111,24 @@ em{
 
     padding: 5% 15% 5%;
 }
+
+/*Pricing*/
+#pricing{
+    padding: 5%;
+    text-align: center;
+}
+
+.pricing-col{
+    padding: 2%;
+}
+
+.card-title{
+    background-color: gainsboro;
+    padding: 5%;
+}
+
+.card-body{
+    color:rgb(114, 114, 114);
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
