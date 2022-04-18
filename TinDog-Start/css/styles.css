@@ -163,3 +163,12 @@ em {
     text-align: center;
     z-index: 5;
 }
+
+#footer{
+    padding: 5% 0 0;
+    text-align: center;
+}
+
+.footer-icon{
+    margin: 0 3% 3% 0;
+}
