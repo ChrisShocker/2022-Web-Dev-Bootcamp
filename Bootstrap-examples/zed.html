@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Zed Index</title>
+
+    <!-- Bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="boxes">
+        <div class="red" style="background-color: red;
+        width: 200px; height: 200px; position: absolute; z-index: 2; margin-left: 50px;">
+        </div>
+
+        <div class="blue" style="background-color: blue;
+        color: white; width: 200px; height: 200px; position: absolute; z-index: 3;">
+            <p>Blue</p>
+            <p>2nd on stack</p>
+            <p>3rd on z-index</p>
+    </div>
+
+    <div class="yellow" style="background-color: yellow;
+        width: 200px; height: 200px; position: absolute; z-index: 1; margin-left: 100px;">
+    </div>
+    </div>
+
+    <div class="boxes" style="padding:20%">
+        <div class="red" style="background-color: red;
+        width: 200px; height: 200px; position: absolute; z-index: 2; margin-left: 50px; margin-left: 50px;">
+        </div>
+
+        <div class="blue" style="background-color: blue;
+        color: white; width: 200px; height: 200px; position: absolute; z-index: 1; margin-left: 100px;">
+        </div>
+
+        <div class="yellow" style="background-color: yellow;
+        width: 200px; height: 200px; position: absolute; z-index: 3;">
+            <p>Yellow</p>
+            <p>3dd on stack</p>
+            <p>3rd on z-index</p>
+        </div>
+    </div>
+
+    <div class="boxes" style="padding-left: 40%;">
+        <div class="red" style="background-color: red;
+        width: 200px; height: 200px; position: absolute; z-index: 3;">
+            <p>Red</p>
+            <p>1st on stack</p>
+            <p>3rd on z-index</p>
+        </div>
+
+        <div class="blue" style="background-color: blue;
+        color: white; width: 200px; height: 200px; position: absolute; z-index: 2; margin-left: 50px;">
+        </div>
+
+        <div class="yellow" style="background-color: yellow;
+        width: 200px; height: 200px; position: absolute; z-index: 1; margin-left: 100px;">
+        </div>
+    </div>
+
+    <div style="font-size: 2rem;font-weight: bolder; padding: 20% 5%;">
+        z-index only applies when objects have a position element that isn't static!
+        ie: position:absolute
+    </div>
+
+</body>
+
+</html>
