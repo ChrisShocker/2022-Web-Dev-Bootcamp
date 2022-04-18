@@ -1,24 +1,8 @@
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    line-height: 1.5;
-}
-
-h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    line-height: 1.5;
-}
-
-h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-}
-
-em {
-    font-size: 2rem;
-    padding: 5%;
+body{
     text-align: center;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .btn {
@@ -27,11 +11,12 @@ em {
 }
 
 /*Navbar Section*/
+#navbar-section{
+    font-size: 1.5rem;
+}
+
 .navbar {
     padding-left: 1%;
-    font-size: 1.5rem;
-    position: relative;
-    z-index: 10;
 }
 
 .navbar-brand {
@@ -44,11 +29,17 @@ em {
     background-color: #ff4c68;
     color: rgb(255, 255, 255);
     position: relative;
+    text-align: left;
     z-index: 0;
 }
 
+.title-h1 {
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
 .title-container {
-    padding: 5% 18% 5%;
+    padding: 10% 18% 5%;
 }
 
 .phone-image {
@@ -56,7 +47,7 @@ em {
     width: 15rem;
     top: 35%;
     transform: rotate(25deg);
-    z-index: 0;
+    z-index: -1;
     right: 20%;
 }
 
@@ -70,17 +61,20 @@ em {
         position: static;
         transform: rotate(0deg);
     }
-
 }
 
 /*Feature Section*/
 #feature {
     position: relative;
     background-color: white;
+    z-index: 0;
+}
+
+.feature-h3{
+    font-size: 2.2rem;
 }
 
 .feature-container {
-    text-align: center;
     padding: 5% 2% 5% 2%;
 }
 
@@ -103,24 +97,26 @@ em {
     background-color: #ef8172;
     color: #ffff;
     text-align: center;
-    z-index: 2;
+}
+
+.testimonial-h2 {
+    font-size: 2rem;
+}
+
+.testimonial-em{
+    font-size: 2rem;
+    padding: 5%;
 }
 
 .testimonial-image {
-    margin: 5% 0 5%;
+    padding: 5% 0 5%;
     width: 30%;
     border-radius: 100%;
-}
-
-.testimonial-text {
-    font-size: 2rem;
 }
 
 #press {
     background-color: #ef8172;
     padding: 2% 5% 2%;
-    text-align: center;
-    z-index: 3;
 }
 
 .press-logo {
@@ -138,15 +134,20 @@ em {
 #pricing {
     padding: 5%;
     text-align: center;
-    z-index: 4;
+}
+
+.price-h2{
+    font-size: 3rem;
+    line-height: 1.5;
 }
 
 .pricing-col {
     padding: 2%;
 }
 
-.card-title {
+.card-h3 {
     background-color: gainsboro;
+    font-size: 2rem;
     padding: 5%;
 }
 
@@ -160,13 +161,14 @@ em {
     background-color: #ff4c68;
     color:white;
     padding: 5%;
-    text-align: center;
-    z-index: 5;
+}
+
+.cta-h3{
+    font-size: 2rem;
 }
 
 #footer{
-    padding: 5% 0 0;
-    text-align: center;
+    padding-top: 3%;
 }
 
 .footer-icon{
