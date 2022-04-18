@@ -155,3 +155,11 @@ em {
     font-size: 1.5rem;
     line-height: 1.2;
 }
+
+#cta{
+    background-color: #ff4c68;
+    color:white;
+    padding: 5%;
+    text-align: center;
+    z-index: 5;
+}
