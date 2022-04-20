@@ -77,12 +77,19 @@ function preFix()
     console.log(y += 1);
 }
 
+function calcBMI(weight, height){
+    console.log(Math.round(weight/(Math.pow(height, 2))));
+}
+
 // wait for html to load before calling on html variables
 window.onload = function ()
 {
     // limitMessage();
     // convertName();
     // dogToHumanYears();
-     postFix();
+    // postFix();
     // preFix();
+    // calcBMI(65, 1.8);
 }
+
+
