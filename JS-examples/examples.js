@@ -9,7 +9,7 @@ function limitMessage()
     let sliced = userInput.slice(0, 239);
     alert("Characters 0 - 239: " + sliced)
 
-    //injecting js into html
+    // injecting js into html
     document.write("You typed: " + sliced);
 
     // length
@@ -25,23 +25,23 @@ function convertToUpper(string)
     document.getElementById("paragraph1").innerHTML = "Uppercase: "  +string;
 }
 
-//toLowerCase
+// toLowerCase
 function convertToLower(string)
 {
     string = string.toLowerCase();
     document.getElementById("paragraph2").innerHTML = "Lowercase: " +string;
 }
 
-//capitalize the first letter of a string
+// capitalize the first letter of a string
 function capitalizeFirstLetter(string)
 {
-    //  let firstLetter = name.slice(0,1).toUpperCase();
+    // let firstLetter = name.slice(0,1).toUpperCase();
     // name = firstLetter + name.slice(1, name.length);
     string = string.slice(0, 1).toUpperCase() + string.slice(1, string.length);
     document.getElementById("paragraph3").innerHTML = "Uppercase first letter: " +string;
 }
 
-// toUpperCase and toLowerCase
+// toUpperCase, toLowerCase, and capitalize first letter of a string
 function convertName()
 {
     let name = "jerry";
@@ -50,7 +50,7 @@ function convertName()
     capitalizeFirstLetter(name);
 }
 
-//wait for html to load before calling on html variables
+// wait for html to load before calling on html variables
 window.onload = function ()
 {
     convertName();
