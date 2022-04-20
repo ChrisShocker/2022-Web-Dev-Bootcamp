@@ -19,19 +19,20 @@ function limitMessage()
 //limitMessage();
 
 //toUpperCase
-function convertToUpper(name)
+function convertToUpper(string)
 {
-    name = name.toUpperCase();
-    document.getElementById("paragraph1").innerHTML = "Uppercase: "  +name;
+    string = string.toUpperCase();
+    document.getElementById("paragraph1").innerHTML = "Uppercase: "  +string;
 }
 
 //toLowerCase
-function convertToLower(name)
+function convertToLower(string)
 {
-    name = name.toLowerCase();
-    document.getElementById("paragraph2").innerHTML = "Lowercase: " +name;
+    string = string.toLowerCase();
+    document.getElementById("paragraph2").innerHTML = "Lowercase: " +string;
 }
 
+//capitalize the first letter of a string
 function capitalizeFirstLetter(string)
 {
     //  let firstLetter = name.slice(0,1).toUpperCase();
