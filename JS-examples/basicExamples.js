@@ -53,15 +53,36 @@ function dogToHumanYears()
 {
     let dogAge = prompt("Please type in your dog's age");
     alert("Your dog is: " + Number((dogAge - 2) * 4 + 21));
+}
 
+function postFix()
+{
+    console.log("var x = 3")
+    var x = 3;
+    var y = x++;
+    console.log("Postfix operator: increments x after it was assigned to y" )
+    console.log("var y = x++");
+    console.log("y is set to: " + y +" which is x Then x is incremented by 1 to " + x)
+    console.log("y += 1 = " + (y += 1));
+}
+
+function preFix()
+{
+    console.log("var x = 3")
+    var x = 3;
+    var y = ++x;
+    console.log("Prefix operator: increments x before it is assigned to y" )
+    console.log("var y = x++");
+    console.log("x is incremented by 1 to " + x +" then y is set to: " + y +" which is x")
+    console.log(y += 1);
 }
 
 // wait for html to load before calling on html variables
 window.onload = function ()
 {
-    //  limitMessage();
+    // limitMessage();
     // convertName();
-    dogToHumanYears();
+    // dogToHumanYears();
+     postFix();
+    // preFix();
 }
-
-
