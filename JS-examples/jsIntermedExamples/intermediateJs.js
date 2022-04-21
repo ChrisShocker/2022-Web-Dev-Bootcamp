@@ -16,6 +16,29 @@ function checkIfLeapYear(year)
         console.log("Not leap year.")
 }
 
+// Simple FizzBuss solution that stores Fizz, Buzz, or FizzBuzz into an array
+function fizzBuzz()
+{
+    let fizzArray = [];
+    for (let i = 0; i <= 100; ++i)
+    {
+        if (i % 3 === 0 && i % 5 === 0){
+            fizzArray.push(i + " FizzBuzz");
+        }
+        else if (i % 3 === 0){
+            fizzArray.push(i + " Fizz");
+        }
+
+        else if (i % 5 === 0){
+            fizzArray.push(i + " Buzz");
+        }
+    }
+
+    fizzArray.forEach(element => {
+        console.log(element);
+    });
+}
+
 // Fake calculator that randomly ouputs compatibility between two words
 class loveCalc
 {
@@ -50,19 +73,22 @@ class admitGuest
 
     addGuestToArray()
     {
-        for(let i = 0; i < 3; ++i){
+        for (let i = 0; i < 3; ++i)
+        {
             let name = prompt("Enter a guest name to add to the list");
             this.guests.push(name);
         }
     }
 
-    printGuestArray(){
+    printGuestArray()
+    {
         this.guests.forEach(element => console.log(element));
     }
 
-    checkGuestList(){
+    checkGuestList()
+    {
         let name = prompt("Please enter a name to check if it's on the guest list")
-        this.guests.includes(name) ? console.log("Guest on list"): console.log("Guest NOT on list");
+        this.guests.includes(name) ? console.log("Guest on list") : console.log("Guest NOT on list");
     }
 }
 
@@ -71,6 +97,8 @@ window.onload = function ()
     // randomDice();
 
     // checkIfLeapYear(1989);
+
+    // fizzBuzz();
 
     /*
     const loveCalculator = new loveCalc();
