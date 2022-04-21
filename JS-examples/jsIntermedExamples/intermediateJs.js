@@ -22,22 +22,50 @@ function fizzBuzz()
     let fizzArray = [];
     for (let i = 0; i <= 100; ++i)
     {
-        if (i % 3 === 0 && i % 5 === 0){
+        if (i % 3 === 0 && i % 5 === 0)
+        {
             fizzArray.push(i + " FizzBuzz");
         }
-        else if (i % 3 === 0){
+        else if (i % 3 === 0)
+        {
             fizzArray.push(i + " Fizz");
         }
 
-        else if (i % 5 === 0){
+        else if (i % 5 === 0)
+        {
             fizzArray.push(i + " Buzz");
         }
     }
 
-    fizzArray.forEach(element => {
+    fizzArray.forEach(element =>
+    {
         console.log(element);
     });
 }
+
+
+// Takes in a number and prints up to that number of the fibonacci sequence
+function fibonacciGen(n)
+{
+    if (n === 0)
+        return null;
+
+    else if (n === 1)
+        return [0];
+
+    else
+    {
+        let numArray = [0, 1];
+
+        for (let i = numArray.length; i < n; ++i)
+            numArray.push(numArray[i - 2] + numArray[i - 1]);
+
+        numArray.forEach(element => console.log(element));
+
+        return numArray;
+    }
+}
+
 
 // Fake calculator that randomly ouputs compatibility between two words
 class loveCalc
@@ -99,6 +127,8 @@ window.onload = function ()
     // checkIfLeapYear(1989);
 
     // fizzBuzz();
+
+    // fibonacciGen(5);
 
     /*
     const loveCalculator = new loveCalc();
