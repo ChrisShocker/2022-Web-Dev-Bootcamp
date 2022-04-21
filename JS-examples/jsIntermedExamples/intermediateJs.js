@@ -28,7 +28,17 @@ function loveCalc(name1, name2){
     matchType(nameArray, match);
 }
 
+function checkIfLeapYear(year){
+    if(year % 4 === 0 || year % 100 === 0 || year % 400 === 0)
+        console.log("Leap year.")
+    else
+        console.log("Not leap year.")
+}
+
+
 window.onload = function(){
     // randomDice();
-     loveCalc();
+    // loveCalc();
+    // checkIfLeapYear(1989);
+
 }
