@@ -7,10 +7,18 @@ function randomDice()
     console.log(n);
 }
 
+// Takes input and checks if it's a leap year
+function checkIfLeapYear(year)
+{
+    if (year % 4 === 0 || year % 100 === 0 || year % 400 === 0)
+        console.log("Leap year.")
+    else
+        console.log("Not leap year.")
+}
+
 // Fake calculator that randomly ouputs compatibility between two words
 class loveCalc
 {
-
     calcCompat(name1, name2)
     {
         let names = prompt("Please enter two names");
@@ -35,21 +43,53 @@ class loveCalc
     }
 }
 
-// Takes input and checks if it's a leap year
-function checkIfLeapYear(year)
+//Build a guest array and check if a name is on it
+class admitGuest
 {
-    if (year % 4 === 0 || year % 100 === 0 || year % 400 === 0)
-        console.log("Leap year.")
-    else
-        console.log("Not leap year.")
+    guests = [];
+
+    addGuestToArray()
+    {
+        for(let i = 0; i < 3; ++i){
+            let name = prompt("Enter a guest name to add to the list");
+            this.guests.push(name);
+        }
+    }
+
+    printGuestArray(){
+        this.guests.forEach(element => console.log(element));
+    }
+
+    checkGuestList(){
+        let name = prompt("Please enter a name to check if it's on the guest list")
+        this.guests.includes(name) ? console.log("Guest on list"): console.log("Guest NOT on list");
+    }
 }
 
 window.onload = function ()
 {
     // randomDice();
 
-    // const loveCalculator = new loveCalc();
-    // loveCalculator.calcCompat();
-
     // checkIfLeapYear(1989);
+
+    /*
+    const loveCalculator = new loveCalc();
+    loveCalculator.calcCompat();
+    */
+
+    /*
+    const guestArray = new admitGuest();
+    guestArray.addGuestToArray();
+    guestArray.checkGuestList();
+    */
 }
+
+
+
+
+
+
+
+
+
+
