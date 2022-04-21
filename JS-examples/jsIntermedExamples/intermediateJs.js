@@ -47,7 +47,7 @@ function fizzBuzz()
 // Takes in a number and prints up to that number of the fibonacci sequence
 function fibonacciGen(n)
 {
-    if (n === 0)
+    if (n <= 0)
         return null;
 
     else if (n === 1)
@@ -128,7 +128,7 @@ window.onload = function ()
 
     // fizzBuzz();
 
-    // fibonacciGen(5);
+    // fibonacciGen(100);
 
     /*
     const loveCalculator = new loveCalc();
