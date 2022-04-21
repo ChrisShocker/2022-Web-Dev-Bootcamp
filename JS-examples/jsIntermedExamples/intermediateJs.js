@@ -2,8 +2,20 @@
 // Get a number between 1 and 6
 function randomDice(){
     let n = Math.random();
-    n = Math.floor(n*6);
+    n = Math.floor(n*6) +1;
     console.log(n);
+}
+
+function matchType(nameArray, match){
+
+    if(match >= 90)
+        alert(nameArray[0] +" and " +nameArray[1] +" are meant for eachother");
+
+    else if(match >=60 && match < 90)
+        alert(nameArray[0] +" and " +nameArray[1] +" have great compatibility");
+
+    else
+        alert(nameArray[0] +" and " +nameArray[1] +" have bad compatibility");
 }
 
 function loveCalc(name1, name2){
@@ -11,12 +23,12 @@ function loveCalc(name1, name2){
     let nameArray = names.split(' ');
 
     let match = Math.random();
-    match = Math.floor(match*100);
+    match = Math.floor(match*100) + 1;
 
-    alert(nameArray[0] +" and " +nameArray[1] +" have " +match +"% Love Compatability");
+    matchType(nameArray, match);
 }
 
 window.onload = function(){
     // randomDice();
-    // loveCalc();
+     loveCalc();
 }
