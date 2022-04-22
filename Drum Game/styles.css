@@ -6,9 +6,7 @@ body {
 h1 {
   font-size: 5rem;
   color: #DBEDF3;
-  font-family: "Arvo", cursive;
-  text-shadow: 3px 0 #DA0463;
-
+  font-family: 'Times New Roman', Times, serif;
 }
 
 footer {
@@ -16,32 +14,32 @@ footer {
   font-family: sans-serif;
 }
 
-.w {
-
+.w_Drum {
+  background-image: url("images/tom1.png");
 }
 
-.a {
-
+.a_Drum {
+  background-image: url("images/tom2.png");
 }
 
-.s {
-
+.s_Drum {
+  background-image: url("images/tom3.png");
 }
 
-.d {
-
+.d_Drum {
+  background-image: url("images/tom4.png");
 }
 
-.j {
-
+.j_Drum {
+  background-image: url("images/crash.png");
 }
 
-.k {
-
+.k_Drum {
+  background-image: url("images/kick.png");
 }
 
-.l {
-
+.l_Drum {
+  background-image: url("images/snare.png");
 }
 
 .set {
@@ -62,7 +60,13 @@ footer {
   color: red;
 }
 
-.drum {
+.w_Drum,
+.a_Drum,
+.s_Drum,
+.d_Drum,
+.j_Drum,
+.k_Drum,
+.l_Drum {
   outline: none;
   border: 10px solid #404B69;
   font-size: 5rem;

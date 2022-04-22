@@ -1,7 +1,6 @@
 let drumSet = document.getElementsByTagName("button");
 
 for(let i = 0; i < drumSet.length; i++){
-    console.log(drumSet[i].className);
     drumSet[i].addEventListener("click", eval(drumSet[i].className));
 }
 
