@@ -3,6 +3,20 @@
 // Can also put scripts from HTML at end of body tag 
 $(document).ready(function(){
 
+    // js set color
+    document.getElementsByTagName("h1")[0].style.color = "red";
+
+    // jQuery set color
     $("h1").css("color", "red");
+
+    // log color rgb value
+    console.log($("h1").css("color"));
+
+    // add class
+    $("h1").addClass("main-title margins");
+
+    // remove class
+    $("h1").removeClass("main-title");
+
 
 });
