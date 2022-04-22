@@ -18,5 +18,7 @@ $(document).ready(function(){
     // remove class
     $("h1").removeClass("main-title");
 
+    // manipulate text
+    $("h1").text("Good Bye");
 
 });
