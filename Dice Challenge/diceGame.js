@@ -1,3 +1,4 @@
+//Randomly changes dice images to settle disputes between two players
 function randomlyChangeDice()
 {
     let n = Math.floor(Math.random() * 6) + 1;
