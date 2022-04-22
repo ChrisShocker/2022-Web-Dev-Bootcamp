@@ -18,7 +18,11 @@ $(document).ready(function(){
     // remove class
     $("h1").removeClass("main-title");
 
-    // manipulate text
+    // only manipulate text can't add tags
     $("h1").text("Good Bye");
 
+    // Changes button text, and can add tags because ".html" 
+    $("button").html("<em>Don't Click Me!</em>")
+
+    
 });
