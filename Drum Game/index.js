@@ -1,58 +1,48 @@
-document.getElementsByClassName("w drum")[0].addEventListener("click", wDrum);
-document.getElementsByClassName("a drum")[0].addEventListener("click", aDrum);
-document.getElementsByClassName("s drum")[0].addEventListener("click", sDrum);
-document.getElementsByClassName("d drum")[0].addEventListener("click", dDrum);
-document.getElementsByClassName("j drum")[0].addEventListener("click", jDrum);
-document.getElementsByClassName("k drum")[0].addEventListener("click", kDrum);
-document.getElementsByClassName("l drum")[0].addEventListener("click", lDrum);
+let drumSet = document.getElementsByTagName("button");
 
-function wDrum()
+for(let i = 0; i < drumSet.length; i++){
+    console.log(drumSet[i].className);
+    drumSet[i].addEventListener("click", eval(drumSet[i].className));
+}
+
+function w_Drum()
 {
     var audio = new Audio("sounds/tom-1.mp3");
     audio.play();
 }
 
-function aDrum()
+function a_Drum()
 {
     var audio = new Audio("sounds/tom-2.mp3");
     audio.play();
 }
-function sDrum()
+
+function s_Drum()
 {
     var audio = new Audio("sounds/tom-3.mp3");
     audio.play();
 }
-function dDrum()
+
+function d_Drum()
 {
     var audio = new Audio("sounds/tom-4.mp3");
     audio.play();
 }
-function jDrum()
+
+function j_Drum()
 {
     var audio = new Audio("sounds/crash.mp3");
     audio.play();
 }
-function kDrum()
+
+function k_Drum()
 {
     var audio = new Audio("sounds/kick-bass.mp3");
     audio.play();
 }
-function lDrum()
+
+function l_Drum()
 {
     var audio = new Audio("sounds/snare.mp3");
     audio.play();
 }
-/*
-console.log(document.getElementsByClassName("w drum")[0].className);
-function playSound()
-{
-    switch (document.getElementsByClassName()[0].className)
-    {
-        case "w drum":
-            var audio = new Audio("sounds/crash.mp3");
-            audio.play();
-            break;
-
-    }
-}
-*/
