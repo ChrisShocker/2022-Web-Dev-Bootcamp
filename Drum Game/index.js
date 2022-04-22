@@ -1,47 +1,46 @@
 let drumSet = document.getElementsByTagName("button");
 
-for(let i = 0; i < drumSet.length; i++){
-    drumSet[i].addEventListener("click", eval(drumSet[i].className));
-}
-
-function w_Drum()
+for (let i = 0; i < drumSet.length; i++)
 {
-    var audio = new Audio("sounds/tom-1.mp3");
-    audio.play();
-}
+    drumSet[i].addEventListener("click", function ()
+    {
+        switch (drumSet[i].className)
+        {
+            case "w_Drum":
+                var audio = new Audio("sounds/tom-1.mp3");
+                audio.play();
+                break;
 
-function a_Drum()
-{
-    var audio = new Audio("sounds/tom-2.mp3");
-    audio.play();
-}
+            case "a_Drum":
+                var audio = new Audio("sounds/tom-2.mp3");
+                audio.play();
+                break;
+            case "s_Drum":
+                var audio = new Audio("sounds/tom-3.mp3");
+                audio.play();
+                break;
+            case "d_Drum":
+                var audio = new Audio("sounds/tom-4.mp3");
+                audio.play();
+                break;
 
-function s_Drum()
-{
-    var audio = new Audio("sounds/tom-3.mp3");
-    audio.play();
-}
+            case "j_Drum":
+                var audio = new Audio("sounds/crash.mp3");
+                audio.play();
+                break;
 
-function d_Drum()
-{
-    var audio = new Audio("sounds/tom-4.mp3");
-    audio.play();
-}
+            case "k_Drum":
+                var audio = new Audio("sounds/kick-bass.mp3");
+                audio.play();
+                break;
 
-function j_Drum()
-{
-    var audio = new Audio("sounds/crash.mp3");
-    audio.play();
-}
+            case "l_Drum":
+                var audio = new Audio("sounds/snare.mp3");
+                audio.play();
+                break;
 
-function k_Drum()
-{
-    var audio = new Audio("sounds/kick-bass.mp3");
-    audio.play();
-}
-
-function l_Drum()
-{
-    var audio = new Audio("sounds/snare.mp3");
-    audio.play();
+            default:
+                break;
+        }
+    });
 }
