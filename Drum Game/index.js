@@ -1,97 +1,65 @@
-let drumSet = document.getElementsByTagName("button");
+//Add functionailty for a virtual drumset
 
+let drumSet = document.getElementsByTagName("button");
+//add listener to all buttons and play their sound
 for (let i = 0; i < drumSet.length; i++)
 {
     drumSet[i].addEventListener("click", function ()
     {
-        switch (drumSet[i].className)
-        {
-            case "w_Drum":
-                var audio = new Audio("sounds/tom-1.mp3");
-                audio.play();
-                break;
-
-            case "a_Drum":
-                var audio = new Audio("sounds/tom-2.mp3");
-                audio.play();
-                break;
-            case "s_Drum":
-                var audio = new Audio("sounds/tom-3.mp3");
-                audio.play();
-                break;
-            case "d_Drum":
-                var audio = new Audio("sounds/tom-4.mp3");
-                audio.play();
-                break;
-
-            case "j_Drum":
-                var audio = new Audio("sounds/crash.mp3");
-                audio.play();
-                break;
-
-            case "k_Drum":
-                var audio = new Audio("sounds/kick-bass.mp3");
-                audio.play();
-                break;
-
-            case "l_Drum":
-                var audio = new Audio("sounds/snare.mp3");
-                audio.play();
-                break;
-
-            default:
-                break;
-        }
+        playSound(drumSet[i].className);
     });
 }
 
-    document.addEventListener("keydown", function (keyPressed)
+//listen for keydown event and play assoctiated sound
+document.addEventListener("keydown", function (keyPressed)
+{
+    playSound(keyPressed.key);
+});
+
+function playSound(instrumentSound)
+{
+    if (instrumentSound === "w" || instrumentSound === "w_Drum")
     {
-        //playSound(keyPressed.key);
-        switch (keyPressed.key)
-        {
-            case "w":
-                var audio = new Audio("sounds/tom-1.mp3");
-                audio.play();
-                break;
-
-            case "a":
-                var audio = new Audio("sounds/tom-2.mp3");
-                audio.play();
-                break;
-            case "s":
-                var audio = new Audio("sounds/tom-3.mp3");
-                audio.play();
-                break;
-            case "d":
-                var audio = new Audio("sounds/tom-4.mp3");
-                audio.play();
-                break;
-
-            case "j":
-                var audio = new Audio("sounds/crash.mp3");
-                audio.play();
-                break;
-
-            case "k":
-                var audio = new Audio("sounds/kick-bass.mp3");
-                audio.play();
-                break;
-
-            case "l":
-                var audio = new Audio("sounds/snare.mp3");
-                audio.play();
-                break;
-
-            default:
-                break;
-        }
-    });
-
-    function playSound(someButton){
-        if(someButton === "w" || someButton === "w_Drum"){
-                var audio = new Audio("sounds/tom-1.mp3");
-                audio.play();
-        }
-
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
     }
+
+    else if (instrumentSound === "a" || instrumentSound === "a_Drum")
+    {
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
+    }
+
+    else if (instrumentSound === "s" || instrumentSound === "s_Drum")
+    {
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
+    }
+
+    else if (instrumentSound === "d" || instrumentSound === "d_Drum")
+    {
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
+    }
+
+    else if (instrumentSound === "j" || instrumentSound === "j_Drum")
+    {
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
+    }
+
+    else if (instrumentSound === "k" || instrumentSound === "k_Drum")
+    {
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
+    }
+
+    else if (instrumentSound === "l" || instrumentSound === "l_Drum")
+    {
+        var audio = new Audio("sounds/tom-1.mp3");
+        audio.play();
+    }
+
+    else
+        console.log(instrumentSound + " button not found");
+}
