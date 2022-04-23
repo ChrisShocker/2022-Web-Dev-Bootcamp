@@ -15,7 +15,7 @@ else{
     playGame();
 }
 
-
+//start state of the game
 function startGame()
 {
     $(document).keypress(function()
@@ -30,6 +30,7 @@ function startGame()
     })
 }
 
+//play state of the game
 async function playGame()
 {
     await delay(200);
@@ -46,28 +47,27 @@ async function playGame()
     });
 }
 
+//adds randomly generated color to game sequence array
 function generateGameSequence(){
         generateNextColor();
         displayLastGeneratedColor();
         ++gameState.levelNumber;
 }
 
+//adds user clicked color to an array
 function generateUserSequence(color){
         gameState.userSequence.push(color);
         playColorSound(color);
 }
 
-
-//checks to see if proper sequence was followed
+//checks to see if user input sequence is same as game sequence
 async function buttonChecker()
 {   
         if (gameState.userSequence[gameState.currentCheckLevel] === gameState.gameActualSequence[gameState.currentCheckLevel])
             ++gameState.currentCheckLevel;
 
         else
-        {
             gameOver();
-        }
 
         if(gameState.currentCheckLevel === gameState.gameActualSequence.length){
             await delay(1000);
@@ -77,20 +77,19 @@ async function buttonChecker()
         }
 }
 
+//game over state
 async function gameOver()
 {
     $("body").addClass("game-over");
-
-    playColorSound("wrong");
-
     $("h1").text("Game Over, Press Any Key to Restart");
-
+    playColorSound("wrong");
     await delay(100);
     $("body").removeClass("game-over");
 
     resetGame();
 }
 
+//refeshes page after game over state
 function resetGame(){
     $(document).keypress(function()
     {
@@ -130,6 +129,7 @@ function playColorSound(color)
     audio.play();
 }
 
+//adds a delay
 function delay(ms)
 {
     return new Promise(resolve => setTimeout(resolve, ms));
