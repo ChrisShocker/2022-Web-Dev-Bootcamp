@@ -1,7 +1,6 @@
 const express = require('express');
 let superHeroes = require("superheroes");
 let superVillians = require("supervillains");
-let path = require('path');
 
 let mySuperHeroName = superHeroes.random();
 let mySuperVillian = superVillians.random();
@@ -11,7 +10,6 @@ const port = 3000;
 
 //Parse data from post
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) =>{
     var name = "hello";
@@ -26,17 +24,6 @@ app.get("/index.js", (req, res) =>{
 app.get("/styles.css", (req, res) =>{
     res.sendFile(__dirname + "/styles.css");
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
