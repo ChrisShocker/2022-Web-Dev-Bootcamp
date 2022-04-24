@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.3",
+    "node-fetch": "^3.2.3",
     "superheroes": "^3.0.0",
     "supervillains": "^3.0.0"
   },

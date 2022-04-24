@@ -1,23 +1,31 @@
-const { response } = require('express');
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+let superHeroes = require("superheroes");
+let superVillians = require("supervillains");
+let path = require('path');
+
+let mySuperHeroName = superHeroes.random();
+let mySuperVillian = superVillians.random();
+
+const app = express();
+const port = 3000;
 
 //Parse data from post
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) =>{
-    res.sendFile(__dirname + "/index.html")
+    var name = "hello";
+    //res.sendFile(__dirname + "/index.html", {name:name});
+    res.send("<h1>"+mySuperHeroName+"</h1>\n"+"<h1>"+mySuperVillian+"</h1>");
 });
 
 app.get("/index.js", (req, res) =>{
-    res.sendFile(__dirname + "/index.js")
+    res.sendFile(__dirname + "/index.js");
 });
 
 app.get("/styles.css", (req, res) =>{
-    res.sendFile(__dirname + "/styles.css")
+    res.sendFile(__dirname + "/styles.css");
 });
-
 
 
 

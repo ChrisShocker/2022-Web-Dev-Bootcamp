@@ -1,10 +1,1 @@
-let superHeroes = require("superheroes");
-let superVillians = require("supervillains");
-
-let mySuperHeroName = superHeroes.random();
-let mySuperVillian = superVillians.random();
-
-console.log("Hero: " +mySuperHeroName +"\nVS");
-console.log("Villian: " +mySuperVillian);
-
-document.getElementById("villian name").textContent = mySuperHeroName;
+//document.getElementById("villian name").textContent = mySuperHeroName;
