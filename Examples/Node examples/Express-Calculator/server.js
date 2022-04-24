@@ -22,8 +22,7 @@ app.listen(port, () =>{
    console.log("The server is setup on port " + port); 
 });
 
-//TODO:
-//bug here, not sending correct data?
+//Call operation function based on parameter passed in
 function selectArith(number1, number2, operation){
     if(operation === "add")
         return addNumbers(number1, number2);
