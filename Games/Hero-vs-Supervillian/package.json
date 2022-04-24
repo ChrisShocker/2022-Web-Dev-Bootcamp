@@ -2,7 +2,7 @@
   "name": "hero-vs-supervillian",
   "version": "1.0.0",
   "description": "battle a random hero and villian against one another",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.17.3",
     "superheroes": "^3.0.0",

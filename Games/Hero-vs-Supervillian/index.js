@@ -8,4 +8,3 @@ console.log("Hero: " +mySuperHeroName +"\nVS");
 console.log("Villian: " +mySuperVillian);
 
 document.getElementById("villian name").textContent = mySuperHeroName;
-
