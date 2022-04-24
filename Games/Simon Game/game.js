@@ -4,7 +4,6 @@ let gameState = {
     gameActualSequence: [],
     userSequence: [],
     currentCheckLevel: 0,
-    lastColorPressed: "",
     playedBefore: false,
 }
 
