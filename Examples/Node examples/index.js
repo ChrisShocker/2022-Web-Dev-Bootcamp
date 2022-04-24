@@ -1,6 +1,5 @@
 //NOTE:
-//run this file on cmd with node index.js
-
+//run this file on cmd/terminal with node index.js
 
 console.log("Hello World");
 
