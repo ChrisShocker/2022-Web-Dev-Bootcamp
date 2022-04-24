@@ -3,8 +3,16 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+
+app.use(express.urlencoded({extended: true}));
+
 app.get("/", (req, res) => {
-    res.send("<h1>Hello World</h1>");
+    res.sendFile(__dirname + "/index.html")
+});
+
+app.post("/", (req, res) =>{
+    res.send("thanks for posting");
+    console.log(req.body);
 });
 
 app.listen(port, () =>{
