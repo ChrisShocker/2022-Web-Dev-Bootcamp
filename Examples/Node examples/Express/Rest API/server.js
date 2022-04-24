@@ -6,9 +6,7 @@ const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) =>{
-    var name = "hello";
-    //res.sendFile(__dirname + "/index.html", {name:name});
-    res.send("<h1>"+mySuperHeroName+"</h1>\n"+"<h1>"+mySuperVillian+"</h1>");
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/index.js", (req, res) =>{
@@ -18,6 +16,7 @@ app.get("/index.js", (req, res) =>{
 app.get("/styles.css", (req, res) =>{
     res.sendFile(__dirname + "/styles.css");
 });
+
 
 
 
