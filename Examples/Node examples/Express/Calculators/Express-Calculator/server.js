@@ -11,16 +11,29 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html")
 });
 
+app.get("/calculator.html", (req, res) =>{
+    res.sendFile(__dirname + "/calculator.html")
+});
+
+app.get("/bmiCalculator.html", (req, res) =>{
+    res.sendFile(__dirname + "/bmiCalculator.html")
+});
+
 //Upon recieveing post response, send a message
-app.post("/" , (req, res) =>{
-    console.log(req.body);
+app.post("/calculator" , (req, res) =>{
     res.send(selectArith(Number(req.body.num1), Number(req.body.num2), req.body.operation));
+});
+
+//Upon recieveing post response, send a message
+app.post("/bmi" , (req, res) =>{
+    res.send(calcBMI(Number(req.body.height), Number(req.body.weight)));
 });
 
 //listen on port
 app.listen(port, () =>{
    console.log("The server is setup on port " + port); 
 });
+
 
 //Call operation function based on parameter passed in
 function selectArith(number1, number2, operation){
@@ -40,6 +53,11 @@ function selectArith(number1, number2, operation){
         return moduloNumbers(number1, number2);
     else
         console.log("unknown operator");
+}
+
+//calculate BMI from input
+function calcBMI(height, weight){
+    return ("BMI is "+(Math.round(703*(Number(weight / Math.pow(height, 2))))));
 }
 
 function addNumbers(number1, number2){
