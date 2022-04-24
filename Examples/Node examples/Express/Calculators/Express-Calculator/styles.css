@@ -1,4 +1,15 @@
-
 body{
+    text-align: center;
+}
+
+div{
     padding: 5%;
+}
+
+ul{
+    list-style-type: none;
+}
+
+li{
+    padding: 2%;
 }
