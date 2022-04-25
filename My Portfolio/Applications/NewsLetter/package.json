@@ -9,6 +9,7 @@
   "author": "Christian Andersen",
   "license": "ISC",
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.75",
     "express": "^4.17.3",
     "request": "^2.88.2"
   }
