@@ -1,0 +1,21 @@
+body{
+    background-color: #EBEDFA !important;
+}
+
+h1{
+    padding: 0 1% 5% 1%;
+    text-align: center;
+}
+
+.container{
+    margin: 40% 1% 1% 1%;
+}
+
+.form-group{
+    margin: 1%;
+}
+
+.btn{
+    margin: 1%;
+}
+
