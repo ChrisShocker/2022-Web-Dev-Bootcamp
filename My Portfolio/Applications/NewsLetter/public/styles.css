@@ -16,9 +16,15 @@ h1, h2, h3{
     margin-top: 1%;
 }
 
+/* landing page */
 .input-email{
     margin-top: 1%;
 }
+
+.unsubscribe-row{
+    padding-top: 2%;
+}
+
 
 /* failure page */
 .failure-body{
