@@ -1,0 +1,14 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "Simple Todo list application using EJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Andersen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
