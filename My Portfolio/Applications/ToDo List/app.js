@@ -14,20 +14,17 @@ function determineDay(res){
     let today = new Date();
     let day = today.getDay();
 
-    if(day === 0)
-        res.render("list", {day: "Sunday!"});
-    else if(day === 1)
-        res.render("list", {day: "Monday!"});
-    else if(day === 2)
-        res.render("list", {day: "Tuesday!"});
-    else if(day === 3)
-        res.render("list", {day: "Wednesday!"});
-    else if(day === 4)
-        res.render("list", {day: "Thrusday!"});
-    else if(day === 5)
-        res.render("list", {day: "Friday!"});
-    else
-        res.render("list", {day: "Saturday!"});
+    let dayList = [
+        [0, "Sunday"],
+        [1, "Monday"],
+        [2, "Tuesday"],
+        [3, "Wednesday"],
+        [4, "Thursday"],
+        [5, "Friday"],
+        [6, "Saturday"]
+    ];
+
+    res.render("list", {day: dayList[day][1]});
 }
 
 
