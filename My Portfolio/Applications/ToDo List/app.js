@@ -7,11 +7,12 @@ const app = express();
 var itemArray = [];
 
 app.use(express.urlencoded({extended:true}));
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) =>{
-    determineDay(res);
+    determineDay();
     res.render('list', {day: determineDay(), itemArray: itemArray});
 });
 
