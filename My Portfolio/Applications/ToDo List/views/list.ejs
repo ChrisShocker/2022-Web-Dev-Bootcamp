@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -21,17 +21,15 @@
         <% for(let i=0; i < itemArray.length; ++i){ %>
             <div class="item">
                 <input type="checkbox">
-                <p>
+                <p aria-label="todo list item">
                     <%=itemArray[i]%>
                 </p>
             </div>
-            <%}%>
+            <% } %>
 
-                <form action="/" method="POST" class="item">
-                    <ul>
-                    </ul>
-                    <input type="text" name="newItem" placeholder="New Task">
-                    <button type="submit" name="button">+</button>
+                <form class="item" action="/" method="POST" class="item">
+                    <input type="text" name="newItem" placeholder="New Task" autocomplete="off" aria-label="input for a new task">
+                    <button type="submit" name="button" aria-label="task to add to todo list">+</button>
                 </form>
     </div>
 
