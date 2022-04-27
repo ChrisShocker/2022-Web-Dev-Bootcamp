@@ -5,6 +5,9 @@ exports.addItem = function(req, array){
 
 exports.removeItem = function(req, array){
     var item = req.body.removeTask; 
-    const delIndex = array.indexOf("item");
-    array.splice(delIndex, 1);
+    const delIndex = array.indexOf(item);
+    if(delIndex >= 0)
+        array.splice(delIndex, 1);
+    else
+        console.log("item to delete not found");
 }

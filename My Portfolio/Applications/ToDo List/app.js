@@ -10,8 +10,8 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 //arrays to hold items added by user
-var dayTasksArray = [];
-var workTasksArray = [];
+const dayTasksArray = [];
+const workTasksArray = [];
 
 
 app.get('/', (req, res) =>
@@ -66,12 +66,6 @@ app.post('/work', (req, res) =>
     //after recieving new data redirect it to the get/render function
     res.redirect('/work');
 });
-
-function addItem(req, array)
-{
-    var item = req.body.newItem;
-    array.push(item);
-}
 
 app.listen(port, () =>
 {
