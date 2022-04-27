@@ -21,6 +21,14 @@ h1 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.delete-box{
+  height: 70px;
+}
+
+.input-delete{
+  margin: 0 0 10px 0;
+}
+
 #heading {
   background-color: #FFFBE7;
   color: #013272;
@@ -69,12 +77,20 @@ button {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #00204a;
-  color: #fff;
   font-size: 2rem;
   padding-bottom: 2%;
-  margin-right: 2%;
   border-width: 0;
+}
+.add{
+  background-color: #00204a;
+  color: #fff;
+}
+
+.delete{
+  background-color: #f11e1e;
+  color: #fff;
+  position: relative;
+  bottom: 26px;
 }
 
 input[type="text"] {
@@ -102,4 +118,8 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+.delete{
+  margin-top: 10%;
 }

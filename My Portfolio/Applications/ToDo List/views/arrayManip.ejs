@@ -1,0 +1,13 @@
+module.exports.addItem = addItem;
+
+function addItem(req, array){
+    var item = req.body.newItem;
+    array.push(item);
+}
+
+module.exports.removeItem = removeItem;
+function removeItem(req, array){
+    var item = req.body.removeTask; 
+    const delIndex = array.indexOf("item");
+    array.splice(delIndex, 1);
+}
