@@ -35,7 +35,7 @@ app.post('/', (req, res) =>
     {
         if (req.body.removeTask)
         {
-            array.removeItem(req, dayTasksArray);
+            array.removeItem(req, workTasksArray);
             res.redirect('/work');
         }
         else
@@ -62,7 +62,6 @@ app.post('/', (req, res) =>
 app.post('/work', (req, res) =>
 {
     addItem(workTasksArray, item);
-
     //after recieving new data redirect it to the get/render function
     res.redirect('/work');
 });
