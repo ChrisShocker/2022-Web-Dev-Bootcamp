@@ -10,7 +10,14 @@
     </head>
     <body>
         <!-- <%= %> is a marker for ejs -->
-        <h1>It's <%=day %></h1>
+        <h1><%=day %></h1>
+
+        <form action="submitList" method="POST">
+        <ul>
+            <li>Grocery Shop</li>
+            <li>Go Outside</li>
+        </ul>
+        </form>
 
     </body>
 </html>

@@ -12,27 +12,12 @@ app.get("/", (req, res) =>{
 
 function determineDay(res){
     let today = new Date();
-    let day = today.getDay();
 
-    let dayList = [
-        [0, "Sunday"],
-        [1, "Monday"],
-        [2, "Tuesday"],
-        [3, "Wednesday"],
-        [4, "Thursday"],
-        [5, "Friday"],
-        [6, "Saturday"]
-    ];
+    let options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    var day = today.toLocaleDateString('en-US', options);
 
-    res.render("list", {day: dayList[day][1]});
+    res.render('list', {day: day});
 }
-
-
-
-
-
-
-
 
 app.listen(port, ()=>{
     console.log("Server running on port: " +port);
