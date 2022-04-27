@@ -17,6 +17,10 @@ app.get('/', (req, res) =>{
     res.render('list', {listTitle: determineDay(), listArray: dayTasksArray});
 });
 
+app.get('/about', (req, res) =>{
+    res.render("about");
+});
+
 app.get('/work', (req, res) => {
     res.render('list', {listTitle: "Work List", listArray: workTasksArray});
 })

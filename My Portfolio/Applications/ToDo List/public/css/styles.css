@@ -5,6 +5,10 @@ html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body{
+  text-align: center;
+}
+
 h1 {
   padding: 10px;
 }
