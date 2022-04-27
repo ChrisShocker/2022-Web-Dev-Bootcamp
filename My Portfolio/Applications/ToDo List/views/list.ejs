@@ -1,41 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('header'); -%>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My List</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+<div class="box" id="heading">
+    <h1>
+        <%=listTitle %>
+    </h1>
+</div>
 
-<body>
-    <div class="box" id="heading">
-        <h1>
-            <%=listTitle %>
-        </h1>
-    </div>
+<div class="box">
+    <% for(let i=0; i < listArray.length; ++i){ %>
+        <div class="item">
+            <input type="checkbox">
+            <p aria-label="todo list item">
+                <%=listArray[i]%>
+            </p>
+        </div>
+        <% } %>
 
-    <div class="box">
-        <% for(let i=0; i < listArray.length; ++i){ %>
-            <div class="item">
-                <input type="checkbox">
-                <p aria-label="todo list item">
-                    <%=listArray[i]%>
-                </p>
-            </div>
-            <% } %>
+            <form class="item" action="/" method="POST" class="item">
+                <input type="text" name="newItem" placeholder="New Task" autocomplete="off"
+                    aria-label="input for a new task">
+                <button type="submit" name="list" aria-label="task to add to todo list" value=<%=listTitle %>
+                    >+</button>
+            </form>
 
-                <form class="item" action="/" method="POST" class="item">
-                    <input type="text" name="newItem" placeholder="New Task" autocomplete="off" aria-label="input for a new task">
-                    <button type="submit" name="list"  aria-label="task to add to todo list" value=<%= listTitle %> >+</button>
-                </form>
-
-                <div>
-    </div>
-
-
-</body>
-
-</html>
+</div>
+<%- include('footer'); -%>
