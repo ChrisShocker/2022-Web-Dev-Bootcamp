@@ -1,16 +1,18 @@
 const express = require("express");
+const getDate = require(__dirname +"/views/date.ejs");
 
 const port = 3000;
 const app = express();
-
-//array to hold items added by user
-var dayTasksArray = [];
-var workTasksArray = [];
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
+
+//arrays to hold items added by user
+var dayTasksArray = [];
+var workTasksArray = [];
+
 
 app.get('/', (req, res) =>{
     determineDay();
