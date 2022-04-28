@@ -1,7 +1,21 @@
 <%- include('partials/header'); -%>
-
-
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <h1>Compose an Entry:</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <form method="POST" action="/compose">
+                <textarea type="text" class="form-control border-dark mt-2" name="composition"
+                    placeholder="What's on your mind today?">
+                </textarea>
+                <button type="submit" class="btn btn-dark btn-lg mt-2 w-50">Publish</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <%- include('partials/footer'); -%>
