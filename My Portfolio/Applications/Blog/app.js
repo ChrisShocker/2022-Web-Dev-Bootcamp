@@ -39,10 +39,10 @@ app.get('/post', (req, res) =>
     res.render('post');
 });
 
-
-
-
-
+app.post("/compose", (req, res) => {
+    console.log(req.body.composition);
+    res.render('compose');
+});
 
 app.listen(port, () =>
 {
