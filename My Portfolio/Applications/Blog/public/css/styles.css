@@ -24,6 +24,10 @@ body {
     padding: 0 2% 0 2%;
 }
 
+#copyright{
+    color:white;
+}
+
 /* Container Section */
 .container-fluid{
     text-align: center;
