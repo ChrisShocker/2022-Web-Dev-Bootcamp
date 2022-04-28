@@ -3,7 +3,6 @@ body {
     text-align: center;
 }
 
-
 /*Navbar Section*/
 #navbar-section .navbar {
     font-size: 1.5rem;
@@ -15,9 +14,21 @@ body {
     padding-left: 2%;
 }
 
+#new-entry{
+    position: absolute;
+    left:0;
+    right:0;
+}
+
 #links {
     padding: 0 2% 0 2%;
 }
+
+/* Container Section */
+.container-fluid{
+    text-align: center;
+}
+
 
 /* Footer Section */
 footer {

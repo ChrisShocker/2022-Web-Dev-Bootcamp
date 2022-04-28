@@ -1,15 +1,30 @@
 <%- include('partials/header'); -%>
 
 <div class="title">
-    <h1>Home</h1>
-    <p>
-        <% for( let index = 0; index < postArray.length; index++ ) { %>
-            <div>
+    <p class="lead">
+        <% for( let index = postArray.length -1; index >= 0; index-- ) { %>
+    <div class="container-fluid mb-4">
+        <div class="row">
+            <div class="col-lg-6 border border-dark rounded-top border-bottom-0 mx-auto">
                 <%=postArray[index].date%>
-                <%=postArray[index].title%>
-                <%=postArray[index].body%>
             </div>
-        <% } %>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 border border-dark rounded-top mx-auto">
+                <p class="lead text-start mt-2 mb-2">
+                    <%=postArray[index].title%>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 border border-top-0 border-dark rounded-bottom mx-auto">
+                <p class="lead text-start mt-2 mb-2">
+                    <%=postArray[index].body%>
+                </p>
+            </div>
+        </div>
+    </div>
+    <% } %>
     </p>
 </div>
 
