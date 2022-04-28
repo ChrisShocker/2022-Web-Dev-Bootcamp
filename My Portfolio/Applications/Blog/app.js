@@ -40,7 +40,9 @@ app.get('/post', (req, res) =>
 });
 
 app.post("/compose", (req, res) => {
+    console.log(req.body.title);
     console.log(req.body.composition);
+
     res.render('compose');
 });
 

@@ -7,10 +7,10 @@
     </div>
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <form method="POST" action="/compose">
-                <textarea type="text" class="form-control border-dark mt-2" name="composition"
-                    placeholder="What's on your mind today?">
-                </textarea>
+            <form action="/compose" method="POST">
+                <input type="text" class="form-control border-dark mt-2" name="title" placeholder="Title of post">
+                <textarea type="composition" class="form-control border-dark mt-2" name="composition" rows="4"
+                    placeholder="What's on your mind?"></textarea>
                 <button type="submit" class="btn btn-dark btn-lg mt-2 w-50">Publish</button>
             </form>
         </div>
