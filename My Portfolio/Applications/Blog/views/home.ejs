@@ -3,7 +3,13 @@
 <div class="title">
     <h1>Home</h1>
     <p>
-        <%=message%>
+        <% for( let index = 0; index < postArray.length; index++ ) { %>
+            <div>
+                <%=postArray[index].date%>
+                <%=postArray[index].title%>
+                <%=postArray[index].body%>
+            </div>
+        <% } %>
     </p>
 </div>
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const ejs = require('ejs');
-const { application } = require('express');
+const date = require(__dirname +'/modules/date.ejs');
 const port = 3000;
 
 const app = express();
@@ -10,13 +10,13 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-const messageHome = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,";
 const messageAbout = "laboris nisi ut aliquip ex ea commodo consequat.";
 const messageContact = "Sed ut perspiciatis unde omnis iste natus doloremque.";
+const posts = [];
 
 app.get('/', (req, res) =>
 {
-    res.render('home', { message: messageHome });
+    res.render('home', { postArray: posts });
 });
 
 app.get('/about', (req, res) =>
@@ -40,10 +40,16 @@ app.get('/post', (req, res) =>
 });
 
 app.post("/compose", (req, res) => {
-    console.log(req.body.title);
-    console.log(req.body.composition);
+    const post = {
+        date: date.getDate(), 
+        title: req.body.title,
+        body: req.body.composition,
+    }
+    posts.push(post);
+    console.log(post.title);
+    console.log(post.body);
 
-    res.render('compose');
+    res.render('home', { postArray: posts });
 });
 
 app.listen(port, () =>
