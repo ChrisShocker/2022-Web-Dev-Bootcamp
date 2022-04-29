@@ -46,14 +46,8 @@ app.get('/post', (req, res) =>
     res.render('post');
 });
 
-app.get('/:testing', (req, res) =>{
-    array.getPost(posts, req.params.testing);  
-    res.render('home', { postArray: posts });
-});
-
-app.get('/compose/:testing', (req, res) =>{
-    array.getPost(posts, req.params.testing);  
-    res.render('home', { postArray: posts });
+app.get('/:post', (req, res) =>{
+    res.render('post', { postArray: array.getPost(posts, req.params.post) });
 });
 
 app.post("/compose", (req, res) => {
