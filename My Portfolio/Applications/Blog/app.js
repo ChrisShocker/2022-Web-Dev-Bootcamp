@@ -43,11 +43,11 @@ app.get('/contact', (req, res) =>
 
 app.get('/post', (req, res) =>
 {
-    res.render('post');
+    res.render('post', { postArray: array.getPost(posts, req.params.post) });
 });
 
-app.get('/:post', (req, res) =>{
-    res.render('post', { postArray: array.getPost(posts, req.params.post) });
+app.get('/:reqParam', (req, res) =>{
+    res.render('post', { postArray: array.getPost(posts, req.params.reqParam) });
 });
 
 app.post("/compose", (req, res) => {
@@ -58,6 +58,11 @@ app.post("/compose", (req, res) => {
     }
     posts.push(post);
     res.redirect("/");
+});
+
+app.post("/post", (req, res) => {
+    console.log(req.body);
+    res.render('post', { postArray: array.getPost(posts, req.body.search) });
 });
 
 app.listen(port, () =>
