@@ -1,6 +1,7 @@
 body {
     margin-top: 6rem;
     text-align: center;
+    min-width: 600px;
 }
 
 /*Navbar Section*/
@@ -11,6 +12,7 @@ body {
 
 .navbar{
     z-index: 0;
+    min-width: 600px;
 }
 
 .navbar-brand {
@@ -26,20 +28,77 @@ body {
         left: 0;
         right: 0;
         top: 0.05rem;
-        margin: 1rem auto 0 auto;
+        margin: 1rem auto 0 13.5rem;
+        max-width: 23%;
+        min-width: 130px;
         z-index: 1;
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1064px){
     #new-entry {
         position: fixed;
         left: 0;
         right: 0;
         top: 0.05rem;
-        margin: 1rem auto 0 auto;
+        margin: 1rem auto 0 14.5rem;
+        width: 20%;
         z-index: 1;
     }
+}
+
+
+@media (min-width: 1065px ) {
+    #new-entry {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem auto 0 15rem;
+        width: 25%;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 991px) {
+    #search-posts {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem 4.5rem 0 auto;
+        min-width: 100px;
+        max-width: 25%;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1064px){
+    #search-posts {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem 17.5rem 0 auto;
+        width: 25%;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 1065px) {
+    #search-posts {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem 18rem 0 auto;
+        width: 25%;
+        z-index: 1;
+    }
+}
+
+#wrapper{
+    min-width: 800px;
 }
 
 #links {

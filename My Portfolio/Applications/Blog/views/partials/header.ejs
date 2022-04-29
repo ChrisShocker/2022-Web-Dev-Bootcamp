@@ -25,9 +25,14 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-    <header>
+<header>
     <!-- NavBar -->
-        <a class="btn btn-primary btn-lg w-25" id="new-entry" href="/compose">New Entry</a>
+    <a class="btn btn-primary btn-lg" id="new-entry" href="/compose">New Entry</a>
+
+    <form action="/post" method="POST">
+        <input type="text" class="form-control form-control-lg" id="search-posts" name="search-post"
+            placeholder="Search Title">
+    </form>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="">My Journal</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#links"
@@ -48,7 +53,8 @@
             </ul>
         </div>
     </nav>
-    </header>
+</header>
+
 <body>
     <div class="d-flex min-vh-100 flex-column justify-content-between">
         <div>
