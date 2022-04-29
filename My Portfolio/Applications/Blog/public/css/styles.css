@@ -25,7 +25,7 @@ body {
         position: fixed;
         left: 0;
         right: 0;
-        top: 0.1rem;
+        top: 0.05rem;
         margin: 1rem auto 0 auto;
         z-index: 1;
     }
@@ -36,7 +36,7 @@ body {
         position: fixed;
         left: 0;
         right: 0;
-        top: 0.1rem;
+        top: 0.05rem;
         margin: 1rem auto 0 auto;
         z-index: 1;
     }
