@@ -20,6 +20,11 @@ app.get('/', (req, res) =>
     res.render('home', { postArray: posts });
 });
 
+app.get('/index', (req, res) =>
+{
+    res.render('home', { postArray: posts });
+});
+
 app.get('/about', (req, res) =>
 {
     res.render('about', { message: messageAbout });
@@ -57,10 +62,7 @@ app.post("/compose", (req, res) => {
         body: req.body.composition,
     }
     posts.push(post);
-    console.log(post.title);
-    console.log(post.body);
-
-    res.render('home', { postArray: posts });
+    res.redirect("/");
 });
 
 app.listen(port, () =>
