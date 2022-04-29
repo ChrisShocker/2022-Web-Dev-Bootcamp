@@ -1,5 +1,6 @@
 const express = require('express');
 const ejs = require('ejs');
+const _ = require('lodash');
 const date = require(__dirname +'/modules/date.ejs');
 const array = require(__dirname +'/modules/arrayManip.ejs');
 const port = 3000;

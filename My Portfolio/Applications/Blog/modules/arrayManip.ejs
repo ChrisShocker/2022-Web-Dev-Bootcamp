@@ -1,7 +1,9 @@
 /*<script>*/
+const _ = require('lodash');
+
 module.exports.getPost = function(array, title){
     console.log(title);
-    let index = array.findIndex((element) => element.title === title);
+    let index = array.findIndex((element) => _.kebabCase(element.title) === _.kebabCase(title));
     if(index >= 0)
         console.log("Match at " +index);
     else
