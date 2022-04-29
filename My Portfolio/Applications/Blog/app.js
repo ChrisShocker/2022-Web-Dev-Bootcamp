@@ -61,7 +61,6 @@ app.post("/compose", (req, res) => {
 });
 
 app.post("/post", (req, res) => {
-    console.log(req.body);
     res.render('post', { postArray: array.getPost(posts, req.body.search) });
 });
 
