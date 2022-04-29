@@ -39,6 +39,11 @@ app.get('/post', (req, res) =>
     res.render('post');
 });
 
+app.get('/:testing', (req, res) =>{
+    console.log(req.params);
+    console.log(req.params.testing);
+});
+
 app.post("/compose", (req, res) => {
     const post = {
         date: date.getDate(), 

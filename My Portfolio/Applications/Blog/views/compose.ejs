@@ -8,9 +8,9 @@
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <form action="/compose" method="POST">
-                <input type="text" class="form-control border-dark mt-2" name="title" placeholder="Title of post">
+                <input type="text" class="form-control border-dark mt-2" name="title" placeholder="Title of post" required="true">
                 <textarea type="composition" class="form-control border-dark mt-2" name="composition" rows="4"
-                    placeholder="What's on your mind?"></textarea>
+                    placeholder="What's on your mind?" required="true"></textarea>
                 <button type="submit" class="btn btn-dark btn-lg mt-2 w-50">Publish</button>
             </form>
         </div>
