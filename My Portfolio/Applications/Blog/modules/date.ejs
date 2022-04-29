@@ -5,3 +5,10 @@ module.exports.getDate = function(){
     var day = today.toLocaleDateString('en-US', options);
     return day;
 }
+
+module.exports.getDateWithMinute = function(){
+    let today = new Date();
+    let options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+    var day = today.toLocaleDateString('en-US', options);
+    return day;
+}

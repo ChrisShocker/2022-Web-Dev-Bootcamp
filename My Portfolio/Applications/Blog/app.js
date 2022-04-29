@@ -57,7 +57,7 @@ app.get('/compose/:testing', (req, res) =>{
 
 app.post("/compose", (req, res) => {
     const post = {
-        date: date.getDate(), 
+        date: date.getDateWithMinute(), 
         title: req.body.title,
         body: req.body.composition,
     }
