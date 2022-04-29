@@ -1,6 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const date = require(__dirname +'/modules/date.ejs');
+const array = require(__dirname +'/modules/arrayManip.ejs');
 const port = 3000;
 
 const app = express();
@@ -40,8 +41,13 @@ app.get('/post', (req, res) =>
 });
 
 app.get('/:testing', (req, res) =>{
-    console.log(req.params);
-    console.log(req.params.testing);
+    array.getPost(posts, req.params.testing);  
+    res.render('home', { postArray: posts });
+});
+
+app.get('/compose/:testing', (req, res) =>{
+    array.getPost(posts, req.params.testing);  
+    res.render('home', { postArray: posts });
 });
 
 app.post("/compose", (req, res) => {

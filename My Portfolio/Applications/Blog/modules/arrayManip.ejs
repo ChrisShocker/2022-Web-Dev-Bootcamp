@@ -1,4 +1,9 @@
 /*<script>*/
-module.exports.findPost = function(){
-    
+module.exports.getPost = function(array, title){
+    console.log(title);
+    let index = array.findIndex((element) => element.title === title);
+    if(index >= 0)
+        console.log("Match at " +index);
+    else
+        console.log("No Match")
 }
