@@ -12,14 +12,14 @@
         <div class="row">
             <div class="col-lg-10 border border-dark rounded-top mx-auto">
                 <p class="lead text-start mt-2 mb-2">
-                    <%=postArray[index].title%>
+                    <h2><%=postArray[index].title%></h2>
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-10 border border-top-0 border-dark rounded-bottom mx-auto">
                 <p class="lead text-start mt-2 mb-2">
-                    <%=postArray[index].body%>
+                    <%=postArray[index].body.substring(0,80) +"..."%>
                 </p>
             </div>
         </div>
