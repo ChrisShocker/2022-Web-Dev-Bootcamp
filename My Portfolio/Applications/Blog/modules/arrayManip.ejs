@@ -4,9 +4,8 @@ const _ = require('lodash');
 module.exports.getPost = function(array, title){
     let index = array.findIndex((element) => _.kebabCase(element.title) === _.kebabCase(title));
     if(index >= 0){
-        console.log(array[index]);
         return array[index];
     }
     else
-        console.log("No Match");
+        return -1;
 }

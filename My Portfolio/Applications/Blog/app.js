@@ -41,13 +41,21 @@ app.get('/contact', (req, res) =>
     res.render('contact', { message: messageContact });
 });
 
+app.get('/notFound', (req, res) =>{
+    res.render('notfound');
+});
+
 app.get('/post', (req, res) =>
 {
     res.render('post', { postArray: array.getPost(posts, req.params.post) });
 });
 
 app.get('/:reqParam', (req, res) =>{
-    res.render('post', { postArray: array.getPost(posts, req.params.reqParam) });
+        let exists = array.getPost(posts, req.params.reqParam);
+        if(exists != -1)
+            res.render('post', { postArray: array.getPost(posts, req.params.reqParam) });
+        else
+            res.redirect("notFound");
 });
 
 app.post("/compose", (req, res) => {
@@ -61,7 +69,11 @@ app.post("/compose", (req, res) => {
 });
 
 app.post("/post", (req, res) => {
-    res.render('post', { postArray: array.getPost(posts, req.body.search) });
+    let exists = array.getPost(posts, req.body.search);
+    if(exists != -1)
+        res.render('post', { postArray: array.getPost(posts, req.body.search) });
+    else
+        res.redirect("notFound");
 });
 
 app.listen(port, () =>
