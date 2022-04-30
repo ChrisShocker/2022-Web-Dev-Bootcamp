@@ -19,7 +19,9 @@
                 <%=postArray.body%>
             </p>
         </div>
-            <a class="btn btn-danger btn-lg" id="delete-entry" href="/compose">Delete Entry</a>
+
+            <form action="/delete" method="POST">
+            <button class="btn btn-danger btn-lg" id="delete-entry" name="help">Delete Entry</>
     </div>
 </div>
 
