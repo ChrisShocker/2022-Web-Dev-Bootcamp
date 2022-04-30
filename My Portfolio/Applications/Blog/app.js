@@ -69,7 +69,8 @@ app.post("/compose", (req, res) => {
 });
 
 app.post("/delete", (req, res) => {
-    console.log(req.body);
+    array.deletePost(posts, req.body.date);
+    console.log("Post with date " +req.body.date +" deleted");
     res.redirect("/");
 });
 

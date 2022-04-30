@@ -9,3 +9,8 @@ module.exports.getPost = function(array, title){
     else
         return -1;
 }
+
+module.exports.deletePost = function (array, date){
+    let index = array.findIndex((element) => (element.date) === date);
+    array.splice(index, 1);
+}

@@ -8,7 +8,7 @@ module.exports.getDate = function(){
 
 module.exports.getDateWithMinute = function(){
     let today = new Date();
-    let options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+    let options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
     var day = today.toLocaleDateString('en-US', options);
     return day;
 }
