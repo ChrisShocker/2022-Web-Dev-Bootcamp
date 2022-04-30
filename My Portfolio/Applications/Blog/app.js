@@ -68,6 +68,11 @@ app.post("/compose", (req, res) => {
     res.redirect("/");
 });
 
+app.post("/delete", (req, res) => {
+    console.log(req.body);
+    res.redirect("/");
+});
+
 app.post("/post", (req, res) => {
     let exists = array.getPost(posts, req.body.search);
     if(exists != -1)
