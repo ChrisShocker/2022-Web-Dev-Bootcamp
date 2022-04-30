@@ -5,11 +5,15 @@ body {
     text-align: center;
 }
 
-h1,h2,h3,h4,h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Montserrat', sans-serif;
 }
 
-p{
+p {
     font-family: 'Patrick Hand', cursive;
     white-space: pre-line;
     margin-top: -1.3rem;
@@ -22,12 +26,22 @@ p{
 }
 
 /* Entry Section */
-.date{
+.date {
     background-color: #F9EBC8;
 }
 
-.title, .body{
+.title,
+.body {
     background-color: #FEFBE7;
+}
+
+#delete-entry {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0.5rem auto 0 auto;
+    width: 25%;
 }
 
 /*Navbar Section*/
@@ -40,7 +54,7 @@ p{
     padding: 0 2% 0 2%;
 }
 
-.navbar{
+.navbar {
     z-index: 0;
     min-width: 600px;
 }
@@ -51,6 +65,7 @@ p{
     padding-left: 2%;
     z-index: 0;
 }
+
 
 @media (max-width: 991px) {
     #new-entry {
@@ -65,7 +80,7 @@ p{
     }
 }
 
-@media (min-width: 992px) and (max-width: 1064px){
+@media (min-width: 992px) and (max-width: 1064px) {
     #new-entry {
         position: fixed;
         left: 0;
@@ -77,7 +92,7 @@ p{
     }
 }
 
-@media (min-width: 1065px ) {
+@media (min-width: 1065px) {
     #new-entry {
         position: fixed;
         left: 0;
@@ -102,7 +117,7 @@ p{
     }
 }
 
-@media (min-width: 992px) and (max-width: 1064px){
+@media (min-width: 992px) and (max-width: 1064px) {
     #search-posts {
         position: fixed;
         left: 0;
