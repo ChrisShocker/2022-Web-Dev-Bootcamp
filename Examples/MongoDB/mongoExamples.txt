@@ -13,5 +13,15 @@ db.orders.insertOne(
     }
 )
 
+//update existing item and add an array of reviews with 2 entries
+db.products.updateOne({_id:2},
+{
+    $set:{
+        review:[
+            {authorName:'Jordan',rating:1,review:'hated it'}, 
+            {authorName: 'Jake',rating:3,review:'meh'}] 
+        }
+})
+
 //DOCS
 https://www.mongodb.com/docs/manual/crud/ 
