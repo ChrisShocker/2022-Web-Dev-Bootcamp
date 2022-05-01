@@ -1,0 +1,14 @@
+//shows databases
+show dbs
+
+//show current database
+db
+
+//create database name orders
+db.orders.insertOne(
+    {
+        name: "John",
+        age: 30,
+        status: "awaiting approval"
+    }
+)
