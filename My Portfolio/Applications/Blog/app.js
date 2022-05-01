@@ -1,8 +1,8 @@
 const express = require('express');
 const ejs = require('ejs');
 const _ = require('lodash');
-const date = require(__dirname +'/modules/date.ejs');
-const array = require(__dirname +'/modules/arrayManip.ejs');
+const date = require(__dirname + '/modules/date.ejs');
+const array = require(__dirname + '/modules/arrayManip.ejs');
 const port = 3000;
 
 const app = express();
@@ -41,26 +41,25 @@ app.get('/contact', (req, res) =>
     res.render('contact', { message: messageContact });
 });
 
-app.get('/notFound', (req, res) =>{
+app.get('/notFound', (req, res) =>
+{
     res.render('notfound');
 });
 
-app.get('/post', (req, res) =>
+app.get('/:reqParam', (req, res) =>
 {
-    res.render('post', { postArray: array.getPost(posts, req.params.post) });
+    let postsMatch = [];
+    let exists = array.getPost(posts, postsMatch, req.params.reqParam);
+    if(exists != -1)
+        res.render('post', { postsMatch: postsMatch });
+    else
+        res.redirect("notFound");
 });
 
-app.get('/:reqParam', (req, res) =>{
-        let exists = array.getPost(posts, req.params.reqParam);
-        if(exists != -1)
-            res.render('post', { postArray: array.getPost(posts, req.params.reqParam) });
-        else
-            res.redirect("notFound");
-});
-
-app.post("/compose", (req, res) => {
+app.post("/compose", (req, res) =>
+{
     const post = {
-        date: date.getDateWithMinute(), 
+        date: date.getDateWithMinute(),
         title: req.body.title,
         body: req.body.composition,
     }
@@ -68,16 +67,19 @@ app.post("/compose", (req, res) => {
     res.redirect("/");
 });
 
-app.post("/delete", (req, res) => {
+app.post("/delete", (req, res) =>
+{
     array.deletePost(posts, req.body.date);
-    console.log("Post with date " +req.body.date +" deleted");
+    console.log("Post with date " + req.body.date + " deleted");
     res.redirect("/");
 });
 
-app.post("/post", (req, res) => {
-    let exists = array.getPost(posts, req.body.search);
-    if(exists != -1)
-        res.render('post', { postArray: array.getPost(posts, req.body.search) });
+app.post("/post", (req, res) =>
+{
+    let postsMatch = [];
+    let exists = array.getPosts(posts, postsMatch, req.body.search);
+    if (exists != -1)
+        res.render('post', { postsMatch: postsMatch });
     else
         res.redirect("notFound");
 });
