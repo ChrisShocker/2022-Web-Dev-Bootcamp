@@ -12,3 +12,6 @@ db.orders.insertOne(
         status: "awaiting approval"
     }
 )
+
+//DOCS
+https://www.mongodb.com/docs/manual/crud/ 
