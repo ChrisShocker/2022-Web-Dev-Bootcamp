@@ -11,18 +11,21 @@ client.connect(err =>
     //creats a database called ExampleDatabase with a collection called fruits
     const collection = client.db("ExampleDatabase").collection("fruits");
 
-    createDocument(collection);
-    
-    //client.close();
+    //add items to the collection
+    addSingleDocument(collection, "apple", 9, "Apples are awesome");
+    addSingleDocument(collection, "orange", 7, "Oranges are a cintrus fruit");
+    addSingleDocument(collection, "Bananas", 8, "Bananas have pottasium", function(){
+        //once the last item has been added we can colse the connection
+        client.close();
+    });
 });
 
-async function createDocument(collection){
+async function addSingleDocument(collection, name, score, review){
     // Creates a document to add to the collection
-    const doc = { name: "Neapolitan pizza", shape: "round" };
+    const doc = { name: name, score: score, review: review};
     // await the result from mongo
     const result = await collection.insertOne(doc);
     // log the id the document was created under 
     console.log(result.insertedId);
-
 }
 
