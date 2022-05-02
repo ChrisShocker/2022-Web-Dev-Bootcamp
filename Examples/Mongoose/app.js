@@ -1,59 +1,61 @@
 const { MongoClient, ServerApiVersion, CURSOR_FLAGS } = require('mongodb');
+const mongoose = require('mongoose');
 
 const userName = "";
 const password = "";
-const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const DB = ""
 
+const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/"+DB +"?retryWrites=true&w=majority";
 
-client.connect(err =>
-{
-    //creats a database called ExampleDatabase with a collection called fruits
-    const collection = client.db("ExampleDatabase").collection("fruits");
+ mongoose.connect(uri, {useNewURLParser:true});
 
-    /*
-    //add single document to the collection
-    addSingleDocument(collection, "apple", 9, "Apples are awesome");
-    */
+//addSingleDocument('Broccoli', 6, "My dog loves it");
 
-    /*
-    //add more then one document at a time
-    addManydocuments(collection), function ()
-    {
-        //once the last item has been added we can colse the connection
-        client.close();
-    }
-    */
+//findAll();
 
-    /*
-    //find the first document with the matching name
-    findName(collection, 'apple');
-    */
-
-    //find al documents in the collection
-    findAll(collection);
-});
 
 async function findName(collection, name)
 {
-    const result = await collection.find({ name: name });
-    console.log(result.forEach(console.dir));
 }
 
-async function findAll(collection)
+async function findAll()
 {
-    const result = await collection.find({});
-    console.log(result.forEach(console.dir));
+    const vegetableSchema = new mongoose.Schema({
+        name: String,
+        rating: Number,
+        review: String
+    });
+
+    const Vegetable = mongoose.model("Vegetable", vegetableSchema);
+
+    Vegetable.find({}, function (err, vegetables){
+
+        console.log(JSON.stringify(vegetables, null, 4));
+    });
+
 }
 
-async function addSingleDocument(collection, name, score, review)
+async function addSingleDocument(name, rating, review)
 {
-    // Creates a document to add to the collection
-    const doc = { name: name, score: score, review: review };
-    // await the result from mongo
-    const result = await collection.insertOne(doc);
-    // log the id the document was created under 
-    console.log(result);
+    //determine how we want data for an object to be structured
+    const vegetableSchema = new mongoose.Schema({
+        name: String,
+        rating: Number,
+        review: String
+    });
+
+    //Create a model for mongodb. 
+    //Note: Vegetable will become vegetables
+    const Vegetable = mongoose.model("Vegetable", vegetableSchema);
+
+    const vegetable = new Vegetable({
+        name: name,
+        rating: rating,
+        review: review
+    });
+
+    //save vegetable document and insert it into the Vegetable collection
+    vegetable.save();
 }
 
 async function addManydocuments(collection)
