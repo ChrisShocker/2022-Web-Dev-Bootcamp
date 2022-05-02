@@ -15,9 +15,24 @@ mongoose.connect(uri, { useNewURLParser: true });
 
 //findAll();
 
+findByName('Carrot');
 
-async function findName(collection, name)
+
+async function findByName(name)
 {
+    const vegetableSchema = new mongoose.Schema({
+        name: String,
+        rating: Number,
+        review: String
+    });
+
+    const Vegetable = mongoose.model("Vegetable", vegetableSchema);
+    Vegetable.find({ name: name}, function(error, vegetables){
+        if(error)
+            console.log(error);
+        else
+            console.log(vegetables);
+    });
 }
 
 async function findAll()
