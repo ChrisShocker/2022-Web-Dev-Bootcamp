@@ -9,26 +9,25 @@ const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mong
 
 mongoose.connect(uri, { useNewURLParser: true });
 
-//addSingleDocument('Broccoli', 6, "My dog loves it");
+
+//addSingleDocument('Broccoli', 8, "My dog loves it");
 
 //addManydocuments();
 
 //findAll();
 
-findByName('Carrot');
+//findByName('Carrot');
+
+//mongoose.connection.close();
 
 
 async function findByName(name)
 {
-    const vegetableSchema = new mongoose.Schema({
-        name: String,
-        rating: Number,
-        review: String
-    });
 
     const Vegetable = mongoose.model("Vegetable", vegetableSchema);
-    Vegetable.find({ name: name}, function(error, vegetables){
-        if(error)
+    Vegetable.find({ name: name }, function (error, vegetables)
+    {
+        if (error)
             console.log(error);
         else
             console.log(vegetables);
@@ -38,9 +37,19 @@ async function findByName(name)
 async function findAll()
 {
     const vegetableSchema = new mongoose.Schema({
-        name: String,
-        rating: Number,
-        review: String
+        name: {
+            type: String,
+            required: true
+        },
+        rating: {
+            type: Number,
+            min: 0,
+            max: 10
+        },
+        review: {
+            type: String,
+            required: false
+        }
     });
 
     const Vegetable = mongoose.model("Vegetable", vegetableSchema);
@@ -48,11 +57,11 @@ async function findAll()
     //find all the documents in the db
     Vegetable.find({}, function (error, vegetables)
     {
-        if(error)
+        if (error)
             console.log(error)
         else
-        //print out the results to the cmd
-        console.log(JSON.stringify(vegetables, null, 4));
+            //print out the results to the cmd
+            console.log(JSON.parse(JSON.stringify(vegetables)));
     });
 }
 
@@ -60,9 +69,19 @@ async function addSingleDocument(name, rating, review)
 {
     //determine how we want data for an object to be structured
     const vegetableSchema = new mongoose.Schema({
-        name: String,
-        rating: Number,
-        review: String
+        name: {
+            type: String,
+            required: true
+        },
+        rating: {
+            type: Number,
+            min: 0,
+            max: 10
+        },
+        review: {
+            type: String,
+            required: false
+        }
     });
 
     //Create a model for mongodb. 
@@ -76,16 +95,28 @@ async function addSingleDocument(name, rating, review)
     });
 
     //save vegetable document and insert it into the Vegetable collection
-    vegetable.save();
+    await vegetable.save();
+    console.log("Vegetable added");
 }
 
 async function addManydocuments()
 {
     const vegetableSchema = new mongoose.Schema({
-        name: String,
-        rating: Number,
-        review: String
+        name: {
+            type: String,
+            required: true
+        },
+        rating: {
+            type: Number,
+            min: 0,
+            max: 10
+        },
+        review: {
+            type: String,
+            required: false
+        }
     });
+
     const Vegetable = mongoose.model("Vegetable", vegetableSchema);
 
     vegetableArray = [
