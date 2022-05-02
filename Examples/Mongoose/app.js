@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 
 const userName = "";
 const password = "";
-const DB = ""
+const DB = "";
 
-const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/"+DB +"?retryWrites=true&w=majority";
+const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 
- mongoose.connect(uri, {useNewURLParser:true});
+mongoose.connect(uri, { useNewURLParser: true });
 
 //addSingleDocument('Broccoli', 6, "My dog loves it");
+
+//addManydocuments();
 
 //findAll();
 
@@ -28,11 +30,15 @@ async function findAll()
 
     const Vegetable = mongoose.model("Vegetable", vegetableSchema);
 
-    Vegetable.find({}, function (err, vegetables){
-
+    //find all the documents in the db
+    Vegetable.find({}, function (error, vegetables)
+    {
+        if(error)
+            console.log(error)
+        else
+        //print out the results to the cmd
         console.log(JSON.stringify(vegetables, null, 4));
     });
-
 }
 
 async function addSingleDocument(name, rating, review)
@@ -58,29 +64,41 @@ async function addSingleDocument(name, rating, review)
     vegetable.save();
 }
 
-async function addManydocuments(collection)
+async function addManydocuments()
 {
-    // create entries and await the result from mongo
-    const result = await collection.insertMany(
-        [
-            {
-                name: "tomato",
-                score: 1,
-                review: "Tomtaoes are fuit?"
-            },
-            {
-                name: "mango",
-                score: 8,
-                review: "Best fruit for smoothies"
-            },
-            {
-                name: "pineapple",
-                score: 10,
-                review: "So sweeeeeet"
-            }
-        ]
-    );
+    const vegetableSchema = new mongoose.Schema({
+        name: String,
+        rating: Number,
+        review: String
+    });
+    const Vegetable = mongoose.model("Vegetable", vegetableSchema);
+
+    vegetableArray = [
+        {
+            name: "Green bean",
+            score: 8,
+            review: "Great with steak"
+        },
+        {
+            name: "Potato",
+            score: 10,
+            review: "Best baked or mashed"
+        },
+        {
+            name: "Corn",
+            score: 7,
+            review: "I run the economy"
+        }
+    ]
+
     // log the id the document was created under 
-    console.log(result);
+    const result = Vegetable.insertMany(vegetableArray, function (error, docs)
+    {
+        if (error)
+            console.log(error);
+        else
+            console.log('Vegetables added');
+    });
+    // create entries and await the result from mongo
 }
 
