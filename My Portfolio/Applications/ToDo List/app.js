@@ -1,23 +1,56 @@
-const express = require("express");
+
+/******** 
+ * Modules
+*********/
 const date = require(__dirname + "/modules/date.ejs");
 const array = require(__dirname + "/modules/arrayManip.ejs");
-const mongoose = require('mongoose');
-const port = 3000;
-const app = express();
 
+/******** 
+ * Mongoose
+*********/
+const mongoose = require('mongoose');
 const keys = require('./api_keys');
 const userName = keys.mongooseUserName;
 const password = keys.mongoosePassword;
 const DB = keys.mongooseDB;
+const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 
+/******** 
+ * Express
+*********/
+const express = require("express");
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
 app.set('view engine', 'ejs');
+const port = 3000;
 
+/******** 
+ * Application
+*********/
 //arrays to hold items added by user
 const dayTasksArray = [];
 const workTasksArray = [];
+
+/******** 
+ * Schema
+*********/
+const taskSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Error: No task name']
+    }
+});
+
+const task = new mongoose.model('Task', taskSchema);
+
+
+
+
+
+
+
+
 
 
 app.get('/', (req, res) =>
