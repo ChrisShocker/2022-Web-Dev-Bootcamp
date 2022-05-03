@@ -1,8 +1,14 @@
 const express = require("express");
-const date = require(__dirname + "/views/date.ejs");
-const array = require(__dirname + "/views/arrayManip.ejs");
+const date = require(__dirname + "/modules/date.ejs");
+const array = require(__dirname + "/modules/arrayManip.ejs");
+const mongoose = require('mongoose');
 const port = 3000;
 const app = express();
+
+const keys = require('./api_keys');
+const userName = keys.mongooseUserName;
+const password = keys.mongoosePassword;
+const DB = keys.mongooseDB;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
