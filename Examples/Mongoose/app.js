@@ -1,9 +1,9 @@
 const { MongoClient, ServerApiVersion, CURSOR_FLAGS } = require('mongodb');
 const mongoose = require('mongoose');
 
-const userName = "";
-const password = "";
-const DB = "";
+const userName = "ChrisShocker";
+const password = "muQQqhDwVE4szjk";
+const DB = "ExampleDatabase";
 
 const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 
