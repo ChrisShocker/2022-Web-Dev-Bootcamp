@@ -36,11 +36,34 @@ const Vegetable = mongoose.model("Vegetable", vegetableSchema);
 
 //updateVegetableByName('Carrot', 'carrot', 8, '');
 
+//deleteVegetableByName('Corn');
+
+//deleteAllVegetablesByName('Carrot');
+
 //findByName('Carrot');
 
-//findAll();
+findAll();
 
 //mongoose.connection.close();
+
+async function deleteVegetableByName(searchparam){
+    Vegetable.deleteOne({name: searchparam}, function(error){
+        if(error)
+            console.log(error);
+        else
+            console.log('Vegetable deleted');
+    });
+}
+
+async function deleteAllVegetablesByName(searchparam){
+    Vegetable.deleteMany({name: searchparam}, function(error){
+        if(error)
+            console.log(error);
+        else
+            console.log('Vegetables deleted');
+    });
+}
+
 async function updateVegetableByName(searchparam, name, rating, review){
     Vegetable.updateOne({name: searchparam}, {name: name, rating: rating, review: review}, function(error){
         if(error)
