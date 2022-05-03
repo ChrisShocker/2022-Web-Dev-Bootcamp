@@ -4,6 +4,7 @@
 *********/
 const date = require(__dirname + "/modules/date.ejs");
 const array = require(__dirname + "/modules/arrayManip.ejs");
+const mongCMD = require(__dirname + "/modules/mongCommands.ejs"); 
 
 /******** 
  * Mongoose
@@ -14,6 +15,7 @@ const userName = keys.mongooseUserName;
 const password = keys.mongoosePassword;
 const DB = keys.mongooseDB;
 const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
+mongoose.connect(uri, { useNewURLParser: true });
 
 /******** 
  * Express
@@ -42,15 +44,7 @@ const taskSchema = new mongoose.Schema({
     }
 });
 
-const task = new mongoose.model('Task', taskSchema);
-
-
-
-
-
-
-
-
+const Task = new mongoose.model('Task', taskSchema);
 
 
 app.get('/', (req, res) =>
@@ -79,7 +73,8 @@ app.post('/', (req, res) =>
         }
         else
         {
-            array.addItem(req, workTasksArray);
+            mongCMD.addTask(req, Task);
+            //array.addItem(req, workTasksArray);
             res.redirect("/work")
         }
     }
@@ -87,12 +82,13 @@ app.post('/', (req, res) =>
     {
         if (req.body.removeTask)
         {
-            array.removeItem(req, dayTasksArray);
+            mongCMD.removeTask(req, Task);
+            //array.removeItem(req, dayTasksArray);
             res.redirect('/');
         }
         else
         {
-            array.addItem(req, dayTasksArray);
+            mongCMD.addTask(req, Task);
             res.redirect('/');
         }
     }

@@ -1,0 +1,26 @@
+/*<script>*/
+    exports.addTask = async function (req, Task)
+    {
+        var item = req.body.newItem;
+        if (item)
+        {
+            const task = new Task({
+                name: item,
+            });
+            await task.save();
+        }
+        else
+            console.log("No task entered");
+    }
+
+    exports.removeTask = async function (req, Task){
+        var item = req.body.removeTask;
+        if (item)
+        {
+            const deleteTask= await Task.deleteOne({name: item});
+            console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
+        }
+        else
+            console.log("No task entered");
+
+    }
