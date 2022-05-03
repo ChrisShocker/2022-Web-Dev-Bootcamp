@@ -13,7 +13,7 @@ mongoose.connect(uri, { useNewURLParser: true });
 const vegetableSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: [true, 'Error: No name']
     },
     rating: {
         type: Number,
@@ -34,11 +34,21 @@ const Vegetable = mongoose.model("Vegetable", vegetableSchema);
 
 //addManydocuments();
 
-//findAll();
+//updateVegetableByName('Carrot', 'carrot', 8, '');
 
 //findByName('Carrot');
 
+//findAll();
+
 //mongoose.connection.close();
+async function updateVegetableByName(searchparam, name, rating, review){
+    Vegetable.updateOne({name: searchparam}, {name: name, rating: rating, review: review}, function(error){
+        if(error)
+            console.log(error);
+        else
+            console.log('Vegetable updated');
+    });
+}
 
 async function findByName(name)
 {
