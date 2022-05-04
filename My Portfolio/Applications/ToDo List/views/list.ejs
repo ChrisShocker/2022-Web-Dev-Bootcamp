@@ -1,6 +1,6 @@
 <%- include('partials/header'); -%>
 
-<div class="box" id="heading">
+<div class="box box-top" id="heading">
     <h1>
         <%=listTitle %>
     </h1>
@@ -30,12 +30,4 @@
     </form>
 </div>
 
-<div class="box createList-box">
-    <form class="item" action="/" method="POST">
-        <input class="input-delete" type="text" name="createList" placeholder="Create/GoTo List" autocomplete="off"
-            aria-label="input for a task to delete from list">
-        <button class="add" type="submit" name="list" aria-label="task to delete from list"
-            value=<%=listTitle %>>+</button>
-    </form>
-</div>
 <%- include('partials/footer'); -%>

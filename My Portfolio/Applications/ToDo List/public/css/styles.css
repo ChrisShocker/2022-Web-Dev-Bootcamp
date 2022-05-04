@@ -1,11 +1,8 @@
-html {
+body {
   background-color: #B9F8D3;
   background-image: -webkit-linear-gradient(65deg, #B9F8D3 50%, #40DFEF 50%);
   min-height: 100%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-body{
   text-align: center;
 }
 
@@ -13,9 +10,12 @@ h1 {
   padding: 10px;
 }
 
+.box-top {
+  margin-top: 7rem !important;
+}
 .box {
   max-width: 400px;
-  margin: 50px auto;
+  margin: 1rem auto;
   background: #FFFBE7;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
@@ -64,7 +64,8 @@ button {
   padding-bottom: 2%;
   border-width: 0;
 }
-.add{
+
+.add {
   background-color: #00204a;
   color: #fff;
 }
@@ -88,6 +89,40 @@ input[type="text"]:focus {
 ::placeholder {
   color: grey;
   opacity: 1;
+}
+
+/*Navbar Section*/
+#navbar-section .navbar {
+  font-size: 1.5rem;
+  z-index: 0;
+}
+
+#links {
+  padding: 0 2% 0 2%;
+}
+
+.navbar {
+  z-index: 0;
+  min-width: 600px;
+}
+
+.navbar-brand {
+  font-size: 2.3rem;
+  font-family: 'Ubuntu';
+  padding-left: 2%;
+  z-index: 0;
+}
+
+#search-posts {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: white;
+  top: 0.04rem;
+  margin: 0.6rem auto 0 auto;
+  min-width: 100px;
+  max-width: 25%;
+  z-index: 1;
 }
 
 footer {
