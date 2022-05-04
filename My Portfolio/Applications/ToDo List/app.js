@@ -76,7 +76,12 @@ app.get('/:someThing', async (req, res) =>
 app.post('/', async (req, res) =>
 {
     const list = req.body.list;
-    if (list == date.getDay() + ',')
+    if(req.body.createList){
+        newList = req.body.createList;
+        res.redirect('/'+newList);
+    }
+    //const list = req.body.list;
+    else if(list == date.getDay() + ',')
     {
         if (req.body.removeTask)
         {
@@ -104,6 +109,39 @@ app.post('/', async (req, res) =>
         }
     }
 });
+
+//works
+// app.post('/', async (req, res) =>
+// {
+//     const list = req.body.list;
+//     if (list == date.getDay() + ',')
+//     {
+//         if (req.body.removeTask)
+//         {
+//             await mongCMD.removeTask(req, Task);
+//             res.redirect('/');
+//         }
+//         else
+//         {
+//             await mongCMD.addTask(req, Task);
+//             res.redirect('/');
+//         }
+//     }
+//     else
+//     {
+//         const newList = new mongoose.model(list, taskSchema);
+//         if (req.body.removeTask)
+//         {
+//             await mongCMD.removeTask(req, newList);
+//             res.redirect('/' + list);
+//         }
+//         else
+//         {
+//             await mongCMD.addTask(req, newList);
+//             res.redirect('/' + list);
+//         }
+//     }
+// });
 
 app.post('/delete', (req, res) =>
 {
