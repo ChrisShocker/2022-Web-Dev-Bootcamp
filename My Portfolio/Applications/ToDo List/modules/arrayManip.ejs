@@ -10,6 +10,16 @@
             console.log("No item entered");
     }
 
+    exports.addTask = function (array, tasks)
+    {
+        if (tasks)
+        {
+            array.push(tasks);
+        }
+        else
+            console.log("No item entered");
+    }
+
     exports.removeItem = function (req, array)
     {
         var item = req.body.removeTask;

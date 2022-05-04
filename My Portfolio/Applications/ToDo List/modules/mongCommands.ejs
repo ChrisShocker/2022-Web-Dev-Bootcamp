@@ -1,5 +1,30 @@
 /*<script>*/
-    exports.addTask = async function (req, Task)
+
+    exports.removeTask = async function (req, Task){
+        var item = req.body.removeTask;
+        if (item)
+        {
+            const deleteTask= await Task.deleteOne({name: item});
+            console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
+        }
+        else
+            console.log("No task entered");
+    }
+
+    exports.getTasks = async function (Task, list){
+        Task.find({}, async function(error, tasks){
+            if(error)
+                console.log(error);
+            else{
+                const result = await JSON.parse(await JSON.stringify(tasks));
+                await list.push(result);
+                console.log('Tasks pushed to array');
+                console.log(list);
+            }
+        }); 
+    }
+
+    exports.addTask = async function (req, Task, list)
     {
         var item = req.body.newItem;
         if (item)
@@ -11,16 +36,4 @@
         }
         else
             console.log("No task entered");
-    }
-
-    exports.removeTask = async function (req, Task){
-        var item = req.body.removeTask;
-        if (item)
-        {
-            const deleteTask= await Task.deleteOne({name: item});
-            console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
-        }
-        else
-            console.log("No task entered");
-
     }
