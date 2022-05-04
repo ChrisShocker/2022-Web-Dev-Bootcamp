@@ -30,17 +30,9 @@
     </form>
 </div>
 
-<div class="box delete-box">
-    <form class="item" action="/" method="POST">
-        <input class="input-delete" type="text" name="removeTask" placeholder="Remove Task" autocomplete="off"
-            aria-label="input for a task to delete from list">
-        <button class="delete" type="submit" name="list" aria-label="task to delete from list"
-            value=<%=listTitle %>>+</button>
-    </form>
-</div>
 <div class="box createList-box">
     <form class="item" action="/" method="POST">
-        <input class="input-delete" type="text" name="createList" placeholder="Create New List" autocomplete="off"
+        <input class="input-delete" type="text" name="createList" placeholder="Create/GoTo List" autocomplete="off"
             aria-label="input for a task to delete from list">
         <button class="add" type="submit" name="list" aria-label="task to delete from list"
             value=<%=listTitle %>>+</button>

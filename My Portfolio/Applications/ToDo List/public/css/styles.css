@@ -21,14 +21,6 @@ h1 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
-.delete-box{
-  height: 70px;
-}
-
-.input-delete{
-  margin: 0 0 10px 0;
-}
-
 #heading {
   background-color: #FFFBE7;
   color: #013272;
@@ -44,15 +36,6 @@ h1 {
 
 .item:last-child {
   border-bottom: 0;
-}
-
-/*checked: look for input thats check  
-  +p: selects all elemnts after <div>
-*/
-input:checked+p {
-  text-decoration: line-through;
-  text-decoration-color: #ff1d1d;
-  text-decoration-thickness: 0.4rem;
 }
 
 input[type="checkbox"] {
@@ -86,13 +69,6 @@ button {
   color: #fff;
 }
 
-.delete{
-  background-color: #f11e1e;
-  color: #fff;
-  position: relative;
-  bottom: 26px;
-}
-
 input[type="text"] {
   text-align: center;
   height: 60px;
@@ -118,8 +94,4 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
-}
-
-.delete{
-  margin-top: 10%;
 }
