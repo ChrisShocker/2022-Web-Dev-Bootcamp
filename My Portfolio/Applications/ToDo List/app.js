@@ -19,6 +19,7 @@ mongoose.connect(uri, { useNewURLParser: true });
  * Express
 *********/
 const express = require("express");
+const { Db } = require('mongodb');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -36,7 +37,9 @@ const taskSchema = new mongoose.Schema({
 });
 const Task = new mongoose.model('Task', taskSchema);
 
-
+/******** 
+ * get
+*********/
 app.get('/', (req, res) =>
 {
     Task.find({}, function (error, tasks)
@@ -54,30 +57,68 @@ app.get('/about', (req, res) =>
 });
 
 
-app.get('/work', (req, res) =>
+app.get('/:someThing', async (req, res) =>
 {
-    res.render('list', { listTitle: "Work List", listArray: workTasksArray });
+    const list = req.params.someThing;
+    const newList = new mongoose.model(list, taskSchema);
+    newList.find({}, function (error, tasks)
+    {
+        if (error)
+            console.log(error);
+        else
+            res.render('list', { listTitle: req.params.someThing, listArray: tasks });
+    });
 })
 
+/******** 
+ * post
+*********/
 app.post('/', async (req, res) =>
 {
-    if (req.body.removeTask)
+    const list = req.body.list;
+    if (list == date.getDay() + ',')
     {
-        console.log(req.body);
-        mongCMD.removeTask(req, Task);
+        if (req.body.removeTask)
+        {
+            await mongCMD.removeTask(req, Task);
+            res.redirect('/');
+        }
+        else
+        {
+            await mongCMD.addTask(req, Task);
+            res.redirect('/');
+        }
+    }
+    else
+    {
+        const newList = new mongoose.model(list, taskSchema);
+        if (req.body.removeTask)
+        {
+            await mongCMD.removeTask(req, newList);
+            res.redirect('/' + list);
+        }
+        else
+        {
+            await mongCMD.addTask(req, newList);
+            res.redirect('/' + list);
+        }
+    }
+});
+
+app.post('/delete', (req, res) =>
+{
+    const list = req.body.listName;
+    if (req.body.listName == date.getDay() + ',')
+    {
+        mongCMD.removeTaskByID(req, Task);
         res.redirect('/');
     }
     else
     {
-        await mongCMD.addTask(req, Task);
-        res.redirect('/');
+        const newList = new mongoose.model(list, taskSchema);
+        mongCMD.removeTaskByID(req, newList);
+        res.redirect('/' + list);
     }
-}
-);
-app.post('/delete', (req, res) =>
-{
-    mongCMD.removeTaskByID(req, Task);
-    res.redirect('/');
 });
 
 app.listen(port, () =>
