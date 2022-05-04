@@ -2,7 +2,6 @@
  * Modules
 *********/
 const date = require(__dirname + "/modules/date.ejs");
-const array = require(__dirname + "/modules/arrayManip.ejs");
 const mongCMD = require(__dirname + "/modules/mongCommands.ejs");
 
 /******** 
@@ -25,13 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 const port = 3000;
-
-/******** 
- * Application
-*********/
-//arrays to hold items added by user
-var dayTasksArray = [];
-const workTasksArray = [];
 
 /******** 
  * Schema
@@ -77,7 +69,7 @@ app.post('/', async (req, res) =>
     }
     else
     {
-        await mongCMD.addTask(req, Task, dayTasksArray);
+        await mongCMD.addTask(req, Task);
         res.redirect('/');
     }
 }
