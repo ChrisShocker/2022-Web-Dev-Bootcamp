@@ -35,19 +35,20 @@ const taskSchema = new mongoose.Schema({
         required: [true, 'Error: No task name']
     }
 });
-const Task = new mongoose.model('Task', taskSchema);
+const Task = new mongoose.model(date.getDate(), taskSchema);
 
 /******** 
  * get
 *********/
 app.get('/', (req, res) =>
 {
-    Task.find({}, function (error, tasks)
+    Task.find({}, async function (error, tasks)
     {
         if (error)
             console.log(error);
-        else
+        else{
             res.render('list', { listTitle: date.getDate(), listArray: tasks });
+        }
     });
 });
 
@@ -75,25 +76,14 @@ app.get('/:someThing', async (req, res) =>
 *********/
 app.post('/', async (req, res) =>
 {
-    const list = req.body.list;
+    const list = req.body.listName;
+
     if(req.body.createList){
         newList = req.body.createList;
         res.redirect('/'+newList);
+ 
     }
-    else if(list == date.getDay() + ',')
-    {
-        if (req.body.removeTask)
-        {
-            await mongCMD.removeTask(req, Task);
-            res.redirect('/');
-        }
-        else
-        {
-            await mongCMD.addTask(req, Task);
-            res.redirect('/');
-        }
-    }
-    else
+    else if(req.body.listName != date.getDay() +',')
     {
         const newList = new mongoose.model(list, taskSchema);
         if (req.body.removeTask)
@@ -105,6 +95,19 @@ app.post('/', async (req, res) =>
         {
             await mongCMD.addTask(req, newList);
             res.redirect('/' + list);
+        }
+    }
+    else
+    {
+        if (req.body.removeTask)
+        {
+            await mongCMD.removeTask(req, Task);
+            res.redirect('/');
+        }
+        else
+        {
+            await mongCMD.addTask(req, Task);
+            res.redirect('/');
         }
     }
 });

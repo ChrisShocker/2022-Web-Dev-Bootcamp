@@ -104,6 +104,7 @@ input[type="text"]:focus {
 .navbar {
   z-index: 0;
   min-width: 600px;
+  padding: 1rem;
 }
 
 .navbar-brand {
@@ -118,8 +119,8 @@ input[type="text"]:focus {
   left: 0;
   right: 0;
   background-color: white;
-  top: 0.04rem;
-  margin: 0.6rem auto 0 auto;
+  top: 0.08rem;
+  margin: 1rem auto 0 auto;
   min-width: 100px;
   max-width: 25%;
   z-index: 1;
