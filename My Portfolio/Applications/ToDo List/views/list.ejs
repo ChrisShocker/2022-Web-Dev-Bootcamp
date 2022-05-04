@@ -7,11 +7,11 @@
 </div>
 
 <div class="box">
-    <% for(let i=0; i < listArray[0].length; ++i){ %>
+    <% for(let i=0; i < listArray.length; ++i){ %>
     <div class="item">
         <input type="checkbox">
         <p aria-label="todo list item">
-            <%=listArray[0][i].name%>
+            <%=listArray[i].name%>
         </p>
     </div>
     <% } %>

@@ -27,10 +27,15 @@ app.set('view engine', 'ejs');
 const port = 3000;
 
 /******** 
+ * Lodash
+*********/
+const _ = require('lodash');
+
+/******** 
  * Application
 *********/
 //arrays to hold items added by user
-const dayTasksArray = [];
+var dayTasksArray = [];
 const workTasksArray = [];
 
 /******** 
@@ -42,26 +47,19 @@ const taskSchema = new mongoose.Schema({
         required: [true, 'Error: No task name']
     }
 });
-
 const Task = new mongoose.model('Task', taskSchema);
 
 
-mongCMD.getTasks(Task, dayTasksArray)
-    .then(() =>
+app.get('/', (req, res) =>
+{
+    Task.find({}, function (error, tasks)
     {
-        app.get('/', (req, res) =>
-        {
-           console.log('print\n' +dayTasksArray[0][1].name +'\nprint'); 
-            res.render('list', { listTitle: date.getDate(), listArray: dayTasksArray });
-        });
+        if (error)
+            console.log(error);
+        else
+            res.render('list', { listTitle: date.getDate(), listArray: tasks });
     });
-
-// app.get('/', async (req, res) =>
-// {
-//     await mongCMD.getTasks(Task, dayTasksArray);
-//     console.log(dayTasksArray.length);
-//     res.render('list', { listTitle: date.getDate(), listArray: dayTasksArray });
-// });
+});
 
 app.get('/about', (req, res) =>
 {
@@ -98,7 +96,6 @@ app.post('/', async (req, res) =>
         else
         {
             await mongCMD.addTask(req, Task, dayTasksArray);
-            mongCMD.getTasks(Task, dayTasksArray);
             res.redirect('/');
         }
     }
