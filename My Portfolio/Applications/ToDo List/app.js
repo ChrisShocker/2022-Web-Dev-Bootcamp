@@ -61,6 +61,7 @@ app.get('/about', (req, res) =>
     res.render("about");
 });
 
+
 app.get('/work', (req, res) =>
 {
     res.render('list', { listTitle: "Work List", listArray: workTasksArray });
@@ -85,6 +86,7 @@ app.post('/', async (req, res) =>
     {
         if (req.body.removeTask)
         {
+            console.log(req.body);
             mongCMD.removeTask(req, Task);
             res.redirect('/');
         }
@@ -94,6 +96,12 @@ app.post('/', async (req, res) =>
             res.redirect('/');
         }
     }
+}
+);
+app.post('/delete', (req, res) =>
+{
+    mongCMD.removeTaskByID(req, Task);
+    res.redirect('..');
 });
 
 app.post('/work', (req, res) =>

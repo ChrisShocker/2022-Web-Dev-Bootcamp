@@ -11,6 +11,17 @@
             console.log("No task entered");
     }
 
+    exports.removeTaskByID = async function (req, Task){
+        var item = req.body;
+        if (item)
+        {
+            const deleteTask= await Task.deleteOne({id: item});
+            console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
+        }
+        else
+            console.log("No task entered");
+    }
+
     exports.addTask = async function (req, Task, list)
     {
         var item = req.body.newItem;

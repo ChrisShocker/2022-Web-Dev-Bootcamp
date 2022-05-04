@@ -8,12 +8,17 @@
 
 <div class="box">
     <% for(let i=0; i < listArray.length; ++i){ %>
-    <div class="item">
-        <input type="checkbox">
-        <p aria-label="todo list item">
-            <%=listArray[i].name%>
-        </p>
-    </div>
+    <form class="item" action="/delete" method="POST">
+        <div class="item">
+
+            <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%=listArray[i].id %>
+            aria-label="input for a new task">
+
+            <p aria-label="todo list item">
+                <%=listArray[i].name%>
+            </p>
+        </div>
+    </form>
     <% } %>
 
     <form class="item" action="/" method="POST">
