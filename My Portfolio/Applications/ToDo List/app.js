@@ -27,11 +27,6 @@ app.set('view engine', 'ejs');
 const port = 3000;
 
 /******** 
- * Lodash
-*********/
-const _ = require('lodash');
-
-/******** 
  * Application
 *********/
 //arrays to hold items added by user
