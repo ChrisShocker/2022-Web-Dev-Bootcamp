@@ -69,46 +69,23 @@ app.get('/work', (req, res) =>
 
 app.post('/', async (req, res) =>
 {
-    if (req.body.list === "Work")
+    if (req.body.removeTask)
     {
-        if (req.body.removeTask)
-        {
-            array.removeItem(req, workTasksArray);
-            res.redirect('/work');
-        }
-        else
-        {
-            mongCMD.addTask(req, Task);
-            res.redirect("/work")
-        }
+        console.log(req.body);
+        mongCMD.removeTask(req, Task);
+        res.redirect('/');
     }
     else
     {
-        if (req.body.removeTask)
-        {
-            console.log(req.body);
-            mongCMD.removeTask(req, Task);
-            res.redirect('/');
-        }
-        else
-        {
-            await mongCMD.addTask(req, Task, dayTasksArray);
-            res.redirect('/');
-        }
+        await mongCMD.addTask(req, Task, dayTasksArray);
+        res.redirect('/');
     }
 }
 );
 app.post('/delete', (req, res) =>
 {
     mongCMD.removeTaskByID(req, Task);
-    res.redirect('..');
-});
-
-app.post('/work', (req, res) =>
-{
-    addItem(workTasksArray, item);
-    //after recieving new data redirect it to the get/render function
-    res.redirect('/work');
+    res.redirect('/');
 });
 
 app.listen(port, () =>

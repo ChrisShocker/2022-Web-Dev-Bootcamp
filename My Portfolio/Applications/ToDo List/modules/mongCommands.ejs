@@ -12,10 +12,10 @@
     }
 
     exports.removeTaskByID = async function (req, Task){
-        var item = req.body;
+        var item = req.body.removeTask;
         if (item)
         {
-            const deleteTask= await Task.deleteOne({id: item});
+            const deleteTask = await Task.deleteOne({_id: item});
             console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
         }
         else
