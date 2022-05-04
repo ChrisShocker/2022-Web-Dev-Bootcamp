@@ -1,10 +1,9 @@
-
 /******** 
  * Modules
 *********/
 const date = require(__dirname + "/modules/date.ejs");
 const array = require(__dirname + "/modules/arrayManip.ejs");
-const mongCMD = require(__dirname + "/modules/mongCommands.ejs"); 
+const mongCMD = require(__dirname + "/modules/mongCommands.ejs");
 
 /******** 
  * Mongoose
@@ -47,10 +46,22 @@ const taskSchema = new mongoose.Schema({
 const Task = new mongoose.model('Task', taskSchema);
 
 
-app.get('/', (req, res) =>
-{
-    res.render('list', { listTitle: date.getDate(), listArray: dayTasksArray });
-});
+mongCMD.getTasks(Task, dayTasksArray)
+    .then(() =>
+    {
+        app.get('/', (req, res) =>
+        {
+           console.log('print\n' +dayTasksArray[0][1].name +'\nprint'); 
+            res.render('list', { listTitle: date.getDate(), listArray: dayTasksArray });
+        });
+    });
+
+// app.get('/', async (req, res) =>
+// {
+//     await mongCMD.getTasks(Task, dayTasksArray);
+//     console.log(dayTasksArray.length);
+//     res.render('list', { listTitle: date.getDate(), listArray: dayTasksArray });
+// });
 
 app.get('/about', (req, res) =>
 {
@@ -62,7 +73,7 @@ app.get('/work', (req, res) =>
     res.render('list', { listTitle: "Work List", listArray: workTasksArray });
 })
 
-app.post('/', (req, res) =>
+app.post('/', async (req, res) =>
 {
     if (req.body.list === "Work")
     {
@@ -74,7 +85,6 @@ app.post('/', (req, res) =>
         else
         {
             mongCMD.addTask(req, Task);
-            //array.addItem(req, workTasksArray);
             res.redirect("/work")
         }
     }
@@ -83,12 +93,12 @@ app.post('/', (req, res) =>
         if (req.body.removeTask)
         {
             mongCMD.removeTask(req, Task);
-            //array.removeItem(req, dayTasksArray);
             res.redirect('/');
         }
         else
         {
-            mongCMD.addTask(req, Task);
+            await mongCMD.addTask(req, Task, dayTasksArray);
+            mongCMD.getTasks(Task, dayTasksArray);
             res.redirect('/');
         }
     }
