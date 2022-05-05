@@ -106,7 +106,8 @@ app.post('/', async (req, res) =>
     }
 
     else if(list){
-        list = list.replace('^', ' ');
+        console.log(list);
+        list = list.replaceAll('^', ' ');
         console.log(list);
         let Task = new mongoose.model(list, taskSchema);
         await mongCMD.addTask(req, Task);
