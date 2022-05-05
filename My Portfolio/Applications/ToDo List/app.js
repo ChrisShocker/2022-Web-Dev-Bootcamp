@@ -35,7 +35,7 @@ const taskSchema = new mongoose.Schema({
         required: [true, 'Error: No task name']
     }
 });
-const Task = new mongoose.model(date.getDate().join(''), taskSchema);
+const Task = new mongoose.model(date.getDate().join(' '), taskSchema);
 
 /******** 
  * get
