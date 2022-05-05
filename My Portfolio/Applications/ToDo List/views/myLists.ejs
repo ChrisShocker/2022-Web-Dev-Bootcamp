@@ -1,0 +1,26 @@
+<%- include('partials/header'); -%>
+
+<div class="box box-top" id="heading">
+    <h1>
+        My Lists
+    </h1>
+</div>
+
+<div class="box">
+    <% for(let i=0; i < listArray.length; ++i){ %>
+
+    <form class="item" action="/deleteList" method="POST">
+        <div class="item">
+
+            <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].name %>
+                aria-label="input for a new task">
+
+            <p aria-label="todo list item">
+                <%=listArray[i].name%>
+            </p>
+            <input type="hidden" name="listName" value=<%= listTitle %>> 
+        </div>
+    </form>
+    <% } %>
+
+<%- include('partials/footer'); -%>

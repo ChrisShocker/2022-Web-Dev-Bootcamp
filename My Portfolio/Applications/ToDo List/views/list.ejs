@@ -2,7 +2,9 @@
 
 <div class="box box-top" id="heading">
     <h1>
-        <%=listTitle%>
+    <% for(let i=0; i < listTitle.length; ++i){ %>
+        <%=listTitle[i] + ' '%>
+    <% } %>
     </h1>
 </div>
 
@@ -18,7 +20,7 @@
             <p aria-label="todo list item">
                 <%=listArray[i].name%>
             </p>
-            <input type="hidden" name="listName" value=<%= listTitle %>> 
+            <input type="hidden" name="listName" value=<%= listTitle %>>
         </div>
     </form>
     <% } %>

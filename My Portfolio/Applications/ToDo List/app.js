@@ -13,7 +13,7 @@ const userName = keys.mongooseUserName;
 const password = keys.mongoosePassword;
 const DB = keys.mongooseDB;
 const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
-mongoose.connect(uri, { useNewURLParser: true });
+const connection = mongoose.connect(uri, { useNewURLParser: true });
 
 /******** 
  * Express
@@ -35,7 +35,7 @@ const taskSchema = new mongoose.Schema({
         required: [true, 'Error: No task name']
     }
 });
-const Task = new mongoose.model(date.getDate(), taskSchema);
+const Task = new mongoose.model(date.getDate().join(''), taskSchema);
 
 /******** 
  * get
@@ -46,8 +46,10 @@ app.get('/', (req, res) =>
     {
         if (error)
             console.log(error);
-        else{
-            res.render('list', { listTitle: date.getDate(), listArray: tasks });
+        else
+        {
+            let todaysDate = date.getDate();
+            res.render('list', { listTitle: todaysDate, listArray: tasks });
         }
     });
 });
@@ -57,17 +59,38 @@ app.get('/about', (req, res) =>
     res.render("about");
 });
 
+app.get('/myLists', (req, res) =>
+{
+    mongoose.connection.db.listCollections().toArray(function (error, names)
+    {
+        if (error)
+            console.log(error);
+        else
+        {
+            res.render('myLists', { listTitle: 'My List', listArray: names });
+        }
+    })
+});
 
 app.get('/:someThing', async (req, res) =>
 {
-    const list = req.params.someThing;
-    const newList = new mongoose.model(list, taskSchema);
+    let listName = req.params.someThing;
+    const subStringArray = [];
+    let splitArray = listName.split(' ');
+    for (let i = 0; i < splitArray.length; ++i)
+    {
+        subStringArray.push(splitArray[i]);
+    }
+    console.log(subStringArray);
+
+    //res.redirect('/');
+    const newList = new mongoose.model(splitArray.join('-'), taskSchema);
     newList.find({}, function (error, tasks)
     {
         if (error)
             console.log(error);
         else
-            res.render('list', { listTitle: req.params.someThing, listArray: tasks });
+            res.render('list', { listTitle: subStringArray, listArray: tasks });
     });
 })
 
@@ -78,12 +101,13 @@ app.post('/', async (req, res) =>
 {
     const list = req.body.listName;
 
-    if(req.body.createList){
+    if (req.body.createList)
+    {
         newList = req.body.createList;
-        res.redirect('/'+newList);
- 
+        res.redirect('/' + newList);
+
     }
-    else if(req.body.listName != date.getDay() +',')
+    else if (req.body.listName != date.getDay() + ',')
     {
         const newList = new mongoose.model(list, taskSchema);
         if (req.body.removeTask)
@@ -126,6 +150,26 @@ app.post('/delete', (req, res) =>
         mongCMD.removeTaskByID(req, newList);
         res.redirect('/' + list);
     }
+});
+
+app.post('/deleteList', async (req, res) =>
+{
+    var listName = req.body.removeTask;
+    console.log(listName);
+
+    var listArray = [];
+    listArray = await mongoose.connection.db.listCollections().toArray();
+    for (let i = 0; i < listArray.length; ++i)
+    {
+        // console.log(listArray[i].name);
+        //console.log(listName);
+        if (listArray[i].name === listName)
+        {
+            await mongoose.connection.db.dropCollection(listName);
+            await console.log('collection: ' + "'" + listName + "'" + ' deleted');
+        }
+    }
+    res.redirect('/myLists');
 });
 
 app.listen(port, () =>
