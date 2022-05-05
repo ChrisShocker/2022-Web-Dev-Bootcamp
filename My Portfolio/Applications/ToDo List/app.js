@@ -120,49 +120,6 @@ app.post('/', async (req, res) =>
         await mongCMD.removeTaskByID(req, currentList);
         res.redirect('/' + list);
     }
-    // else if (req.body.listName != date.getDay() + ',')
-    // {
-    //     const newList = new mongoose.model(list, taskSchema);
-    //     if (req.body.removeTask)
-    //     {
-    //         await mongCMD.removeTask(req, newList);
-    //         res.redirect('/' + list);
-    //     }
-    //     else
-    //     {
-    //         await mongCMD.addTask(req, newList);
-    //         res.redirect('/' + list);
-    //     }
-    // }
-    // else
-    // {
-    //     if (req.body.removeTask)
-    //     {
-    //         await mongCMD.removeTask(req, Task);
-    //         res.redirect('/');
-    //     }
-    //     else
-    //     {
-    //         await mongCMD.addTask(req, Task);
-    //         res.redirect('/');
-    //     }
-    // }
-});
-
-app.post('/delete', (req, res) =>
-{
-    const list = req.body.listName;
-    if (req.body.listName == date.getDay() + ',')
-    {
-        mongCMD.removeTaskByID(req, Task);
-        res.redirect('/');
-    }
-    else
-    {
-        const newList = new mongoose.model(list, taskSchema);
-        mongCMD.removeTaskByID(req, newList);
-        res.redirect('/' + list);
-    }
 });
 
 app.post('/deleteList', async (req, res) =>
@@ -174,8 +131,6 @@ app.post('/deleteList', async (req, res) =>
     listArray = await mongoose.connection.db.listCollections().toArray();
     for (let i = 0; i < listArray.length; ++i)
     {
-        // console.log(listArray[i].name);
-        //console.log(listName);
         if (listArray[i].name === listName)
         {
             await mongoose.connection.db.dropCollection(listName);
