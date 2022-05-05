@@ -81,10 +81,8 @@ app.get('/:someThing', async (req, res) =>
     {
         subStringArray.push(splitArray[i]);
     }
-    console.log(subStringArray);
 
-    //res.redirect('/');
-    const newList = new mongoose.model(splitArray.join('-'), taskSchema);
+    const newList = new mongoose.model(splitArray.join(' '), taskSchema);
     newList.find({}, function (error, tasks)
     {
         if (error)
@@ -99,41 +97,48 @@ app.get('/:someThing', async (req, res) =>
 *********/
 app.post('/', async (req, res) =>
 {
-    const list = req.body.listName;
+    var list = req.body.listName;
 
     if (req.body.createList)
     {
-        newList = req.body.createList;
+        let newList = req.body.createList;
         res.redirect('/' + newList);
+    }
 
+    else if(list){
+        list = list.replace('^', ' ');
+        console.log(list);
+        let Task = new mongoose.model(list, taskSchema);
+        await mongCMD.addTask(req, Task);
+        res.redirect('/' + list);
     }
-    else if (req.body.listName != date.getDay() + ',')
-    {
-        const newList = new mongoose.model(list, taskSchema);
-        if (req.body.removeTask)
-        {
-            await mongCMD.removeTask(req, newList);
-            res.redirect('/' + list);
-        }
-        else
-        {
-            await mongCMD.addTask(req, newList);
-            res.redirect('/' + list);
-        }
-    }
-    else
-    {
-        if (req.body.removeTask)
-        {
-            await mongCMD.removeTask(req, Task);
-            res.redirect('/');
-        }
-        else
-        {
-            await mongCMD.addTask(req, Task);
-            res.redirect('/');
-        }
-    }
+    // else if (req.body.listName != date.getDay() + ',')
+    // {
+    //     const newList = new mongoose.model(list, taskSchema);
+    //     if (req.body.removeTask)
+    //     {
+    //         await mongCMD.removeTask(req, newList);
+    //         res.redirect('/' + list);
+    //     }
+    //     else
+    //     {
+    //         await mongCMD.addTask(req, newList);
+    //         res.redirect('/' + list);
+    //     }
+    // }
+    // else
+    // {
+    //     if (req.body.removeTask)
+    //     {
+    //         await mongCMD.removeTask(req, Task);
+    //         res.redirect('/');
+    //     }
+    //     else
+    //     {
+    //         await mongCMD.addTask(req, Task);
+    //         res.redirect('/');
+    //     }
+    // }
 });
 
 app.post('/delete', (req, res) =>
