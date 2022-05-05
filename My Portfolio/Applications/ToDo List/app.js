@@ -105,12 +105,19 @@ app.post('/', async (req, res) =>
         res.redirect('/' + newList);
     }
 
-    else if(list){
-        console.log(list);
+    else if (req.body.newItem)
+    {
         list = list.replaceAll('^', ' ');
-        console.log(list);
         let Task = new mongoose.model(list, taskSchema);
         await mongCMD.addTask(req, Task);
+        res.redirect('/' + list);
+    }
+
+    else if (req.body.removeTask)
+    {
+        list = list.replaceAll('^', ' ');
+        const currentList = new mongoose.model(list, taskSchema);
+        await mongCMD.removeTaskByID(req, currentList);
         res.redirect('/' + list);
     }
     // else if (req.body.listName != date.getDay() + ',')

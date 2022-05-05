@@ -4,7 +4,7 @@
         var item = req.body.removeTask;
         if (item)
         {
-            const deleteTask= await Task.deleteOne({name: item});
+            const deleteTask = await Task.deleteOne({name: item});
             console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
         }
         else

@@ -11,7 +11,7 @@
 <div class="box">
     <% for(let i=0; i < listArray.length; ++i){ %>
 
-    <form class="item" action="/delete" method="POST">
+    <form class="item" action="/" method="POST">
         <div class="item">
 
             <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].id %>
