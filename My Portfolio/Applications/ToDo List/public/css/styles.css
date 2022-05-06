@@ -18,12 +18,16 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.row{
-}
-
 .col{
   background: #FFFBE7;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  padding: 0.4rem 0 0.4rem;
+}
+
+#checkbox{
+  height: 100%;
+  width: 25px;
+  margin-left: 2rem;
 }
 
 .item {
@@ -35,6 +39,13 @@ h1 {
 
 .item:last-child {
   border-bottom: 0;
+}
+
+div{
+
+  color: #00204a;
+  font-size: 2rem;
+  font-weight: 200;
 }
 
 p {
