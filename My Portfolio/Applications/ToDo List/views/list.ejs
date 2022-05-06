@@ -13,8 +13,8 @@
 <% for(let i=0; i < listArray.length; ++i){ %>
 <div class="container">
     <div class="row">
-        <div class="col col-lg-8 text-start text-wrap text-break mx-auto">
-            <form action="/" method="POST">
+        <form action="/" method="POST">
+            <div class="col col-lg-8 text-start text-wrap text-break mx-auto">
                 <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].id %>
                     aria-label="input for a new task">
 
@@ -22,8 +22,16 @@
                     <%=listArray[i].name%>
                 </p>
                 <input type="hidden" name="listName" value=<%= listTitle.join('^') %>>
-            </form>
+        </form>
 
+    </div>
+</div>
+</div>
+<% } %>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-8 text-start text-wrap text-break mx-auto">
             <form class="item" action="/" method="POST">
                 <input id=todo-blank type="text" name="newItem" placeholder="New Task" autocomplete="off"
                     aria-label="input for a new task">
@@ -33,5 +41,4 @@
         </div>
     </div>
 </div>
-<% } %>
 <%- include('partials/footer'); -%>
