@@ -12,6 +12,7 @@ h1 {
 .top-container{
   margin-top: 7rem;
   color: #013272;
+  padding: 0;
 }
 
 .container{
@@ -64,7 +65,8 @@ p {
   word-break: break-all;
 }
 #todo-blank{
-  width:85%;
+  width:80%;
+  margin-left: 4.5rem;
 }
 
 input[type="text"] {
@@ -100,6 +102,7 @@ button {
 
 .add {
   color: #00204a;
+  margin-right: 0.5rem;
 }
 
 /*Navbar Section*/
