@@ -102,9 +102,9 @@ input[type="text"]:focus {
 }
 
 .navbar {
-  z-index: 0;
   min-width: 600px;
   padding: 1rem;
+  z-index: 0;
 }
 
 .navbar-brand {
@@ -115,19 +115,25 @@ input[type="text"]:focus {
 }
 
 #search-posts {
+  background-color: white;
   position: fixed;
   left: 0;
   right: 0;
-  background-color: white;
   top: 0.08rem;
-  margin: 1rem auto 0 auto;
   min-width: 100px;
   max-width: 25%;
+  margin: 1rem auto 0 auto;
   z-index: 1;
 }
 
+/*Footer Section*/
 footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+#copyright{
+  font-size: 1.2rem;
+  color: white;
 }
