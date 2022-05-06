@@ -1,7 +1,7 @@
 <%- include('partials/header'); -%>
 
 <div class="container top-container text-center">
-    <div class="col col-lg-6 mx-auto">
+    <div class="col col-lg-6 rounded mx-auto">
         <h1>
             <% for(let i=0; i < listTitle.length; ++i){ %>
             <%=listTitle[i] + ' '%>
@@ -12,26 +12,28 @@
 
 <% for(let i=0; i < listArray.length; ++i){ %>
 <div class="container">
-    <div class="row">
         <form action="/" method="POST">
-            <div class="col col-lg-8 text-start text-wrap text-break mx-auto">
+    <div class="row justify-content-center mx-auto">
+            <div class="col col-lg-1 rounded-start">
                 <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].id %>
                     aria-label="input for a new task">
+            </div>
 
+            <div class="col col-lg-6 rounded-end text-start text-wrap text-break">
                 <p aria-label="todo list item">
                     <%=listArray[i].name%>
                 </p>
                 <input type="hidden" name="listName" value=<%= listTitle.join('^') %>>
+            </div>
         </form>
 
     </div>
-</div>
 </div>
 <% } %>
 
 <div class="container">
     <div class="row">
-        <div class="col col-lg-8 text-start text-wrap text-break mx-auto">
+        <div class="col col-lg-8 text-start text-wrap text-break mx-auto rounded">
             <form class="item" action="/" method="POST">
                 <input id=todo-blank type="text" name="newItem" placeholder="New Task" autocomplete="off"
                     aria-label="input for a new task">
