@@ -17,7 +17,7 @@
             <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].id %>
                 aria-label="input for a new task">
 
-            <p aria-label="todo list item">
+            <p id="todo-item" aria-label="todo list item">
                 <%=listArray[i].name%>
             </p>
             <input type="hidden" name="listName" value=<%= listTitle.join('^') %>>
@@ -26,9 +26,9 @@
     <% } %>
 
     <form class="item" action="/" method="POST">
-        <input type="text" name="newItem" placeholder="New Task" autocomplete="off" aria-label="input for a new task">
+        <input id=todo-blank type="text" name="newItem" placeholder="New Task" autocomplete="off" aria-label="input for a new task">
         <button class="add" type="submit" name="listName" aria-label="task to add to todo list"
-            value=<%=listTitle.join('^') %>>+</button>
+            value=<%=listTitle.join('^') %>><i class="fa-solid fa-plus"></i></button>
     </form>
 </div>
 

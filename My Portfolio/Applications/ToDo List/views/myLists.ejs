@@ -9,24 +9,24 @@
 <div class="box">
     <% for(let i=0; i < listArray.length; ++i){ %>
 
-    <form class="item" action="/deleteList" method="POST">
-        <div class="item">
+    <div class="item">
+        <form class="item" action="/deleteList" method="POST">
 
             <input type="checkbox" name="removeTask" onchange="this.form.submit()"
                 value=<%= listArray[i].name.replaceAll(' ', '^') %> aria-label="input for a new task">
 
-            <p aria-label="todo list item">
+            <p id="list-item" aria-label="list item">
                 <%=listArray[i].name%>
             </p>
-
-
             <input type="hidden" name="listName" value=<%= listTitle %>>
-        </div>
-    </form>
-            <form class="item" action="/" method="POST">
-                <button class="add" type="submit" name="goToList" aria-label="go to list"
-                    value=<%= listArray[i].name.replaceAll(' ', '^') %>>+</button>
-            </form>
-    <% } %>
+        </form>
 
-    <%- include('partials/footer'); -%>
+        <form class="item" action="/" method="POST">
+            <button class="goTo" type="submit" name="goToList" aria-label="go to list"
+                value=<%= listArray[i].name.replaceAll(' ', '^') %>><i
+                    class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    <% } %>
+</div>
+<%- include('partials/footer'); -%>
