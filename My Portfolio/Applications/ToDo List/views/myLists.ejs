@@ -12,7 +12,7 @@
     <form class="item" action="/deleteList" method="POST">
         <div class="item">
 
-            <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].name %>
+            <input type="checkbox" name="removeTask" onchange="this.form.submit()" value=<%= listArray[i].name.replaceAll(' ', '^') %>
                 aria-label="input for a new task">
 
             <p aria-label="todo list item">

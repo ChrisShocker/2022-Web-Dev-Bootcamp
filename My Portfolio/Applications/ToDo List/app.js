@@ -59,17 +59,12 @@ app.get('/about', (req, res) =>
     res.render("about");
 });
 
-app.get('/myLists', (req, res) =>
+app.get('/myLists', async (req, res) =>
 {
-    mongoose.connection.db.listCollections().toArray(function (error, names)
-    {
-        if (error)
-            console.log(error);
-        else
-        {
-            res.render('myLists', { listTitle: 'My List', listArray: names });
-        }
-    })
+    var listArray = [];
+    listArray = await mongoose.connection.db.listCollections().toArray();
+
+    res.render('myLists', { listTitle: 'My List', listArray: listArray });
 });
 
 app.get('/:someThing', async (req, res) =>
@@ -124,7 +119,10 @@ app.post('/', async (req, res) =>
 
 app.post('/deleteList', async (req, res) =>
 {
+    console.log('in deleteList');
     var listName = req.body.removeTask;
+    console.log(listName);
+    listName = listName.replaceAll('^', ' ');
     console.log(listName);
 
     var listArray = [];
