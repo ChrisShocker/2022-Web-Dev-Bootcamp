@@ -115,15 +115,19 @@ app.post('/', async (req, res) =>
         await mongCMD.removeTaskByID(req, currentList);
         res.redirect('/' + list);
     }
+
+    else if(req.body.goToList){
+        var goTo = req.body.goToList;
+        goTo = goTo.replaceAll('^', ' ');
+        res.redirect('/' + goTo);
+    }
+    
 });
 
 app.post('/deleteList', async (req, res) =>
 {
-    console.log('in deleteList');
     var listName = req.body.removeTask;
-    console.log(listName);
     listName = listName.replaceAll('^', ' ');
-    console.log(listName);
 
     var listArray = [];
     listArray = await mongoose.connection.db.listCollections().toArray();
