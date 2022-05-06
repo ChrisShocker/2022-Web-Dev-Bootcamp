@@ -13,21 +13,21 @@
     <div class="row justify-content-center mx-auto">
         <div class="col col-lg-1 rounded-start">
             <form action="/deleteList" method="POST">
-                <input id="checkbox" type="checkbox" name="removeTask" onchange="this.form.submit()"
-                    value=<%= listArray[i].name.replaceAll(' ', '^') %> aria-label="input for a new task">
+                <button id="delete-button" type="submit" name="removeTask"
+                    value=<%= listArray[i].name.replaceAll(' ', '^') %> aria-label="input for a new task"><i
+                        class="fa-solid fa-trash-can"></i>
+                </button>
             </form>
         </div>
-
         <div class="col col-lg-7">
-            <div aria-label="collection item">
+            <div class="text-center" aria-label="collection item">
                 <%=listArray[i].name%>
                 <input type="hidden" name="listName" value=<%= listTitle %>>
             </div>
         </div>
-
         <div class="col col-lg-1 rounded-end">
             <form action="/" method="POST">
-                <button class="goTo" type="submit" name="goToList" aria-label="go to list"
+                <button class="mag-glass" type="submit" name="goToList" aria-label="go to list"
                     value=<%= listArray[i].name.replaceAll(' ', '^') %>><i
                         class="fa-solid fa-magnifying-glass"></i></button>
             </form>

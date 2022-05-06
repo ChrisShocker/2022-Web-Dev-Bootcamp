@@ -1,5 +1,4 @@
 <%- include('partials/header'); -%>
-
 <div class="container top-container text-center">
     <div class="col col-lg-6 rounded mx-auto">
         <h1>
@@ -14,20 +13,17 @@
 <div class="container">
     <form action="/" method="POST">
         <div class="row justify-content-center  mx-auto">
-            <div id="checkbox-col" class="col col-lg-1 rounded-start">
-                <input id="checkbox" type="checkbox" name="removeTask" onchange="this.form.submit()"
-                    value=<%= listArray[i].id %> aria-label="input for a new task">
+            <div class="col col-lg-1 rounded-start">
+                <button id="delete-button" type="submit" name="removeTask" value=<%= listArray[i].id %>>
+                    <i class="fa-solid fa-trash-can"></i></button>
             </div>
-
-            <div class="col col-lg-7 rounded-end align-self-center text-start text-wrap text-break">
+            <div class="col col-lg-7 rounded-end text-start text-wrap text-break">
                 <div aria-label="todo list item">
                     <%=listArray[i].name%>
                 </div>
                 <input type="hidden" name="listName" value=<%= listTitle.join('^') %>>
             </div>
     </form>
-
-</div>
 </div>
 <% } %>
 

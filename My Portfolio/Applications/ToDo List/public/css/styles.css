@@ -90,14 +90,21 @@ button {
   min-height: 60px;
   width: 60px;
   border-radius: 50%;
-  border-color: transparent;
   font-size: 2rem;
   border-width: 0;
+}
+
+#delete-button{
+  margin-left: 1rem;
 }
 
 .add {
   color: #00204a;
   margin-right: 0.5rem;
+}
+
+.mag-glass{
+  margin-left: 2rem;
 }
 
 /*Navbar Section*/
@@ -107,6 +114,7 @@ button {
 }
 
 #links {
+  font-size: 1.5rem;
   padding: 0 2% 0 2%;
 }
 
