@@ -3,29 +3,26 @@ body {
   background-image: -webkit-linear-gradient(65deg, #B9F8D3 50%, #40DFEF 50%);
   min-height: 100%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: center;
 }
 
 h1 {
   padding: 10px;
 }
 
-.box-top {
-  margin-top: 7rem !important;
+.top-container{
+  margin-top: 7rem;
+  color: #013272;
 }
 
-.box {
-  max-width: 50%;
-  margin: 1rem auto;
+.container{
+  margin-bottom: 1rem;
+}
+
+
+.col{
   background: #FFFBE7;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
-}
-
-#heading {
-  background-color: #FFFBE7;
-  color: #013272;
-  text-align: center;
 }
 
 .item {
@@ -39,13 +36,7 @@ h1 {
   border-bottom: 0;
 }
 
-input[type="checkbox"] {
-  margin: 20px;
-}
-
 p {
-  margin: 0;
-  padding: 1%;
   font-size: 2rem;
   font-weight: 200;
   color: #00204a;
@@ -62,13 +53,6 @@ p {
 #todo-blank{
   width:85%;
 }
-
-form {
-  text-align: center;
-  margin-left: 20px;
-}
-
-
 
 input[type="text"] {
   text-align: center;
