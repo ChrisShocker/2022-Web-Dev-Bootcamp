@@ -1,16 +1,44 @@
-const express = require('express');
-const ejs = require('ejs');
-const _ = require('lodash');
+/******** 
+ * Modules
+*********/
 const date = require(__dirname + '/modules/date.ejs');
 const array = require(__dirname + '/modules/arrayManip.ejs');
-const port = 3000;
 
+/******** 
+ * Mongoose
+*********/
+const mongoose = require('mongoose');
+const keys = require('./api_keys');
+const userName = keys.mongooseUserName;
+const password = keys.mongoosePassword;
+const DB = keys.mongooseDB;
+const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
+const connection = mongoose.connect(uri, { useNewURLParser: true });
+
+/******** 
+ * Express
+*********/
+const express = require('express');
 const app = express();
-
-app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+const port = 3000;
+
+/******** 
+ * Misc. Modules
+*********/
+const _ = require('lodash');
+app.set('view engine', 'ejs');
+
+/******** 
+ * Schema
+*********/
+const blogSchema = new mongoose.Schema({
+    body: {
+        type: String,
+        required: [true, 'Error: No text entered']
+    }
+});
 
 const messageAbout = "laboris nisi ut aliquip ex ea commodo consequat.";
 const messageContact = "Sed ut perspiciatis unde omnis iste natus doloremque.";
