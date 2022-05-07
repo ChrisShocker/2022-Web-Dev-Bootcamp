@@ -7,6 +7,7 @@ const mongCMD = require(__dirname + "/modules/mongCommands.ejs");
 /******** 
  * Mongoose
 *********/
+const { Db } = require('mongodb');
 const mongoose = require('mongoose');
 const keys = require('./api_keys');
 const userName = keys.mongooseUserName;
@@ -19,12 +20,15 @@ const connection = mongoose.connect(uri, { useNewURLParser: true });
  * Express
 *********/
 const express = require("express");
-const { Db } = require('mongodb');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.set('view engine', 'ejs');
 const port = 3000;
+
+/******** 
+ * Misc. Modules
+*********/
+app.set('view engine', 'ejs');
 
 /******** 
  * Schema
