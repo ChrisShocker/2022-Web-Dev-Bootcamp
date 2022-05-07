@@ -56,7 +56,7 @@ app.get('/', (req, res) =>
 
 app.get('/about', (req, res) =>
 {
-    res.render("about");
+    res.render('about', { listTitle: 'About', listArray: '' });
 });
 
 app.get('/myLists', async (req, res) =>
