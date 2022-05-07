@@ -10,7 +10,7 @@
 
 <% for(let i=0; i < listArray.length; ++i){ %>
 <div class="container">
-    <div class="row justify-content-center mx-auto">
+    <div class="row justify-content-center align-items-center mx-auto">
         <div class="col col-lg-1 rounded-start">
             <form action="/deleteList" method="POST">
                 <button id="delete-button" type="submit" name="removeTask"
@@ -19,11 +19,13 @@
                 </button>
             </form>
         </div>
-        <div class="col col-lg-7">
-            <div class="text-center" aria-label="collection item">
+        <div class="col col-lg-7 text-center">
+            <!-- <div class="text-center" aria-label="collection item"> -->
+                <p>
                 <%=listArray[i].name%>
+                </p>
                 <input type="hidden" name="listName" value=<%= listTitle %>>
-            </div>
+            <!-- </div> -->
         </div>
         <div class="col col-lg-1 rounded-end">
             <form action="/" method="POST">
