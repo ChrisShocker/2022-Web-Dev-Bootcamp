@@ -5,40 +5,45 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1 {
-  padding: 10px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
-.top-container{
+.top-container {
   margin-top: 7rem;
   color: #013272;
   padding: 0;
 }
 
-.container{
+.container {
   margin-bottom: 1rem;
 }
 
-.col{
+.col {
   background: #FFFBE7;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
   padding: 0.4rem 0 0.4rem;
 }
 
-#checkbox{
+#checkbox {
   height: 100%;
   width: 25px;
   margin-left: 2rem;
 }
 
-div{
+div {
 
   color: #00204a;
   font-size: 2rem;
   font-weight: 200;
 }
 
-#myList{
+#myList {
   display: inline;
 }
 
@@ -47,18 +52,21 @@ p {
   font-weight: 200;
   color: #00204a;
   display: inline-block;
+  margin-bottom: 0;
 }
 
-#list-item{
-  width:325px;
+#list-item {
+  width: 325px;
   word-break: break-all;
 }
-#todo-item{
-  width:90%;
+
+#todo-item {
+  width: 90%;
   word-break: break-all;
 }
-#todo-blank{
-  width:80%;
+
+#todo-blank {
+  width: 80%;
   margin-left: 4.5rem;
 }
 
@@ -94,7 +102,7 @@ button {
   border-width: 0;
 }
 
-#delete-button{
+#delete-button {
   margin-left: 1rem;
 }
 
@@ -103,7 +111,7 @@ button {
   margin-right: 0.5rem;
 }
 
-.mag-glass{
+.mag-glass {
   margin-left: 2rem;
 }
 
