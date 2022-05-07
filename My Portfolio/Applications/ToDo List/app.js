@@ -121,6 +121,10 @@ app.post('/', async (req, res) =>
         goTo = goTo.replaceAll('^', ' ');
         res.redirect('/' + goTo);
     }
+    else{
+        console.log('Empty parameter');
+        res.redirect(req.get('referer'));
+    }
     
 });
 

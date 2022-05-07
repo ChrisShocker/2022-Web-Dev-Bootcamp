@@ -25,13 +25,14 @@
     exports.addTask = async function (req, Task)
     {
         var item = req.body.newItem;
-        if (item)
+        if(item === " ")
+            console.log("No task entered");
+
+        else
         {
             const task = new Task({
                 name: item,
             });
             await task.save();
         }
-        else
-            console.log("No task entered");
     }
