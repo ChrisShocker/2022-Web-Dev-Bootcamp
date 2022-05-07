@@ -97,7 +97,15 @@ app.post('/', async (req, res) =>
     if (req.body.createList)
     {
         let newList = req.body.createList;
-        res.redirect('/' + newList);
+        if (newList === " ")
+        {
+            console.log('Empty list');
+            res.redirect(req.get('referer'));
+        }
+        else
+        {
+            res.redirect('/' + newList);
+        }
     }
 
     else if (req.body.newItem)
@@ -116,16 +124,18 @@ app.post('/', async (req, res) =>
         res.redirect('/' + list);
     }
 
-    else if(req.body.goToList){
+    else if (req.body.goToList)
+    {
         var goTo = req.body.goToList;
         goTo = goTo.replaceAll('^', ' ');
         res.redirect('/' + goTo);
     }
-    else{
+    else
+    {
         console.log('Empty parameter');
         res.redirect(req.get('referer'));
     }
-    
+
 });
 
 app.post('/deleteList', async (req, res) =>
