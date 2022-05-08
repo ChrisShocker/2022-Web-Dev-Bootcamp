@@ -42,9 +42,7 @@ const wikiSchema = new mongoose.Schema({
         required: [true, 'Error: No task name']
     }
 });
-
 const Article = new mongoose.model('articles', wikiSchema);
-
 
 /******** 
  * get
@@ -58,10 +56,11 @@ app.get('/', (req, res) =>
         else if(articles.length < 1)
         {
             mongCMD.buildCollection(Article);
-            res.render('index');
+            res.render('index', { array: articles });
         }
-        else
-            res.render('index');
+        else{
+            res.render('index', { array: articles });
+        }
     });
 });
 
