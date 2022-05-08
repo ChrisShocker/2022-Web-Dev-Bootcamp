@@ -82,9 +82,9 @@ app.get('/articles', (req, res) =>
 /******** 
  * post
 *********/
-app.post('/', async (req, res) =>
+app.post('/articles', async (req, res) =>
 {
-
+    mongCMD.postArticle(Article, req.body.title, req.body.content);
 });
 
 app.listen(port, () =>

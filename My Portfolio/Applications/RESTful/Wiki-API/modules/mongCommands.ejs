@@ -6,11 +6,25 @@
         await exports.addArticle(Article, "wikiPost3", "A explanation of wikipost3");
     }
 
-    exports.addArticle = async function (Article,title, content)
+    exports.addArticle = async function (Article, title, content)
     {
             const article = new Article({
                 title: title,
                 content: content
             });
             await article.save();
+    }
+
+    exports.postArticle = async function (Article, title, content)
+    {
+            const article = new Article({
+                title: title,
+                content: content
+            });
+            await article.save( function(error){
+                if(error)
+                    res.send(error);
+                else
+                    res.send("Successfully Added Article");
+            });
     }
