@@ -33,12 +33,22 @@ app.set('view engine', 'ejs');
 /******** 
  * Schema
 *********/
-const blogSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
+    date: {
+        type: String,
+    },
+
+    title: {
+        type: String,
+        required: [true, 'Error: No title entered']
+    },
+
     body: {
         type: String,
-        required: [true, 'Error: No text entered']
+        required: [true, 'Error: No body entered']
     }
 });
+const Post = new mongoose.model('Home', postSchema);
 
 const messageAbout = "laboris nisi ut aliquip ex ea commodo consequat.";
 const messageContact = "Sed ut perspiciatis unde omnis iste natus doloremque.";
@@ -46,12 +56,15 @@ const posts = [];
 
 app.get('/', (req, res) =>
 {
-    res.render('home', { postArray: posts });
-});
-
-app.get('/index', (req, res) =>
-{
-    res.render('home', { postArray: posts });
+    Post.find({}, async function (error, posts)
+    {
+        if (error)
+            console.log(error);
+        else
+        {
+            res.render('home', { postArray: posts });
+        }
+    });
 });
 
 app.get('/about', (req, res) =>
