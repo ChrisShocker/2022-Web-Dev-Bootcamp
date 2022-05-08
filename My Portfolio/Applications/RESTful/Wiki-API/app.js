@@ -94,10 +94,10 @@ app.route('/articles')
         mongCMD.deleteAllArticles(Article);
     });
 
-app.route('/articles:article')
+app.route('/articles/:articleTitle')
     .get( (req, res) =>
     {
-        Article.find({title: article},function (error, article)
+        Article.findOne({title: req.params.articleTitle},function (error, article)
         {
             if (error)
                 console.log(error);
