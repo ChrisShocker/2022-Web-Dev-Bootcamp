@@ -49,19 +49,34 @@ const Article = new mongoose.model('articles', wikiSchema);
 *********/
 app.get('/', (req, res) =>
 {
-    Article.find({}, async function (error, articles)
+    Article.find(function (error, articles)
     {
         if (error)
             console.log(error);
-        else if(articles.length < 1)
+        else if (articles.length < 1)
         {
+            //if colletion is empty build it
             mongCMD.buildCollection(Article);
-            res.render('index', { array: articles });
         }
-        else{
-            res.render('index', { array: articles });
+        res.render('index', { array: articles });
+    })
+});
+
+//REST: should return all articles in DB
+app.get('/articles', (req, res) =>
+{
+    Article.find(function (error, articles)
+    {
+        if (error)
+            console.log(error);
+
+        else if (articles.length < 1)
+        {
+            //if colletion is empty build it
+            mongCMD.buildCollection(Article);
         }
-    });
+        res.send(articles);
+    })
 });
 
 /******** 
