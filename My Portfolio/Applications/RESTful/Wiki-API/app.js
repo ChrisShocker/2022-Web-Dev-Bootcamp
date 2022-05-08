@@ -62,35 +62,36 @@ app.get('/', (req, res) =>
     })
 });
 
-//REST: should return all articles in DB
-app.get('/articles', (req, res) =>
-{
-    Article.find(function (error, articles)
-    {
-        if (error)
-            console.log(error);
-
-        else if (articles.length < 1)
-        {
-            //if colletion is empty build it
-            mongCMD.buildCollection(Article);
-        }
-        res.send(articles);
-    })
-});
-
 /******** 
- * post
+ * routes
 *********/
-app.post('/articles', async (req, res) =>
-{
-    mongCMD.postArticle(Article, req.body.title, req.body.content);
-});
+app.route('/articles')
+    //REST: should return all articles in DB
+    .get((req, res) =>
+    {
+        Article.find(function (error, articles)
+        {
+            if (error)
+                console.log(error);
 
-app.delete('/articles', async (req, res) =>
-{
-    mongCMD.deleteAllArticles(Article);
-});
+            else if (articles.length < 1)
+            {
+                //if colletion is empty build it
+                mongCMD.buildCollection(Article);
+            }
+            res.send(articles);
+        })
+    })
+    //REST: should add an article
+    .post(async (req, res) =>
+    {
+        mongCMD.postArticle(Article, req.body.title, req.body.content);
+    })
+    //REST: should delete all articles
+    .delete(async (req, res) =>
+    {
+        mongCMD.deleteAllArticles(Article);
+    });
 
 app.listen(port, () =>
 {
