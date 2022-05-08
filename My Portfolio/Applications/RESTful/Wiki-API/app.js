@@ -87,6 +87,11 @@ app.post('/articles', async (req, res) =>
     mongCMD.postArticle(Article, req.body.title, req.body.content);
 });
 
+app.delete('/articles', async (req, res) =>
+{
+    mongCMD.deleteAllArticles(Article);
+});
+
 app.listen(port, () =>
 {
     console.log("Server running on port: " + port);

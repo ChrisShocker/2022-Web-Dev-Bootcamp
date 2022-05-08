@@ -28,3 +28,12 @@
                     res.send("Successfully Added Article");
             });
     }
+
+    exports.deleteAllArticles = async function(Article){
+        Article.deleteMany(function(error){
+            if(error)
+                res.send(error);
+            else
+                res.send("Deleted all articles");
+        });
+    }
