@@ -1,6 +1,7 @@
 /******** 
  * Modules
 *********/
+const mongCMD = require(__dirname + "/modules/mongCommands.ejs");
 
 /******** 
  * Mongoose
@@ -41,22 +42,26 @@ const wikiSchema = new mongoose.Schema({
         required: [true, 'Error: No task name']
     }
 });
-const Task = new mongoose.model(wikiSchema);
+
+const Article = new mongoose.model('articles', wikiSchema);
+
 
 /******** 
  * get
 *********/
 app.get('/', (req, res) =>
 {
-    Task.find({}, async function (error, tasks)
+    Article.find({}, async function (error, articles)
     {
         if (error)
             console.log(error);
-        else
+        else if(articles.length < 1)
         {
-            let todaysDate = date.getDate();
+            mongCMD.buildCollection(Article);
             res.render('index');
         }
+        else
+            res.render('index');
     });
 });
 

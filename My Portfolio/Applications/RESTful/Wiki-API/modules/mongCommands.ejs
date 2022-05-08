@@ -1,38 +1,16 @@
 /*<script>*/
-
-    exports.removeTask = async function (req, Task){
-        var item = req.body.removeTask;
-        if (item)
-        {
-            const deleteTask = await Task.deleteOne({name: item});
-            console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
-        }
-        else
-            console.log("No task entered");
-    }
-
-    exports.removeTaskByID = async function (req, Task){
-        var item = req.body.removeTask;
-        if (item)
-        {
-            const deleteTask = await Task.deleteOne({_id: item});
-            console.log('Deleted: ' +deleteTask.deletedCount +' entrie/s');
-        }
-        else
-            console.log("No task entered");
-    }
-
-    exports.addTask = async function (req, Task)
+    exports.buildCollection = async function (Article)
     {
-        var item = req.body.newItem;
-        if(item === " ")
-            console.log("No task entered");
+        await exports.addArticle(Article, "wikiPost1", "A explanation of wikipost1");
+        await exports.addArticle(Article, "wikiPost2", "A explanation of wikipost2");
+        await exports.addArticle(Article, "wikiPost3", "A explanation of wikipost3");
+    }
 
-        else
-        {
-            const task = new Task({
-                name: item,
+    exports.addArticle = async function (Article,title, content)
+    {
+            const article = new Article({
+                title: title,
+                content: content
             });
-            await task.save();
-        }
+            await article.save();
     }
