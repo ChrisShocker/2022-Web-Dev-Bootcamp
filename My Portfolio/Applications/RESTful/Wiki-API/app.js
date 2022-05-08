@@ -62,6 +62,7 @@ app.get('/', (req, res) =>
     })
 });
 
+
 /******** 
  * routes
 *********/
@@ -91,6 +92,26 @@ app.route('/articles')
     .delete(async (req, res) =>
     {
         mongCMD.deleteAllArticles(Article);
+    });
+
+app.route('/articles:article')
+    .get( (req, res) =>
+    {
+        Article.find({title: article},function (error, article)
+        {
+            if (error)
+                console.log(error);
+            res.send(article);
+        })
+    })
+    //REST: should add an article
+    .post(async (req, res) =>
+    {
+        mongCMD.postArticle(Article, article, req.body.content);
+    })
+    .delete(async (req, res) =>
+    {
+        mongCMD.deleteArticle(Article, article);
     });
 
 app.listen(port, () =>

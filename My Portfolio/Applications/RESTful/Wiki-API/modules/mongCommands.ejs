@@ -37,3 +37,12 @@
                 res.send("Deleted all articles");
         });
     }
+
+    exports.deleteArticle = async function (Article, article){
+        const deleteTask = await Task.deleteOne({name: article}, function(error){
+            if(error)
+                console.log(error);
+            else
+                res.send("Successfully deleted Article");
+        });
+    }
