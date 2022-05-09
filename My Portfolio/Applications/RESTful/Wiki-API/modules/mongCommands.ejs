@@ -1,22 +1,22 @@
 /*<script>*/
     exports.buildCollection = async function (Article)
     {
-        await exports.addArticle(Article, "wikiPost1", "wikiPost1", "A explanation of wikipost1");
-        await exports.addArticle(Article, "wikiPost2", "wikiPost2", "A explanation of wikipost2");
-        await exports.addArticle(Article, "wikiPost3", "wikiPost3", "A explanation of wikipost3");
+        await exports.addArticle(Article, "wikiPost1", "wikiPost1", "An explanation of wikipost1");
+        await exports.addArticle(Article, "wikiPost2", "wikiPost2", "An explanation of wikipost2");
+        await exports.addArticle(Article, "wikiPost3", "wikiPost3", "An explanation of wikipost3");
     }
 
-    exports.addArticle = async function (Article, title, content)
+    exports.addArticle = async function (Article, id, title, content)
     {
             const article = new Article({
-                _id: title,
+                _id: id,
                 title: title,
                 content: content
             });
             await article.save();
     }
 
-    exports.postArticle = async function (Article, title, content)
+    exports.postArticle = async function (Article, id, title, content)
     {
             const article = new Article({
                 _id: title,
