@@ -33,6 +33,9 @@ app.set('view engine', 'ejs');
  * Schema
 *********/
 const wikiSchema = new mongoose.Schema({
+    _id: {
+        type: String,
+    },
     title: {
         type: String,
         required: [true, 'Error: No task name']
@@ -49,16 +52,19 @@ const Article = new mongoose.model('articles', wikiSchema);
 *********/
 app.get('/', (req, res) =>
 {
-    Article.find(function (error, articles)
+    Article.find(async function (error, articles)
     {
         if (error)
             console.log(error);
         else if (articles.length < 1)
         {
             //if colletion is empty build it
-            mongCMD.buildCollection(Article);
+            await mongCMD.buildCollection(Article);
+            res.redirect('/');
         }
-        res.render('index', { array: articles });
+        else{
+            res.render('index', { array: articles });
+        }
     })
 });
 
@@ -95,9 +101,9 @@ app.route('/articles')
     });
 
 app.route('/articles/:articleTitle')
-    .get( (req, res) =>
+    .get((req, res) =>
     {
-        Article.findOne({title: req.params.articleTitle},function (error, article)
+        Article.findOne({ title: req.params.articleTitle }, function (error, article)
         {
             if (error)
                 console.log(error);
