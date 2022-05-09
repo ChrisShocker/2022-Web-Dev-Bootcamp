@@ -122,19 +122,38 @@ app.route('/articles/:articleTitle')
     {
         mongCMD.deleteArticle(Article, article);
     })
+    //REST: replaces entire document, fields left blank are removed from article
     .put((req, res) =>
     {
         Article.replaceOne(
             { title: req.params.articleTitle },
             { title: req.body.title, content: req.body.content },
-            {overwrite: true},
-            function(error){
-                if(error)
+            { overwrite: true },
+            function (error)
+            {
+                if (error)
                     res.send(error);
                 else
                     res.send("Updated Article");
             }
         )
+    })
+    //REST: only updates fields we've provided
+    .patch((req, res) =>
+    {
+        Article.replaceOne(
+            { title: req.params.articleTitle },
+            //only update fields that have values from body
+            {$set: req.body},
+            { overwrite: false },
+            function (error)
+            {
+                if (error)
+                    res.send(error);
+                else
+                    res.send("Updated Article");
+            }
+        );
     });
 
 app.listen(port, () =>
