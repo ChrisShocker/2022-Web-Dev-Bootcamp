@@ -120,7 +120,7 @@ app.route('/articles/:articleTitle')
     //REST: should delete the article
     .delete(async (req, res) =>
     {
-        mongCMD.deleteArticle(Article, article);
+        mongCMD.deleteArticle(Article, req.params.articleTitle);
     })
     //REST: replaces entire document, fields left blank are removed from article
     .put((req, res) =>

@@ -41,7 +41,7 @@
     }
 
     exports.deleteArticle = async function (Article, article){
-        const deleteTask = await Task.deleteOne({name: article}, function(error){
+        const deleteTask = await Task.deleteOne({title: article}, function(error){
             if(error)
                 console.log(error);
             else
