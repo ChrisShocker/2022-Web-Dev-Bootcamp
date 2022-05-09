@@ -93,12 +93,12 @@ app.route('/articles')
     //REST: should add an article
     .post(async (req, res) =>
     {
-        mongCMD.postArticle(Article, req.body.title, req.body.content);
+        mongCMD.postArticle(res, Article, req.body.title, req.body.content);
     })
-    //REST: should delete all articles
+    //REST: should delete ALL articles
     .delete(async (req, res) =>
     {
-        mongCMD.deleteAllArticles(Article);
+        mongCMD.deleteAllArticles(Article, res);
     });
 
 app.route('/articles/:articleTitle')
@@ -112,15 +112,10 @@ app.route('/articles/:articleTitle')
             res.send(article);
         })
     })
-    //REST: should add an article
-    .post(async (req, res) =>
-    {
-        mongCMD.postArticle(Article, article, req.body.content);
-    })
-    //REST: should delete the article
+    //REST: should delete the specific article
     .delete(async (req, res) =>
     {
-        mongCMD.deleteArticle(Article, req.params.articleTitle);
+        mongCMD.deleteArticle(res, Article, req.params.articleTitle);
     })
     //REST: replaces entire document, fields left blank are removed from article
     .put((req, res) =>
@@ -128,7 +123,6 @@ app.route('/articles/:articleTitle')
         Article.replaceOne(
             { title: req.params.articleTitle },
             { title: req.body.title, content: req.body.content },
-            { overwrite: true },
             function (error)
             {
                 if (error)
@@ -141,7 +135,7 @@ app.route('/articles/:articleTitle')
     //REST: only updates fields we've provided
     .patch((req, res) =>
     {
-        Article.replaceOne(
+        Article.updateOne(
             { title: req.params.articleTitle },
             //only update fields that have values from body
             {$set: req.body},

@@ -16,7 +16,7 @@
             await article.save();
     }
 
-    exports.postArticle = async function (Article, id, title, content)
+    exports.postArticle = async function (res, Article, title, content)
     {
             const article = new Article({
                 _id: title,
@@ -31,7 +31,7 @@
             });
     }
 
-    exports.deleteAllArticles = async function(Article){
+    exports.deleteAllArticles = async function(Article, res){
         Article.deleteMany(function(error){
             if(error)
                 res.send(error);
