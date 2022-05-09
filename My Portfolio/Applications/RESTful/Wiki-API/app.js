@@ -62,7 +62,8 @@ app.get('/', (req, res) =>
             await mongCMD.buildCollection(Article);
             res.redirect('/');
         }
-        else{
+        else
+        {
             res.render('index', { array: articles });
         }
     })
@@ -101,6 +102,7 @@ app.route('/articles')
     });
 
 app.route('/articles/:articleTitle')
+    //REST: should send the specific article
     .get((req, res) =>
     {
         Article.findOne({ title: req.params.articleTitle }, function (error, article)
@@ -115,9 +117,24 @@ app.route('/articles/:articleTitle')
     {
         mongCMD.postArticle(Article, article, req.body.content);
     })
+    //REST: should delete the article
     .delete(async (req, res) =>
     {
         mongCMD.deleteArticle(Article, article);
+    })
+    .put((req, res) =>
+    {
+        Article.replaceOne(
+            { title: req.params.articleTitle },
+            { title: req.body.title, content: req.body.content },
+            {overwrite: true},
+            function(error){
+                if(error)
+                    res.send(error);
+                else
+                    res.send("Updated Article");
+            }
+        )
     });
 
 app.listen(port, () =>
