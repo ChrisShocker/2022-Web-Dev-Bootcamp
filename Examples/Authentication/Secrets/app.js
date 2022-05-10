@@ -49,11 +49,34 @@ app.get('/login', (req, res) =>
     res.render('login');
 })
 
-app.get('/register', (req, res) =>
-{
-    res.render('register');
-})
+/******** 
+ * routes
+*********/
+app.route('/register')
+    .get((req, res) =>
+    {
+        res.render('register');
+    }).post((req, res) =>
+    {
+        const newUser = new User({
+            email: req.body.userName,
+            password: req.body.password
+        });
+        newUser.save((error) =>
+        {
+            if (error)
+                console.log(error);
+            else
+                console.log('User added');
 
+            res.redirect('register');
+        })
+    })
+
+
+/******** 
+ * Server
+*********/
 app.listen(port, () =>
 {
     console.log("Server running on port: " + port);
