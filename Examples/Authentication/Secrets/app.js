@@ -49,14 +49,35 @@ app.get('/', (req, res) =>
     res.render('home');
 })
 
-app.get('/login', (req, res) =>
-{
-    res.render('login');
-})
-
 /******** 
  * routes
 *********/
+app.route('/login')
+    .get((req, res) =>
+    {
+        res.render('login');
+    }).post((req, res) =>
+    {
+        const userName = req.body.userName;
+        const password = req.body.password;
+
+        User.findOne({ email: userName }, (error, foundUser) =>
+        {
+            if (error)
+                console.log(error);
+            else
+            {
+                if (foundUser.password === password)
+                {
+                    console.log("User found");
+                    res.render('secrets');
+                }
+                else
+                    console.log("User not found");
+            }
+        })
+    })
+
 app.route('/register')
     .get((req, res) =>
     {
