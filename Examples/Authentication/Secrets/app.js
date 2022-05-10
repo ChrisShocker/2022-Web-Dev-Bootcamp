@@ -24,6 +24,11 @@ const connection = mongoose.connect(uri, { useNewURLParser: true });
  * Schema & Model
 *********/
 const userSchema = new mongoose.Schema({
+    _id: {
+        type: String,
+        required: [true, 'Error: No ID, should be email..']
+    },
+
     email: {
         type: String,
         required: [true, 'Error: No email']
@@ -59,6 +64,7 @@ app.route('/register')
     }).post((req, res) =>
     {
         const newUser = new User({
+            _id: req.body.userName,
             email: req.body.userName,
             password: req.body.password
         });
@@ -69,7 +75,7 @@ app.route('/register')
             else
                 console.log('User added');
 
-            res.redirect('register');
+            res.render('secrets');
         })
     })
 
