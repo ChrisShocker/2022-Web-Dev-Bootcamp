@@ -1,11 +1,11 @@
 /******** 
- * Modules
+ * Custom Modules
 *********/
 const date = require(__dirname + "/modules/date.ejs");
 const mongCMD = require(__dirname + "/modules/mongCommands.ejs");
 
 /******** 
- * Mongoose
+ *MongoDB & Mongoose
 *********/
 const { Db } = require('mongodb');
 const mongoose = require('mongoose');
@@ -17,17 +17,13 @@ const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mong
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
 /******** 
- * Express
+ * Express & EJS
 *********/
 const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 const port = 3000;
-
-/******** 
- * Misc. Modules
-*********/
 app.set('view engine', 'ejs');
 
 /******** 
