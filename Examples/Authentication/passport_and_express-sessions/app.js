@@ -1,9 +1,7 @@
 /******** 
- * bcrypt.js  & .ENV
+ *.ENV
 *********/
 require('dotenv').config();
-var bcrypt = require('bcryptjs');
-var sha512 = require('js-sha512');
 
 /******** 
  * Express & EJS
@@ -26,22 +24,47 @@ const DB = process.env.MONGOOSE_DB;
 const uri = "mongodb+srv://" + username + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
+
 /******** 
- * Schema, Model, and Encryption
+ * exress-session
+*********/
+const session = require('express-session');
+app.use(session({
+    secret: process.env.MONGOOSE_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+/******** 
+ * Passport
+*********/
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
+const { application } = require('express');
+app.use(passport.initialize());
+app.use(passport.session());
+
+/******** 
+ *Mongoose Schema, Model, & Passport plugin
 *********/
 const userSchema = new mongoose.Schema({
-    _id: {
+    //not username is made unique by defualt with passport
+    username: {
         type: String,
-        required: [true, 'Error: No ID, should be email..']
+        required: [true, 'Error: No username']
     },
 
-    password: {
-        type: String,
-        required: [true, 'Error: No password']
-    }
+    password: String,
 });
+//Create plugin for passport-local-mongoose
+userSchema.plugin(passportLocalMongoose);
 //Create model
-const User = new mongoose.model('User', userSchema)
+const User = new mongoose.model('User', userSchema);
+//Add authentication
+passport.use(User.createStrategy());
+//use serialize/deserialize for express-sessions
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 /******** 
  * get
@@ -58,41 +81,24 @@ app.route('/login')
     .get((req, res) =>
     {
         res.render('login');
-    }).post((req, res) =>
+    }).post(passport.authenticate("local", {failureRedirect:'/login'}),
+    (req, res) =>
     {
-        const username = req.body.userName;
-        const password = sha512(req.body.password);
+        const user = new User({
+            username: req.body.username,
+            password: req.body.password
+        });
 
-        User.findOne({ email: username }, (error, foundUser) =>
+        req.login(user, (error) =>
         {
             if (error)
                 console.log(error);
             else
             {
-                if (foundUser)
+                passport.authenticate("local")(req, res, function ()
                 {
-                    bcrypt.genSalt(12, function (error, salt)
-                    {
-                        bcrypt.hash(password, salt, (error, hash) =>
-                        {
-                            bcrypt.compare(password, hash, (error, match) =>
-                            {
-                                if(match === true){
-                                    console.log("User found");
-                                    res.render('secrets');
-                                }
-                                else{
-                                    console.log('Wrong password');
-                                }
-                            })
-                        })
-                    })
-                }
-                else
-                {
-                    console.log("User not found");
-                    res.redirect('login');
-                }
+                    res.redirect("/secrets");
+                });
             }
         })
     })
@@ -103,26 +109,32 @@ app.route('/register')
         res.render('register');
     }).post((req, res) =>
     {
-        bcrypt.genSalt(12, (error, salt) =>
+        User.register({ username: req.body.username }, req.body.password, (error, user) =>
         {
-            bcrypt.hash(sha512(req.body.password), salt, (error, hash) =>
+            if (error)
             {
-                const newUser = new User({
-                    _id: req.body.username,
-                    password: hash
-                });
-                newUser.save((error) =>
+                console.log(error);
+                res.redirect("/register");
+            }
+            else
+            {
+                passport.authenticate("local")(req, res, function ()
                 {
-                    if (error)
-                        console.log(error);
-                    else
-                        console.log('User added');
+                    res.redirect("/secrets");
+                });
+            }
+        });
+    });
 
-                    res.render('secrets');
-                })
-            })
-        })
+app.route('/secrets')
+    .get((req, res) =>
+    {
+        if (req.isAuthenticated())
+            res.render('secrets');
+        else
+            res.redirect("/login");
     })
+
 
 /******** 
  * Server
