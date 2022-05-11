@@ -3,4 +3,3 @@ bootstrap-5.1.3-dist/
 node_modules
 api_keys.js
 keys_api.js
-Examples/Authentication/Secrets/keys_api.js
