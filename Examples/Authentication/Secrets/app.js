@@ -1,8 +1,8 @@
 /******** 
- * md5  & .ENV
+ * js-sha512  & .ENV
 *********/
 require('dotenv').config();
-var md5 = require('md5');
+var sha512 = require('js-sha512');
 
 /******** 
  * Express & EJS
@@ -61,7 +61,7 @@ app.route('/login')
     }).post((req, res) =>
     {
         const username = req.body.userName;
-        const password = md5(req.body.password);
+        const password = sha512(req.body.password);
 
         User.findOne({ email: username }, (error, foundUser) =>
         {
@@ -90,7 +90,7 @@ app.route('/register')
     {
         const newUser = new User({
             _id: req.body.username,
-            password: md5(req.body.password)
+            password: sha512(req.body.password)
         });
         newUser.save((error) =>
         {
