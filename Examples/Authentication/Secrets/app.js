@@ -13,7 +13,8 @@ app.set('view engine', 'ejs');
 *********/
 const { Db } = require('mongodb');
 const mongoose = require('mongoose');
-const keys = require('./api_keys');
+const encrypt = require('mongoose-encryption');
+const keys = require('./keys_api');
 const userName = keys.mongooseUserName;
 const password = keys.mongoosePassword;
 const DB = keys.mongooseDB;
@@ -21,7 +22,7 @@ const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mong
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
 /******** 
- * Schema & Model
+ * Schema, Model, and Encryption
 *********/
 const userSchema = new mongoose.Schema({
     _id: {
@@ -29,16 +30,15 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Error: No ID, should be email..']
     },
 
-    email: {
-        type: String,
-        required: [true, 'Error: No email']
-    },
-
     password: {
         type: String,
         required: [true, 'Error: No password']
     }
 });
+//Encrypt dataBase before creating model
+const secret = keys.mongooseSecret;
+userSchema.plugin(encrypt, { secret: secret, encryptedFeilds: ['password'] });
+//Create model
 const User = new mongoose.model('User', userSchema)
 
 /******** 
@@ -86,7 +86,6 @@ app.route('/register')
     {
         const newUser = new User({
             _id: req.body.userName,
-            email: req.body.userName,
             password: req.body.password
         });
         newUser.save((error) =>
