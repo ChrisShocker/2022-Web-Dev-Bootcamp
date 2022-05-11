@@ -45,6 +45,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /******** 
+ * Google OAuth & mongoose findOrCreate
+*********/
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrCreate = require('mongoose-findorcreate')
+
+/******** 
  *Mongoose Schema, Model, & Passport plugin
 *********/
 const userSchema = new mongoose.Schema({
@@ -58,6 +64,8 @@ const userSchema = new mongoose.Schema({
 });
 //Create plugin for passport-local-mongoose
 userSchema.plugin(passportLocalMongoose);
+//Create plugin for mongoose findOrCreate
+userSchema.plugin(findOrCreate);
 //Create model
 const User = new mongoose.model('User', userSchema);
 //Add authentication
@@ -65,6 +73,21 @@ passport.use(User.createStrategy());
 //use serialize/deserialize for express-sessions
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+/******** 
+ * Google OAuth
+*********/
+passport.use(new GoogleStrategy({
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/secrets"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 
 /******** 
  * get
