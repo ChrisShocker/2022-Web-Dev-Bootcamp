@@ -21,7 +21,7 @@ const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mong
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
 /******** 
- * Schema & Model
+ * Schema, Model, and Encryption
 *********/
 const userSchema = new mongoose.Schema({
     _id: {
@@ -29,16 +29,15 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Error: No ID, should be email..']
     },
 
-    email: {
-        type: String,
-        required: [true, 'Error: No email']
-    },
-
     password: {
         type: String,
         required: [true, 'Error: No password']
     }
 });
+//Encrypt dataBase before creating model
+const secret = keys.mongooseSecret;
+userSchema.plugin(encrypt, { secret: secret, encryptedFeilds: ['password'] });
+//Create model
 const User = new mongoose.model('User', userSchema)
 
 /******** 
@@ -49,14 +48,35 @@ app.get('/', (req, res) =>
     res.render('home');
 })
 
-app.get('/login', (req, res) =>
-{
-    res.render('login');
-})
-
 /******** 
  * routes
 *********/
+app.route('/login')
+    .get((req, res) =>
+    {
+        res.render('login');
+    }).post((req, res) =>
+    {
+        const userName = req.body.userName;
+        const password = req.body.password;
+
+        User.findOne({ email: userName }, (error, foundUser) =>
+        {
+            if (error)
+                console.log(error);
+            else
+            {
+                if (foundUser.password === password)
+                {
+                    console.log("User found");
+                    res.render('secrets');
+                }
+                else
+                    console.log("User not found");
+            }
+        })
+    })
+
 app.route('/register')
     .get((req, res) =>
     {
@@ -65,7 +85,6 @@ app.route('/register')
     {
         const newUser = new User({
             _id: req.body.userName,
-            email: req.body.userName,
             password: req.body.password
         });
         newUser.save((error) =>
