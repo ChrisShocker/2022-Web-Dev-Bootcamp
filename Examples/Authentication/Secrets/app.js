@@ -26,7 +26,6 @@ const DB = process.env.MONGOOSE_DB;
 const uri = "mongodb+srv://" + username + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
-
 /******** 
  * Schema, Model, and Encryption
 *********/
