@@ -1,8 +1,8 @@
 /******** 
- * mongoose-encryption & .ENV
+ * md5  & .ENV
 *********/
-const encrypt = require('mongoose-encryption');
 require('dotenv').config();
+var md5 = require('md5');
 
 /******** 
  * Express & EJS
@@ -40,9 +40,6 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Error: No password']
     }
 });
-//Encrypt dataBase before creating model
-const secret = process.env.MONGOOSE_SECRET;
-userSchema.plugin(encrypt, { secret: secret, encryptedFeilds: ['password'] });
 //Create model
 const User = new mongoose.model('User', userSchema)
 
@@ -64,7 +61,7 @@ app.route('/login')
     }).post((req, res) =>
     {
         const username = req.body.userName;
-        const password = req.body.password;
+        const password = md5(req.body.password);
 
         User.findOne({ email: username }, (error, foundUser) =>
         {
@@ -77,8 +74,10 @@ app.route('/login')
                     console.log("User found");
                     res.render('secrets');
                 }
-                else
+                else{
                     console.log("User not found");
+                    res.redirect('login');
+                }
             }
         })
     })
@@ -91,7 +90,7 @@ app.route('/register')
     {
         const newUser = new User({
             _id: req.body.username,
-            password: req.body.password
+            password: md5(req.body.password)
         });
         newUser.save((error) =>
         {
