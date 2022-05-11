@@ -55,12 +55,9 @@ const findOrCreate = require('mongoose-findorcreate')
 *********/
 const userSchema = new mongoose.Schema({
     //not username is made unique by defualt with passport
-    username: {
-        type: String,
-        required: [true, 'Error: No username']
-    },
-
+    username: String,
     password: String,
+    googleId: String,
 });
 //Create plugin for passport-local-mongoose
 userSchema.plugin(passportLocalMongoose);
@@ -71,8 +68,21 @@ const User = new mongoose.model('User', userSchema);
 //Add authentication
 passport.use(User.createStrategy());
 //use serialize/deserialize for express-sessions
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function (user, cb)
+{
+    process.nextTick(function ()
+    {
+        cb(null, { id: user.id, username: user.username, name: user.name });
+    });
+});
+
+passport.deserializeUser(function (user, cb)
+{
+    process.nextTick(function ()
+    {
+        return cb(null, user);
+    });
+});
 
 /******** 
  * Google OAuth
@@ -84,6 +94,7 @@ passport.use(new GoogleStrategy({
 },
     function (accessToken, refreshToken, profile, cb)
     {
+        console.log(profile);
         User.findOrCreate({ googleId: profile.id }, function (err, user)
         {
             return cb(err, user);
