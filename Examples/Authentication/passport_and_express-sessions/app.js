@@ -81,12 +81,14 @@ passport.use(new GoogleStrategy({
     clientID: process.env.OAUTH_CLIENT_ID,
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
+},
+    function (accessToken, refreshToken, profile, cb)
+    {
+        User.findOrCreate({ googleId: profile.id }, function (err, user)
+        {
+            return cb(err, user);
+        });
+    }
 ));
 
 /******** 
@@ -95,12 +97,26 @@ passport.use(new GoogleStrategy({
 app.get('/', (req, res) =>
 {
     res.render('home');
-})
+});
 
-app.get('/logout', (req, res) =>{
+
+app.get('/logout', (req, res) =>
+{
     req.logOut();
     res.redirect('/');
-})
+});
+
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile'] })
+);
+
+app.get('/auth/google/secrets',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res)
+    {
+        // Successful authentication, redirect home.
+        res.redirect('/secrets');
+    });
 
 /******** 
  * routes
@@ -109,27 +125,27 @@ app.route('/login')
     .get((req, res) =>
     {
         res.render('login');
-    }).post(passport.authenticate("local", {failureRedirect:'/login'}),
-    (req, res) =>
-    {
-        const user = new User({
-            username: req.body.username,
-            password: req.body.password
-        });
-
-        req.login(user, (error) =>
+    }).post(passport.authenticate("local", { failureRedirect: '/login' }),
+        (req, res) =>
         {
-            if (error)
-                console.log(error);
-            else
+            const user = new User({
+                username: req.body.username,
+                password: req.body.password
+            });
+
+            req.login(user, (error) =>
             {
-                passport.authenticate("local")(req, res, function ()
+                if (error)
+                    console.log(error);
+                else
                 {
-                    res.redirect("/secrets");
-                });
-            }
+                    passport.authenticate("local")(req, res, function ()
+                    {
+                        res.redirect("/secrets");
+                    });
+                }
+            })
         })
-    })
 
 app.route('/register')
     .get((req, res) =>
