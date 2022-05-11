@@ -13,8 +13,7 @@ app.set('view engine', 'ejs');
 *********/
 const { Db } = require('mongodb');
 const mongoose = require('mongoose');
-const encrypt = require('mongoose-encryption');
-const keys = require('./keys_api');
+const keys = require('./api_keys');
 const userName = keys.mongooseUserName;
 const password = keys.mongoosePassword;
 const DB = keys.mongooseDB;
