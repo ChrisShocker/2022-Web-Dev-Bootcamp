@@ -3,6 +3,7 @@
 *********/
 require('dotenv').config();
 var bcrypt = require('bcryptjs');
+var sha512 = require('js-sha512');
 
 /******** 
  * Express & EJS
@@ -61,7 +62,7 @@ app.route('/login')
     }).post((req, res) =>
     {
         const username = req.body.userName;
-        const password = req.body.password;
+        const password = sha512(req.body.password);
 
         User.findOne({ email: username }, (error, foundUser) =>
         {
@@ -105,7 +106,7 @@ app.route('/register')
     {
         bcrypt.genSalt(12, (error, salt) =>
         {
-            bcrypt.hash(req.body.password, salt, (error, hash) =>
+            bcrypt.hash(sha512(req.body.password), salt, (error, hash) =>
             {
                 const newUser = new User({
                     _id: req.body.username,
