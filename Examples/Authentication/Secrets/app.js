@@ -19,10 +19,10 @@ app.set('view engine', 'ejs');
 *********/
 const { Db } = require('mongodb');
 const mongoose = require('mongoose');
-const userName = process.env.MONGOOSE_USERNAME;
+const username = process.env.MONGOOSE_USERNAME;
 const password = process.env.MONGOOSE_PASSWORD;
 const DB = process.env.MONGOOSE_DB;
-const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
+const uri = "mongodb+srv://" + username + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
 
@@ -63,10 +63,10 @@ app.route('/login')
         res.render('login');
     }).post((req, res) =>
     {
-        const userName = req.body.userName;
+        const username = req.body.userName;
         const password = req.body.password;
 
-        User.findOne({ email: userName }, (error, foundUser) =>
+        User.findOne({ email: username }, (error, foundUser) =>
         {
             if (error)
                 console.log(error);
@@ -90,7 +90,7 @@ app.route('/register')
     }).post((req, res) =>
     {
         const newUser = new User({
-            _id: req.body.userName,
+            _id: req.body.username,
             password: req.body.password
         });
         newUser.save((error) =>
