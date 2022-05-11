@@ -1,8 +1,8 @@
 /******** 
- * js-sha512  & .ENV
+ * bcrypt.js  & .ENV
 *********/
 require('dotenv').config();
-var sha512 = require('js-sha512');
+var bcrypt = require('bcryptjs');
 
 /******** 
  * Express & EJS
@@ -61,7 +61,7 @@ app.route('/login')
     }).post((req, res) =>
     {
         const username = req.body.userName;
-        const password = sha512(req.body.password);
+        const password = req.body.password;
 
         User.findOne({ email: username }, (error, foundUser) =>
         {
@@ -69,12 +69,27 @@ app.route('/login')
                 console.log(error);
             else
             {
-                if (foundUser.password === password)
+                if (foundUser)
                 {
-                    console.log("User found");
-                    res.render('secrets');
+                    bcrypt.genSalt(12, function (error, salt)
+                    {
+                        bcrypt.hash(password, salt, (error, hash) =>
+                        {
+                            bcrypt.compare(password, hash, (error, match) =>
+                            {
+                                if(match === true){
+                                    console.log("User found");
+                                    res.render('secrets');
+                                }
+                                else{
+                                    console.log('Wrong password');
+                                }
+                            })
+                        })
+                    })
                 }
-                else{
+                else
+                {
                     console.log("User not found");
                     res.redirect('login');
                 }
@@ -88,21 +103,26 @@ app.route('/register')
         res.render('register');
     }).post((req, res) =>
     {
-        const newUser = new User({
-            _id: req.body.username,
-            password: sha512(req.body.password)
-        });
-        newUser.save((error) =>
+        bcrypt.genSalt(12, (error, salt) =>
         {
-            if (error)
-                console.log(error);
-            else
-                console.log('User added');
+            bcrypt.hash(req.body.password, salt, (error, hash) =>
+            {
+                const newUser = new User({
+                    _id: req.body.username,
+                    password: hash
+                });
+                newUser.save((error) =>
+                {
+                    if (error)
+                        console.log(error);
+                    else
+                        console.log('User added');
 
-            res.render('secrets');
+                    res.render('secrets');
+                })
+            })
         })
     })
-
 
 /******** 
  * Server
