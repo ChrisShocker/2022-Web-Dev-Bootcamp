@@ -1,5 +1,5 @@
 bootstrap-5.1.3-dist/
 .vscode/
 node_modules
+.env
 api_keys.js
-keys_api.js

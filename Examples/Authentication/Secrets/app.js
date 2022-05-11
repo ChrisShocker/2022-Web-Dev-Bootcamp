@@ -1,4 +1,10 @@
 /******** 
+ * mongoose-encryption & .ENV
+*********/
+const encrypt = require('mongoose-encryption');
+require('dotenv').config();
+
+/******** 
  * Express & EJS
 *********/
 const express = require("express");
@@ -13,12 +19,12 @@ app.set('view engine', 'ejs');
 *********/
 const { Db } = require('mongodb');
 const mongoose = require('mongoose');
-const keys = require('./api_keys');
-const userName = keys.mongooseUserName;
-const password = keys.mongoosePassword;
-const DB = keys.mongooseDB;
+const userName = process.env.MONGOOSE_USERNAME;
+const password = process.env.MONGOOSE_PASSWORD;
+const DB = process.env.MONGOOSE_DB;
 const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 const connection = mongoose.connect(uri, { useNewURLParser: true });
+
 
 /******** 
  * Schema, Model, and Encryption
@@ -35,7 +41,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 //Encrypt dataBase before creating model
-const secret = keys.mongooseSecret;
+const secret = process.env.MONGOOSE_SECRET;
 userSchema.plugin(encrypt, { secret: secret, encryptedFeilds: ['password'] });
 //Create model
 const User = new mongoose.model('User', userSchema)
