@@ -74,6 +74,11 @@ app.get('/', (req, res) =>
     res.render('home');
 })
 
+app.get('/logout', (req, res) =>{
+    req.logOut();
+    res.redirect('/');
+})
+
 /******** 
  * routes
 *********/
