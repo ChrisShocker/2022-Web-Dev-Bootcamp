@@ -140,7 +140,6 @@ app.get('/auth/google/secrets',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function (req, res)
     {
-        // Successful authentication, redirect home.
         res.redirect('/secrets');
     });
 
@@ -152,7 +151,6 @@ app.get('/auth/facebook/secrets',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res)
     {
-        // Successful authentication, redirect home.
         res.redirect('/secrets');
     });
 
