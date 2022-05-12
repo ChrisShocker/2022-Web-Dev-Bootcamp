@@ -47,7 +47,8 @@ app.use(passport.session());
  * Google OAuth & mongoose findOrCreate
 *********/
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const findOrCreate = require('mongoose-findorcreate')
+const FacebookStrategy = require('passport-facebook').Strategy;
+const findOrCreate = require('mongoose-findorcreate');
 
 /******** 
  *Mongoose Schema, Model, & Passport plugin
@@ -88,14 +89,29 @@ passport.deserializeUser(function (user, cb)
  * Google OAuth
 *********/
 passport.use(new GoogleStrategy({
-    clientID: process.env.OAUTH_CLIENT_ID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    clientID: process.env.OAUTH_GOOGLE_CLIENT_ID,
+    clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets"
 },
     function (accessToken, refreshToken, profile, cb)
     {
         console.log(profile);
         User.findOrCreate({ googleId: profile.id }, function (err, user)
+        {
+            return cb(err, user);
+        });
+    }
+));
+
+passport.use(new FacebookStrategy({
+    clientID: process.env.OAUTH_FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.OAUTH_FACEBOOK_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/secrets"
+},
+    function (accessToken, refreshToken, profile, cb)
+    {
+        console.log(profile);
+        User.findOrCreate({ facebookId: profile.id }, function (err, user)
         {
             return cb(err, user);
         });
@@ -122,6 +138,18 @@ app.get('/auth/google',
 
 app.get('/auth/google/secrets',
     passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res)
+    {
+        // Successful authentication, redirect home.
+        res.redirect('/secrets');
+    });
+
+app.get('/auth/facebook',
+    passport.authenticate('facebook')
+);
+
+app.get('/auth/facebook/secrets',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res)
     {
         // Successful authentication, redirect home.
