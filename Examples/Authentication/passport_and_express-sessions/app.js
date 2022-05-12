@@ -24,7 +24,6 @@ const DB = process.env.MONGOOSE_DB;
 const uri = "mongodb+srv://" + username + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
-
 /******** 
  * exress-session
 *********/
@@ -58,6 +57,7 @@ const userSchema = new mongoose.Schema({
     username: String,
     password: String,
     googleId: String,
+    secret: String
 });
 //Create plugin for passport-local-mongoose
 userSchema.plugin(passportLocalMongoose);
@@ -103,13 +103,12 @@ passport.use(new GoogleStrategy({
 ));
 
 /******** 
- * get
+ * routes
 *********/
 app.get('/', (req, res) =>
 {
     res.render('home');
 });
-
 
 app.get('/logout', (req, res) =>
 {
@@ -129,14 +128,12 @@ app.get('/auth/google/secrets',
         res.redirect('/secrets');
     });
 
-/******** 
- * routes
-*********/
 app.route('/login')
     .get((req, res) =>
     {
         res.render('login');
-    }).post(passport.authenticate("local", { failureRedirect: '/login' }),
+    })
+    .post(passport.authenticate("local", { failureRedirect: '/login' }),
         (req, res) =>
         {
             const user = new User({
@@ -181,15 +178,47 @@ app.route('/register')
         });
     });
 
-app.route('/secrets')
+app.route('/submit')
     .get((req, res) =>
     {
         if (req.isAuthenticated())
-            res.render('secrets');
+            res.render('submit');
         else
             res.redirect("/login");
     })
+    .post((req, res) =>
+    {
+        const userSecret = req.body.secret;
+        User.findById(req.user.id, (error, user) =>
+        {
+            if (error)
+                console.log(error);
+            else
+            {
+                if (user)
+                {
+                    user.secret = userSecret;
+                    user.save(() =>
+                    {
+                        res.redirect('/secrets');
+                    });
+                }
+            }
+        });
+    });
 
+app.route('/secrets')
+    .get((req, res) =>
+    {
+        //find all users with a secret field that isn't null
+        User.find({ "secret": { $ne: null } }, (error, users) =>
+        {
+            if (error)
+                console.log(error)
+            else
+                res.render("secrets", { usersWithSecrets: users });
+        })
+    })
 
 /******** 
  * Server
