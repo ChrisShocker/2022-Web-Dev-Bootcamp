@@ -19,8 +19,10 @@ function Card(props)
         {/* Phone number and email has been abstracted out to Details component, so
         pass the tel and email props to the Details component to handle */}
         <Details
-          tel={props.tel}
-          email={props.email}
+          detailInfo={props.tel}
+        ></Details>
+        <Details
+          detailInfo={props.email}
         ></Details>
       </div>
     </div>
