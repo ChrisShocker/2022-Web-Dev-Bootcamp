@@ -8,6 +8,7 @@ function App() {
       <h1 className="heading">My Contacts</h1>
 
       <Card
+    //   pass in props to the card function
         name={contacts[0].name}
         img={contacts[0].imgURL}
         tel={contacts[0].phone}
