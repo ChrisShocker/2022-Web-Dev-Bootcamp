@@ -12,21 +12,20 @@ function Form(props)
             <Input
                 type="password"
                 placeholder="Password"></Input>
-            {props.userIsRegistered && 
-            <Button
-                type="submit"
-                buttonName="Login"></Button>}
 
-            {!props.userIsRegistered && 
-             <Input
-                type="password"
-                placeholder="Confirm Password"></Input>}
-
-            {!props.userIsRegistered && 
-            <Button
-                type="submit"
-                buttonName="Register"></Button>}
-                
+            {props.userIsRegistered ?
+                <Button
+                    type="submit"
+                    buttonName="Login"></Button>
+                :
+                <>
+                    <Input
+                        type="password"
+                        placeholder="Confirm Password"></Input>
+                    <Button
+                        type="submit"
+                        buttonName="Register"></Button>
+                </>}
         </form>
     );
 }
