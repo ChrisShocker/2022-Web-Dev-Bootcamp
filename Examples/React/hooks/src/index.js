@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./components/App";
+
+//Hooks can only be used inside functional components
+//i.e., App.jsx
 
 ReactDOM.render(
-  <div className="container">
-    <h1>0</h1>
-    <button>+</button>
-  </div>,
+  <App></App>,
   document.getElementById("root")
 )
