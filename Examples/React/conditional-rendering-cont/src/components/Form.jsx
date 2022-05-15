@@ -13,6 +13,7 @@ function Form(props)
                 type="password"
                 placeholder="Password"></Input>
 
+            {/* Ternary to return different values based on userIsRegistered */}
             {props.userIsRegistered ?
                 <Button
                     type="submit"
