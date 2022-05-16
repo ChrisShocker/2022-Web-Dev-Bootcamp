@@ -2,14 +2,14 @@ body {
     font: normal 14px/100% "Andale Mono", AndaleMono, monospace;
     color: #fff;
     padding: 50px;
-    width: 300px;
+    width: 500px;
     margin: 0 auto;
     background-color: #374954;
     text-align: center;
   }
   
   h1 {
-    font-size: 100px;
+    font-size: 5rem;
   }
   
   .container {
