@@ -9,12 +9,14 @@ import cars from "./practice";
 //destructure an array
 const [cat, dog] = animals;
 console.log(cat);
+console.log(dog);
 
 //destructure an object
 //names must match properties inside the object,
 //but can be set with the : i.e., name: catName
 const{name: catName, sound: catSound} = cat;
 console.log(catSound);
+console.log(catName);
 
 //Values can be set if they are undefined, but don't update the original object
 const {color = "black"} = cat;
@@ -22,8 +24,9 @@ console.log(color);
 
 //nested objects can also be destructured by providing the object name,
 //then destructureing that object i.e., feedingRequirements: {food, water}
-const{name, sound, feedingRequirements: {food, water}} = cat;
+const{feedingRequirements: {food, water}} = cat;
 console.log(food);
+console.log(water);
 
 /************************** **************************/
 //Second Example
