@@ -17,9 +17,9 @@ function App()
             if (name === "fName")
             {
                 return {
-                    firsName: value,
+                    firstName: value,
                     lastName: prevValue.lastName,
-                    email: prevValue.emailAddress
+                    emailAddress: prevValue.emailAddress
                 }
             }
             else if (name === "lName")
