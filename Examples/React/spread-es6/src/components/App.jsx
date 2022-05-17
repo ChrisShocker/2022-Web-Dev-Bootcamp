@@ -62,6 +62,7 @@ function App()
     /************ To ***************/
     function handleChange(event)
     {
+        //destructure event.target
         const { name, value } = event.target;
 
         setContact(prevValue =>
