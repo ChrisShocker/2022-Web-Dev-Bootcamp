@@ -1,16 +1,14 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Notes from "./Notes";
-import NewNote from "./NewNote";
+import NoteList from "./NoteList";
 
 function App()
 {
     return (
         <div>
             <Header></Header>
-            <NewNote></NewNote>
-            <Notes></Notes>
+            <NoteList></NoteList>
             <Footer></Footer>
         </div>
     );
