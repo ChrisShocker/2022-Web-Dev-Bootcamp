@@ -23,6 +23,7 @@ function NoteList()
 
             {arrayItems.map((arrayItem, index) => (
                 <Note
+                key={index}
                 noteTitle={arrayItem.title}
                 noteContent={arrayItem.content}>
                 </Note>
