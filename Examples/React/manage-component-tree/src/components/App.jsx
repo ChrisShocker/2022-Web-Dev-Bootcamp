@@ -21,6 +21,21 @@ function App()
         setInputText("");
     }
 
+    function deleteItem(id)
+    {
+        console.log(id);
+        console.log("item called delete");
+        setItems(prevItems =>
+        {
+            //remove the array item with the passed in id
+            return prevItems.filter(
+                (item, index) =>
+                {
+                    return index !== id;
+                });
+        });
+    }
+
     return (
         <div className="container">
             <div className="heading">
@@ -34,9 +49,14 @@ function App()
             </div>
             <div>
                 <ul>
-                    {items.map(todoItem => (
+                    {items.map((todoItem, index) => (
                         <List
+                            // NOTE: using the index isn't advised for the key
+                            key={index}
+                            id={index}
                             item={todoItem}
+                            // we can also pass a function
+                            onChecked={deleteItem}
                         ></List>
                     ))}
                 </ul>
