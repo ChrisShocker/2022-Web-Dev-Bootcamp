@@ -7,17 +7,30 @@ function NoteList()
     //create array to hold the notes
     const [arrayItems, setArrayItems] = useState([]);
 
-    function addArrayItem(note)
+    function addNote(note)
     {
         setArrayItems(prevItems =>
         {
             return [...prevItems, note];
         })
     }
+
+    function deleteNote(id)
+    {
+        console.log(arrayItems.indexOf(id));
+        setArrayItems(prevItems =>
+        {
+            return prevItems.filter((item, index) =>
+            {
+                return index !== id;
+            });
+        })
+    }
+
     return (
         <div>
             <TempNote
-                onAdd={addArrayItem}
+                onAdd={addNote}
             >
             </TempNote>
 
@@ -26,8 +39,10 @@ function NoteList()
                 return (
                     <Note
                         key={index}
+                        id={index}
                         noteTitle={arrayItem.title}
-                        noteContent={arrayItem.content}>
+                        noteContent={arrayItem.content}
+                        onDelete={deleteNote}>
                     </Note>
                 )
             })}
