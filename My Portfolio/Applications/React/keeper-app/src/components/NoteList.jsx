@@ -5,11 +5,11 @@ import Note from "./Note";
 function NoteList()
 {
     //create array to hold the notes
-    const [arrayItems, setArrayItems] = useState([]);
+    const [noteArray, setNoteArray] = useState([]);
 
     function addNote(note)
     {
-        setArrayItems(prevItems =>
+        setNoteArray(prevItems =>
         {
             return [...prevItems, note];
         })
@@ -17,8 +17,8 @@ function NoteList()
 
     function deleteNote(id)
     {
-        console.log(arrayItems.indexOf(id));
-        setArrayItems(prevItems =>
+        console.log(noteArray.indexOf(id));
+        setNoteArray(prevItems =>
         {
             return prevItems.filter((item, index) =>
             {
@@ -34,7 +34,7 @@ function NoteList()
             >
             </TempNote>
 
-            {arrayItems.map((arrayItem, index) =>
+            {noteArray.map((arrayItem, index) =>
             {
                 return (
                     <Note
