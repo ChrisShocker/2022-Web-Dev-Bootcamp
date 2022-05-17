@@ -3,11 +3,10 @@ import React from "react";
 function Note(props)
 {
     return (
-        <div>
-            <form>
-                <p>{props.noteTitle}</p>
-                <p>{props.noteContent}</p>
-            </form>
+        <div className="note">
+            <h1>{props.noteTitle}</h1>
+            <p>{props.noteContent}</p>
+            <button>DELETE</button>
         </div>
     )
 }

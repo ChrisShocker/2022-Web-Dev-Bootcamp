@@ -21,13 +21,16 @@ function NoteList()
             >
             </TempNote>
 
-            {arrayItems.map((arrayItem, index) => (
-                <Note
-                key={index}
-                noteTitle={arrayItem.title}
-                noteContent={arrayItem.content}>
-                </Note>
-            ))}
+            {arrayItems.map((arrayItem, index) =>
+            {
+                return (
+                    <Note
+                        key={index}
+                        noteTitle={arrayItem.title}
+                        noteContent={arrayItem.content}>
+                    </Note>
+                )
+            })}
         </div>
     )
 }
