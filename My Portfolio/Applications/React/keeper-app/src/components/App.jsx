@@ -1,21 +1,16 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Entry from "./Entry";
-import Notes from "../notes";
+import Notes from "./Notes";
+import NewNote from "./NewNote";
 
 function App()
 {
     return (
         <div>
             <Header></Header>
-            {Notes.map((value) =>
-                <Entry
-                    key={value.key}
-                    title={value.title}
-                    content={value.content}>
-                </Entry>
-            )}
+            <NewNote></NewNote>
+            <Notes></Notes>
             <Footer></Footer>
         </div>
     );
