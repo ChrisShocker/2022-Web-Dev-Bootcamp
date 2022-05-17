@@ -7,15 +7,11 @@ function NoteList()
     //create array to hold the notes
     const [arrayItems, setArrayItems] = useState([]);
 
-    function addArrayItem(title, content)
+    function addArrayItem(note)
     {
-        const newNote = {
-            Title: title,
-            Content: content
-        }
         setArrayItems(prevItems =>
         {
-            return [...prevItems, newNote];
+            return [...prevItems, note];
         })
     }
     return (
@@ -27,8 +23,8 @@ function NoteList()
 
             {arrayItems.map((arrayItem, index) => (
                 <Note
-                noteTitle={arrayItem.Title}
-                noteContent={arrayItem.Content}>
+                noteTitle={arrayItem.title}
+                noteContent={arrayItem.content}>
                 </Note>
             ))}
         </div>

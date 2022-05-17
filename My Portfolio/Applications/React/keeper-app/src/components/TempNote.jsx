@@ -2,33 +2,39 @@ import React, { useState } from "react";
 
 function TempNote(props)
 {
-    //create state for not title
-    const [noteTitle, setNoteTitle] = useState();
-    //create state for note content
-    const [noteContent, setNoteContent] = useState();
+    const [note, setNote] = useState({
+        title: "",
+        content: ""
+    });
 
     //handle the data from state changing
     function onChange(event)
     {
         event.preventDefault();
-        if (event.target.name === "noteTitle")
-            setNoteTitle(event.target.value);
-        else if (event.target.name === "noteContent")
-            setNoteContent(event.target.value);
+        //destructure event.target
+        const { name, value } = event.target;
+
+        setNote(prevNotes =>
+        {
+            //return a new object witht the previous 
+            //values and the new one
+            return {
+                ...prevNotes,
+                [name]: value
+            };
+        });
     }
 
     return (
         <div>
             <form onSubmit={onChange}>
-                <input onChange={onChange} name="noteTitle"
-                    placeholder="Title" value={props.noteTitle}></input>
-                <textarea onChange={onChange} name="noteContent"
-                    placeholder="Leave some notes.." value={props.noteContent}></textarea>
+                <input onChange={onChange} name="title"
+                    placeholder="Title" value={note.title}></input>
+                <textarea onChange={onChange} name="content"
+                    placeholder="Leave some notes.." value={note.content}></textarea>
                 <button onClick={() =>
                 {
-                    props.onAdd(noteTitle, noteContent);
-                    setNoteTitle("");
-                    setNoteContent("");
+                    props.onAdd(note);
                 }}>Add</button>
             </form>
         </div>
