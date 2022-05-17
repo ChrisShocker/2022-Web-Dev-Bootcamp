@@ -35,6 +35,10 @@ function TempNote(props)
                 <button onClick={() =>
                 {
                     props.onAdd(note);
+                    setNote({
+                        title:"",
+                        content:""
+                    });
                 }}>Add</button>
             </form>
         </div>
