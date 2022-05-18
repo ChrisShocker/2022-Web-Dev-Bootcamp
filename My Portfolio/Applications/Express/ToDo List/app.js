@@ -5,14 +5,19 @@ const date = require(__dirname + "/modules/date.ejs");
 const mongCMD = require(__dirname + "/modules/mongCommands.ejs");
 
 /******** 
+ *MongoDB keys
+*********/
+const keys = require('./api_keys');
+/******* Replace these with your mongoDB credentials (Readme)*******/
+const userName = keys.mongooseUserName;
+const password = keys.mongoosePassword;
+const DB = keys.mongooseDB;
+
+/******** 
  *MongoDB & Mongoose
 *********/
 const { Db } = require('mongodb');
 const mongoose = require('mongoose');
-const keys = require('./api_keys');
-const userName = keys.mongooseUserName;
-const password = keys.mongoosePassword;
-const DB = keys.mongooseDB;
 const uri = "mongodb+srv://" + userName + ":" + password + "@cluster0.rsfw2.mongodb.net/" + DB + "?retryWrites=true&w=majority";
 const connection = mongoose.connect(uri, { useNewURLParser: true });
 
