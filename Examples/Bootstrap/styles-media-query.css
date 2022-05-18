@@ -1,0 +1,30 @@
+/* h1 is red only if printed  */
+@media print {
+
+    h1 {
+        color: red;
+    }
+}
+
+/* h1 blue if width <= 900px */
+@media (max-width: 900px){
+
+    h1 {
+        color: blue;
+    }
+} 
+
+/* h1 red if width 900px >= width <= 1200px*/
+@media (min-width: 900px) and (max-width: 1200px){
+
+    h1 {
+        color: red;
+    }
+}
+
+/* h1 blue if width >= 1200px */
+@media (min-width: 1200px){
+    h1{
+        color:yellow;
+    }
+}

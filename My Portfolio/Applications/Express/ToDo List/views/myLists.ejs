@@ -1,0 +1,40 @@
+<%- include('partials/header'); -%>
+
+<div class="container top-container text-center">
+    <div class="col col-lg-6 rounded mx-auto">
+        <h1>
+            My Lists
+        </h1>
+    </div>
+</div>
+
+<% for(let i=0; i < listArray.length; ++i){ %>
+<div class="container">
+    <div class="row justify-content-center align-items-center mx-auto">
+        <div class="col col-lg-1 rounded-start">
+            <form action="/deleteList" method="POST">
+                <button id="delete-button" type="submit" name="removeTask"
+                    value=<%= listArray[i].name.replaceAll(' ', '^') %> aria-label="input for a new task"><i
+                        class="fa-solid fa-trash-can"></i>
+                </button>
+            </form>
+        </div>
+        <div class="col col-lg-7 text-center">
+            <!-- <div class="text-center" aria-label="collection item"> -->
+                <p>
+                <%=listArray[i].name%>
+                </p>
+                <input type="hidden" name="listName" value=<%= listTitle %>>
+            <!-- </div> -->
+        </div>
+        <div class="col col-lg-1 rounded-end">
+            <form action="/" method="POST">
+                <button class="mag-glass" type="submit" name="goToList" aria-label="go to list"
+                    value=<%= listArray[i].name.replaceAll(' ', '^') %>><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+<% } %>
+<%- include('partials/footer'); -%>

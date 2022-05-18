@@ -1,0 +1,16 @@
+{
+  "name": "embedded-docs",
+  "version": "1.0.0",
+  "description": "Example on mongoose embedded docs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Andersen",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.2",
+    "nodemon": "^2.0.16"
+  }
+}

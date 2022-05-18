@@ -1,0 +1,166 @@
+body {
+  background-color: #B9F8D3;
+  background-image: -webkit-linear-gradient(65deg, #B9F8D3 50%, #40DFEF 50%);
+  min-height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.top-container {
+  margin-top: 7rem;
+  color: #013272;
+  padding: 0;
+}
+
+.container {
+  margin-bottom: 1rem;
+}
+
+.col {
+  background: #FFFBE7;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  padding: 0.4rem 0 0.4rem; 
+}
+
+#checkbox {
+  height: 100%;
+  width: 25px;
+  margin-left: 2rem;
+}
+
+div {
+
+  color: #00204a;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+#myList {
+  display: inline;
+}
+
+p {
+  font-size: 2rem;
+  font-weight: 200;
+  color: #00204a;
+  display: inline-block;
+  margin-bottom: 0;
+  min-height: 60px;
+  padding-top: 0.3rem;
+}
+
+#list-item {
+  width: 325px;
+  word-break: break-all;
+}
+
+#todo-item {
+  width: 90%;
+  word-break: break-all;
+}
+
+#todo-blank {
+  width: 80%;
+  margin-left: 4.5rem;
+}
+
+input[type="text"] {
+  text-align: center;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 313px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: inset 0 -3px 0 0 #40DFEF;
+}
+
+::placeholder {
+  color: grey;
+  opacity: 1;
+}
+
+
+
+/* Button Section */
+button {
+  min-height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  font-size: 2rem;
+  border-width: 0;
+}
+
+#delete-button {
+  margin-left: 1rem;
+}
+
+.add {
+  color: #00204a;
+  margin-right: 0.5rem;
+}
+
+.mag-glass {
+  margin-left: 2rem;
+}
+
+/*Navbar Section*/
+#navbar-section .navbar {
+  font-size: 1.5rem;
+  z-index: 0;
+}
+
+#links {
+  font-size: 1.5rem;
+  padding: 0 2% 0 2%;
+}
+
+.navbar {
+  min-width: 600px;
+  padding: 1rem;
+  z-index: 0;
+}
+
+.navbar-brand {
+  font-size: 2.3rem;
+  font-family: 'Ubuntu';
+  padding-left: 2%;
+  z-index: 0;
+}
+
+#search-posts {
+  background-color: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0.08rem;
+  min-width: 100px;
+  max-width: 25%;
+  margin: 1rem auto 0 auto;
+  z-index: 1;
+}
+
+/*Footer Section*/
+footer {
+  color: white;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+#copyright {
+  font-size: 1.2rem;
+  color: white;
+}

@@ -1,0 +1,47 @@
+body{
+    background-color: #EBEDFA !important;
+    font-family: 'Montserrat', sans-serif !important;
+    text-align: center !important;
+}
+
+h1, h2, h3{
+    padding: 0 1% 2% 1%;
+}
+
+.container{
+    margin: 10% 1% 1% 1%;
+}
+
+.btn{
+    margin-top: 1%;
+}
+
+/* landing page */
+.input-email{
+    margin-top: 1%;
+}
+
+.unsubscribe-row{
+    padding-top: 2%;
+}
+
+
+/* failure page */
+.failure-body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.failure{
+    background-color: #E0B5DE;
+    padding:5% 0 5% 0;
+}
+
+/* success page */
+.success-body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.success{
+    background-color: #B5DDF7;
+    padding:5% 0 5% 0;
+}

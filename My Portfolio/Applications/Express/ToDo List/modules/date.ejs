@@ -1,0 +1,24 @@
+/*<script>*/
+module.exports.getDate = function(){
+    var dateArray = [];
+    let today = new Date();
+    let optionsDayName = {weekday: 'long'};
+    let optionsDayNumber = {day: 'numeric'};
+    let optionsMonth = {month: 'long'};
+    var dayName = today.toLocaleDateString('en-US', optionsDayName);
+    var dayNumber = today.toLocaleDateString('en-US', optionsDayNumber);
+    var month = today.toLocaleDateString('en-US', optionsMonth);
+   
+    dateArray.push(dayName);
+    dateArray.push(month);
+    dateArray.push(dayNumber);
+    dateArray.splice(0, 1 , dateArray[0] + ',');
+    return dateArray;
+}
+
+module.exports.getDay = function(){
+    let today = new Date();
+    let options = {weekday: 'long'};
+    var day = today.toLocaleDateString('en-US', options);
+    return day;
+}

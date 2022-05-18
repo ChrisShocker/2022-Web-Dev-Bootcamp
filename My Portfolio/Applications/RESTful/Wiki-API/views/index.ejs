@@ -1,0 +1,23 @@
+<%- include('partials/header'); -%>
+
+<div class="container top-container text-center">
+    <div class="row">
+        <div class="col rounded">
+            <h1>Welcome!</h1>
+        </div>
+    </div>
+</div>
+
+<% for( let index = 0; index < array.length; index++ ) { %>
+<div class="container rounded">
+    <div class="row">
+        <div class="col col-lg-8 text-center rounded-top mx-auto text-break">
+            <%= array[index].title  %>
+        </div>
+        <div class="col col-lg-8 rounded-bottom mx-auto text-break ps-2">
+            <%= array[index].content  %>
+        </div>
+    </div>
+</div>
+<% } %>
+<%- include('partials/footer'); -%>

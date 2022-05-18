@@ -1,0 +1,21 @@
+<%- include('partials/header'); -%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <h1>Compose an Entry:</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <form action="/compose" method="POST">
+                <input type="text" class="form-control border-dark mt-2" name="title" placeholder="Title of post" required="true">
+                <textarea type="composition" class="form-control border-dark mt-2" name="composition" rows="4"
+                    placeholder="What's on your mind?" required="true"></textarea>
+                <button type="submit" class="btn btn-dark btn-lg mt-2 w-50">Publish</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include('partials/footer'); -%>

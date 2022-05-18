@@ -1,0 +1,43 @@
+<%- include('partials/header'); -%>
+<div class="container top-container text-center">
+    <div class="col col-lg-6 rounded mx-auto">
+        <h1>
+            <% for(let i=0; i < listTitle.length; ++i){ %>
+            <%=listTitle[i] + ' '%>
+            <% } %>
+        </h1>
+    </div>
+</div>
+
+<% for(let i=0; i < listArray.length; ++i){ %>
+<div class="container">
+    <form action="/" method="POST">
+        <div class="row justify-content-center  mx-auto">
+            <div class="col col-lg-1 rounded-start">
+                <button id="delete-button" type="submit" name="removeTask" value=<%= listArray[i].id %>>
+                    <i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="col col-lg-7 rounded-end text-start text-wrap text-break">
+                <p>
+                    <%=listArray[i].name%>
+                </p>
+                <input type="hidden" name="listName" value=<%= listTitle.join('^') %>>
+            </div>
+        </div>
+    </form>
+</div>
+<% } %>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-lg-7 text-start text-wrap text-break mx-auto rounded">
+            <form action="/" method="POST">
+                <input id="todo-blank" type="text" name="newItem" placeholder="New Task" autocomplete="off"
+                    aria-label="input for a new task">
+                <button class="add" type="submit" name="listName" aria-label="task to add to todo list"
+                    value=<%=listTitle.join('^') %>><i class="fa-solid fa-plus"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer'); -%>

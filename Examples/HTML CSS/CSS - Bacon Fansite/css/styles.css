@@ -1,0 +1,37 @@
+/*tags*/
+body {
+    background-color: white;
+}
+
+h1 {
+    color: red;
+    font-size: 60px;
+}
+
+/*classes
+    - can affect multiple elements*/
+img.bacon{
+    background-color: green;
+}
+
+img.bacon:hover{
+    background-color: yellow;
+}
+
+img.broccoli{
+    background-color: red;
+}
+
+img.broccoli:hover{
+    background-color: yellow;
+}
+
+img.circular{
+    border-radius: 50%;
+}
+
+/*id's
+    - can only affect one element*/
+#heading{
+    color: blue;
+}

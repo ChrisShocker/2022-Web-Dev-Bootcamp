@@ -1,0 +1,29 @@
+/*<script>*/
+const _ = require('lodash');
+
+module.exports.getPost = function(sourceArray, destArray, date){
+    let index = sourceArray.findIndex((element) => element.date === date);
+    destArray.push(sourceArray[index]);
+    if(destArray.length >= 1){
+        return 1;
+    }
+    else
+        return -1;
+}
+
+module.exports.getPosts = function(sourceArray, destArray, title){
+    for(let i = 0; i < sourceArray.length; ++i){
+        if(_.kebabCase(sourceArray[i].title) === _.kebabCase(title))
+            destArray.push(sourceArray[i]);
+    }
+    if(destArray.length >= 1){
+        return 1;
+    }
+    else
+        return -1;
+}
+
+module.exports.deletePost = function (array, date){
+    let index = array.findIndex((element) => (element.date) === date);
+    array.splice(index, 1);
+}

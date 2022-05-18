@@ -1,0 +1,27 @@
+//shows databases
+show dbs
+
+//show current database
+db
+
+//create database name orders
+db.orders.insertOne(
+    {
+        name: "John",
+        age: 30,
+        status: "awaiting approval"
+    }
+)
+
+//update existing item and add an array of reviews with 2 entries
+db.products.updateOne({_id:2},
+{
+    $set:{
+        review:[
+            {authorName:'Jordan',rating:1,review:'hated it'}, 
+            {authorName: 'Jake',rating:3,review:'meh'}] 
+        }
+})
+
+//DOCS
+https://www.mongodb.com/docs/manual/crud/ 

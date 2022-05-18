@@ -1,0 +1,148 @@
+body {
+    background-color: #FBF8F1;
+    margin-top: 6rem;
+    min-width: 600px;
+    text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-family: 'Patrick Hand', cursive;
+    white-space: pre-line;
+    margin-top: -1.3rem;
+    margin-bottom: 0.6rem;
+}
+
+
+/* Container Section */
+.container-fluid {
+    text-align: center;
+}
+
+/* Entry Section */
+.date {
+    background-color: #F9EBC8;
+}
+
+.title,
+.body {
+    background-color: #FEFBE7;
+}
+
+#delete-entry {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0.5rem auto 0 auto;
+    width: 25%;
+}
+
+/*Navbar Section*/
+#navbar-section .navbar {
+    font-size: 1.5rem;
+    z-index: 0;
+}
+
+#links {
+    padding: 0 2% 0 2%;
+}
+
+.navbar {
+    z-index: 0;
+    min-width: 600px;
+}
+
+.navbar-brand {
+    font-size: 2.3rem;
+    font-family: 'Ubuntu';
+    padding-left: 2%;
+    z-index: 0;
+}
+
+
+@media (max-width: 991px) {
+    #new-entry {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem auto 0 13.5rem;
+        max-width: 23%;
+        min-width: 130px;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1064px) {
+    #new-entry {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem auto 0 14.5rem;
+        width: 20%;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 1065px) {
+    #new-entry {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem auto 0 15rem;
+        width: 25%;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 991px) {
+    #search-posts {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem 4.5rem 0 auto;
+        min-width: 100px;
+        max-width: 25%;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1064px) {
+    #search-posts {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem 17.5rem 0 auto;
+        width: 25%;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 1065px) {
+    #search-posts {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0.05rem;
+        margin: 1rem 18rem 0 auto;
+        width: 25%;
+        z-index: 1;
+    }
+}
+
+/* Footer */
+#copyright {
+    color: white;
+}

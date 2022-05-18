@@ -1,0 +1,50 @@
+/*<script>*/
+    exports.buildCollection = async function (Article)
+    {
+        await exports.addArticle(Article, "wikiPost1", "wikiPost1", "An explanation of wikipost1");
+        await exports.addArticle(Article, "wikiPost2", "wikiPost2", "An explanation of wikipost2");
+        await exports.addArticle(Article, "wikiPost3", "wikiPost3", "An explanation of wikipost3");
+    }
+
+    exports.addArticle = async function (Article, id, title, content)
+    {
+            const article = new Article({
+                _id: id,
+                title: title,
+                content: content
+            });
+            await article.save();
+    }
+
+    exports.postArticle = async function (res, Article, title, content)
+    {
+            const article = new Article({
+                _id: title,
+                title: title,
+                content: content
+            });
+            await article.save( function(error){
+                if(error)
+                    res.send(error);
+                else
+                    res.send("Successfully Added Article");
+            });
+    }
+
+    exports.deleteAllArticles = async function(Article, res){
+        Article.deleteMany(function(error){
+            if(error)
+                res.send(error);
+            else
+                res.send("Deleted all articles");
+        });
+    }
+
+    exports.deleteArticle = async function (Article, article){
+        const deleteTask = await Task.deleteOne({title: article}, function(error){
+            if(error)
+                console.log(error);
+            else
+                res.send("Successfully deleted Article");
+        });
+    }

@@ -1,0 +1,11 @@
+h1{
+    position: absolute;
+}
+
+.carousel-item{
+    height: 250px;
+}
+
+.container-fluid{
+    height: 250px;
+}

@@ -1,0 +1,27 @@
+h1{
+    font-size: 4rem;
+    margin: 0;
+}
+
+h2{
+    font-size: 4rem;
+    margin: 0;
+}
+
+h3{
+    font-size: 4rem;
+    margin: 0;
+}
+
+div{
+    margin: 5%;
+}
+
+.main-title {
+    font-size: 8rem;
+    color: yellow;
+}
+
+.margins{
+    margin: 5%;
+}

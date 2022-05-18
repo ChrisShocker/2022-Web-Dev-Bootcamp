@@ -1,0 +1,36 @@
+/*<script>*/
+    exports.addItem = function (req, array)
+    {
+        var item = req.body.newItem;
+        if (item)
+        {
+            array.push(item);
+        }
+        else
+            console.log("No item entered");
+    }
+
+    exports.addTask = function (array, tasks)
+    {
+        if (tasks)
+        {
+            array.push(tasks);
+        }
+        else
+            console.log("No item entered");
+    }
+
+    exports.removeItem = function (req, array)
+    {
+        var item = req.body.removeTask;
+        if (item)
+        {
+            const delIndex = array.indexOf(item);
+            if (delIndex >= 0)
+                array.splice(delIndex, 1);
+            else
+                console.log("item to delete not found");
+        }
+        else
+            console.log("No item entered");
+    }
