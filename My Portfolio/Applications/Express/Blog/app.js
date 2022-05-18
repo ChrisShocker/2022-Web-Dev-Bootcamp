@@ -1,21 +1,35 @@
+/******** 
+ * Express & ejs
+*********/
 const express = require('express');
-const ejs = require('ejs');
-const _ = require('lodash');
-const date = require(__dirname + '/modules/date.ejs');
-const array = require(__dirname + '/modules/arrayManip.ejs');
-const port = 3000;
-
 const app = express();
-
-app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+const port = 3000;
+const ejs = require('ejs');
+app.set('view engine', 'ejs');
 
+/******** 
+ * Lodash
+*********/
+const _ = require('lodash');
+
+/******** 
+ * Custom Modules
+*********/
+const date = require(__dirname + '/modules/date.ejs');
+const array = require(__dirname + '/modules/arrayManip.ejs');
+
+/******** 
+ * Placeholder text
+*********/
 const messageAbout = "laboris nisi ut aliquip ex ea commodo consequat.";
 const messageContact = "Sed ut perspiciatis unde omnis iste natus doloremque.";
 const posts = [];
 
+/******** 
+ * get
+*********/
 app.get('/', (req, res) =>
 {
     res.render('home', { postArray: posts });
@@ -56,6 +70,9 @@ app.get('/:reqParam', (req, res) =>
         res.redirect("notFound");
 });
 
+/******** 
+ * post
+*********/
 app.post("/compose", (req, res) =>
 {
     const post = {
