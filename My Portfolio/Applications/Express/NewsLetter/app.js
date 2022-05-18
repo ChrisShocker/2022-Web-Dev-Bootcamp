@@ -1,13 +1,18 @@
+/******** 
+ * Express
+*********/
 const { application, response } = require('express');
 const express = require('express');
 const request = require('request');
-const https = require('https');
 const app = express();
-
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-
 let port = 3000;
+
+/******** 
+ * Misc Modules
+*********/
+const https = require('https');
 
 /*****************************************************/
 /*PROVIDE THE FOLLOWING*/
@@ -20,6 +25,9 @@ const listID = "";
 
 const url = "https://" + serverPrefix + ".api.mailchimp.com/3.0/lists/" + listID + "/";
 
+/******** 
+ * get
+*********/
 app.get("/", (req, res) =>
 {
     res.sendFile(__dirname + "/index.html");
@@ -45,6 +53,9 @@ app.get("/unsubscribe-failed.html", (req, res) =>
     res.sendFile(__dirname + "/unsubscribe-failed.html");
 });
 
+/******** 
+ * post
+*********/
 app.post("/index", (req, res) =>
 {
     addSubscriber(req, res, key, serverPrefix, listID);
@@ -66,6 +77,9 @@ app.listen(port, () =>
     console.log("Server created on port " + port);
 });
 
+/******** 
+ * functions
+*********/
 function removeSubscriber(req, res, key, serverPrefix, listID)
 {
     //data being passed to mailchimp
