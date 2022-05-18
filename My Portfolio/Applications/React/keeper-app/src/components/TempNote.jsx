@@ -60,6 +60,7 @@ function TempNote(props)
                 <Zoom in={isExpanded}>
                     <Fab onClick={() =>
                     {
+                        setExpanded(false);
                         props.onAdd(note);
                         setNote({
                             title: "",
