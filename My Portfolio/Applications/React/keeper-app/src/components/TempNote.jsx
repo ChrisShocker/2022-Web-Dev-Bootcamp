@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Fab from '@mui/material/Fab'
+import Fab from '@mui/material/Fab';
+import Zoom from '@mui/material/Zoom';
 function TempNote(props)
 {
     const [note, setNote] = useState({
@@ -33,14 +34,16 @@ function TempNote(props)
                     placeholder="Title" value={note.title}></input>
                 <textarea onChange={onChange} name="content"
                     placeholder="Leave some notes.." value={note.content}></textarea>
-                <Fab onClick={() =>
-                {
-                    props.onAdd(note);
-                    setNote({
-                        title:"",
-                        content:""
-                    });
-                }}><AddCircleIcon></AddCircleIcon></Fab>
+                <Zoom in={true}>
+                    <Fab onClick={() =>
+                    {
+                        props.onAdd(note);
+                        setNote({
+                            title: "",
+                            content: ""
+                        });
+                    }}><AddCircleIcon></AddCircleIcon></Fab>
+                </Zoom>
             </form>
         </div>
     )
