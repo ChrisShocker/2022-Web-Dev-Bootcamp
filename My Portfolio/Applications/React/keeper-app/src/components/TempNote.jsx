@@ -27,14 +27,37 @@ function TempNote(props)
         });
     }
 
+    const [isExpanded, setExpanded] = useState(false);
+    const [isRowExpanded, setRowExpanded] = useState(false);
+
+    function expanded()
+    {
+        setExpanded(true);
+    }
+
+    function expandRow()
+    {
+        setRowExpanded(true);
+    }
+
     return (
         <div>
             <form className="create-note" onSubmit={onChange}>
-                <input onChange={onChange} name="title"
-                    placeholder="Title" value={note.title}></input>
-                <textarea onChange={onChange} name="content"
-                    placeholder="Leave some notes.." value={note.content}></textarea>
-                <Zoom in={true}>
+                <input onChange={onChange}
+                    onClick={expanded}
+                    name="title"
+                    placeholder="Title" value={note.title}>
+                </input>
+                {isExpanded &&
+                    <textarea
+                        onChange={onChange}
+                        onClick={expandRow}
+                        name="content"
+                        placeholder="Leave some notes.."
+                        rows={isRowExpanded ? 3 : 1}
+                        value={note.content}>
+                    </textarea>}
+                <Zoom in={isExpanded}>
                     <Fab onClick={() =>
                     {
                         props.onAdd(note);
