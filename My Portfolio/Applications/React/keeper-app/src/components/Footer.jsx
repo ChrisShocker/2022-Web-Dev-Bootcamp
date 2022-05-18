@@ -4,7 +4,7 @@ function Footer(){
     let year = new Date().getFullYear();
     return (
         <footer>
-            <p>Copyright {year}</p>
+            <p>Copyright Christian Andersen {year}</p>
         </footer>
     );
 }
