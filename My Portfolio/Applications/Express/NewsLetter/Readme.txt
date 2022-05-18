@@ -1,5 +1,8 @@
-This applications requires:
+This application uses mailchimp to build an audience/follower email list.
+ - Once a client subscribes, the mailchimp website can be used to send newsletters, updates, etc.
+ - Users can subscribe and unsubsribe 
 
+This applications requires:
 1: A Mailchimp API key
     -Just sign up, no need for the market or transactional account
     -Generate an API key below:
