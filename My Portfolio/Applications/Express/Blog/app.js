@@ -28,6 +28,16 @@ const messageContact = "Sed ut perspiciatis unde omnis iste natus doloremque.";
 const posts = [];
 
 /******** 
+ * create example post
+*********/
+const post = {
+    date: date.getDateWithMinute(),
+    title: "Give me a Title",
+    body: "What's on your mind?",
+}
+posts.push(post);
+
+/******** 
  * get
 *********/
 app.get('/', (req, res) =>
@@ -64,7 +74,7 @@ app.get('/:reqParam', (req, res) =>
 {
     let postsMatch = [];
     let exists = array.getPost(posts, postsMatch, req.params.reqParam);
-    if(exists != -1)
+    if (exists != -1)
         res.render('post', { postsMatch: postsMatch });
     else
         res.redirect("notFound");
