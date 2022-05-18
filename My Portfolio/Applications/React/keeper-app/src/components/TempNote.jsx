@@ -27,7 +27,7 @@ function TempNote(props)
 
     return (
         <div>
-            <form onSubmit={onChange}>
+            <form className="create-note" onSubmit={onChange}>
                 <input onChange={onChange} name="title"
                     placeholder="Title" value={note.title}></input>
                 <textarea onChange={onChange} name="content"
