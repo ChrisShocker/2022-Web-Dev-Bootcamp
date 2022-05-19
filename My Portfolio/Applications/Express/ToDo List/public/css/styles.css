@@ -118,20 +118,16 @@ button {
 }
 
 /*Navbar Section*/
-#navbar-section .navbar {
+.navbar {
   font-size: 1.5rem;
+  min-width: 600px;
+  padding: 1rem;
   z-index: 0;
 }
 
 #links {
   font-size: 1.5rem;
   padding: 0 2% 0 2%;
-}
-
-.navbar {
-  min-width: 600px;
-  padding: 1rem;
-  z-index: 0;
 }
 
 .navbar-brand {
@@ -155,7 +151,6 @@ button {
 
 /*Footer Section*/
 footer {
-  color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
